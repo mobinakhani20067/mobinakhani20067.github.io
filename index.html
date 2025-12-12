@@ -1,43 +1,83 @@
-<html lang="fa"><head><style> body {transition: opacity ease-in 0.2s; } 
-body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
-</style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-
-html, body {
+body {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background: #e9dcbc; /* رنگ دلخواه */
-  overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
+svg {
+  width: 240px;
+  height: 240px;
+}
 
+.circle-bg {
+  fill: none;
+  stroke: #e5e5e5;
+  stroke-width: 18;
+}
 
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #e9dcbc;
-      height: 100%;
-      width: 100%;
-      
-    }
+.circle-progress {
+  fill: none;
+  stroke: #9ccf7f; 
+  stroke-width: 18;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.6s ease;
+}
 
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      background: #e9dcbc;
-    }
-    
-  </style>
+#percentText {
+  font-size: 40px;
+  fill: #6b8f50;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <img src="audio.webp" alt="">
-  </div>
+
+<svg>
+  <circle class="circle-bg" cx="120" cy="120" r="95"></circle>
+  <circle class="circle-progress" cx="120" cy="120" r="95"></circle>
+  <text id="percentText" x="120" y="130">0%</text>
+</svg>
+
+<script>
+function setProgress(percent) {
+  const circle = document.querySelector('.circle-progress');
+  const text = document.getElementById('percentText');
+
+  const radius = circle.r.baseVal.value;
+  const circumference = 2 * Math.PI * radius;
+
+  circle.style.strokeDasharray = circumference;
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+
+  text.textContent = percent + "%";
+}
+
+window.onload = function() {
+  setProgress(0);
+};
+</script>
+
 </body>
+<script>
+function applyProgress() {
+  var percent = parseInt(AppInventor.getWebViewString());
+  if (!isNaN(percent)) setProgress(percent);
+}
+
+setInterval(applyProgress, 200);
+</script>
+</html>
