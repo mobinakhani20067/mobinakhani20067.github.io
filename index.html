@@ -1,82 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
-body {
-  background: #E4FED1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-svg {
-  width: 240px;
-  height: 240px;
-}
-
-.circle-bg {
-  fill: none;
-  stroke: #e5e5e5;
-  stroke-width: 18;
-}
-
-.circle-progress {
-  fill: none;
-  stroke: #9ccf7f; /* رنگ سبز ماچا */
-  stroke-width: 18;
-  stroke-linecap: round;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  transition: stroke-dashoffset 0.6s ease;
-}
-
-#percentText {
-  font-size: 40px;
-  fill: #6b8f50; /* سبز تیره‌تر برای نوشته */
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%; background: #E4FED1; overflow: hidden; }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  svg {
+    width: 90vmin;   /* این باعث می‌شه همیشه مربع باشه و بزرگ دیده بشه */
+    height: 90vmin;
+    max-width: 400px;
+    max-height: 400px;
+  }
+  .circle-bg {
+    fill: none;
+    stroke: #c0e6b0;
+    stroke-width: 20;
+  }
+  .circle-progress {
+    fill: none;
+    stroke: #6ab04c;
+    stroke-width: 20;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.8s ease;
+  }
+  #percentText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    fill: #2d5016;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
 </style>
 </head>
-
 <body>
 
-<svg>
-  <circle class="circle-bg" cx="120" cy="120" r="95"></circle>
-  <circle class="circle-progress" cx="120" cy="120" r="95"></circle>
+<svg viewBox="0 0 240 240">
+  <circle class="circle-bg" cx="120" cy="120" r="100"></circle>
+  <circle class="circle-progress" cx="120" cy="120" r="100"></circle>
   <text id="percentText" x="120" y="130">0%</text>
 </svg>
 
 <script>
-function setProgress(percent) {
   const circle = document.querySelector('.circle-progress');
-  const text = document.getElementById('percentText');
-
-  const radius = circle.r.baseVal.value;
+  const text   = document.getElementById('percentText');
+  const radius = 100;
   const circumference = 2 * Math.PI * radius;
-
   circle.style.strokeDasharray = circumference;
-  const offset = circumference - (percent / 100) * circumference;
-  circle.style.strokeDashoffset = offset;
 
-  text.textContent = percent + "%";
-}
+  function setProgress(percent) {
+    if (percent < 0) percent = 0;
+    if (percent > 100) percent = 100;
+    const offset = circumference - (percent / 100) * circumference;
+    circle.style.strokeDashoffset = offset;
+    text.textContent = Math.round(percent) + "%";
+  }
 
-window.onload = function() {
+  // اولین بار صفر نشون بده
   setProgress(0);
-};
-</script>
-<script>
-function applyProgress() {
-  var percent = parseInt(AppInventor.getWebViewString());
-  if (!isNaN(percent)) setProgress(percent);
-}
 
-setInterval(applyProgress, 200);
+  // هر ۲۰۰ میلی‌ثانیه از اپ اینونتور مقدار رو بگیره
+  setInterval(() => {
+    try {
+      let val = AppInventor.getWebViewString();
+      let num = parseInt(val);
+      if (!isNaN(num)) setProgress(num);
+    } catch(e) {}
+  }, 200);
 </script>
 
 </body>
