@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
   html, body {
-    margin: 0; padding: 0; height: 100%; width: 100%; background: #E4FED1; overflow: hidden; }
+    margin: 0; padding: 0; height: 100%; width: 100%; background: #E4FED1; overflow: hidden; 
+  }
   body {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   svg {
-    width: 90vmin;   /* این باعث می‌شه همیشه مربع باشه و بزرگ دیده بشه */
+    width: 90vmin;   /* همیشه مربع و بزرگ */
     height: 90vmin;
     max-width: 400px;
     max-height: 400px;
@@ -33,7 +34,7 @@
   }
   #percentText {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 48px;
+    font-size: 24px;
     font-weight: bold;
     fill: #2d5016;
     text-anchor: middle;
@@ -46,7 +47,7 @@
 <svg viewBox="0 0 240 240">
   <circle class="circle-bg" cx="120" cy="120" r="100"></circle>
   <circle class="circle-progress" cx="120" cy="120" r="100"></circle>
-  <text id="percentText" x="120" y="130">0%</text>
+  <text id="percentText" x="120" y="130">0% Completed Tasks</text>
 </svg>
 
 <script>
@@ -61,13 +62,13 @@
     if (percent > 100) percent = 100;
     const offset = circumference - (percent / 100) * circumference;
     circle.style.strokeDashoffset = offset;
-    text.textContent = Math.round(percent) + "%";
+    text.textContent = Math.round(percent) + "% Completed Tasks";
   }
 
   // اولین بار صفر نشون بده
   setProgress(0);
 
-  // هر ۲۰۰ میلی‌ثانیه از اپ اینونتور مقدار رو بگیره
+  // هر ۲۰۰ میلی‌ثانیه مقدار از App Inventor بگیرد
   setInterval(() => {
     try {
       let val = AppInventor.getWebViewString();
