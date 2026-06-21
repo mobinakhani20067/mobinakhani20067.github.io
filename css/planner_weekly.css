@@ -1,0 +1,380 @@
+.main {
+    flex: 1;
+    background: #EFF5E9;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 15px 20px 20px 20px;
+    border-radius: 0 20px 0 0;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.main h1 {
+    color: #165526;
+    margin-bottom: 15px;
+    border-right: 4px solid #2c6e3c;
+    padding-right: 15px;
+}
+
+.week-table-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.week_table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+    background: transparent;
+}
+
+.week_table td {
+    width: 14.28%;
+}
+
+.week-button {
+    background-color: #E4F0DE;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    color: #165526;
+    border: none;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    padding: 10px 5px;
+}
+
+.week-button.active {
+    background-color: #165526;
+    color: white;
+    box-shadow: 0 4px 12px rgba(21, 85, 38, 0.3);
+}
+
+.week-button b {
+    font-size: 0.9rem;
+    display: block;
+}
+
+.week-button span {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+.plan-category {
+    background: #165526;
+    border-radius: 30px;
+    padding: 5px 14px;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.bottom-section {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+}
+
+.plans-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.showPlan {
+    background-color: #ffffffea;
+    border-radius: 24px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.showPlan2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.none-plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    color: #86a788;
+    height: 100%;
+}
+
+.none-plan img {
+    width: 80px;
+    height: 80px;
+    background: #ddebd6;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+.none-plan b {
+    font-size: 1rem;
+}
+
+.none-plan span {
+    font-size: 0.8rem;
+}
+
+.plans {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.plan {
+    background: linear-gradient(135deg, #f8fbf5 0%, #f0f6ea 100%);
+    border-radius: 16px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: all 0.2s ease;
+    border: 1px solid #d4e8c8;
+}
+
+.plan:hover {
+    transform: translateX(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.plan-info {
+    flex: 2;
+    min-width: 0;
+}
+
+.plan-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #1f4228;
+    margin-bottom: 3px;
+    word-break: break-word;
+}
+
+.plan-time {
+    font-size: 0.65rem;
+    color: #7a9a7a;
+}
+
+.plan-type {
+    background-color: #165526;
+    border-radius: 20px;
+    padding: 4px 12px;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: bold;
+    min-width: 55px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.plan-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.plan-actions input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #2c7a47;
+    cursor: pointer;
+}
+
+.delete-plan {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.deleteIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.summary-column {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
+.week-summary {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.week-summary h3 {
+    color: #165526;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.week-summary hr {
+    width: 100%;
+    margin: 10px auto;
+    height: 2px;
+    background: #165526;
+    border: none;
+}
+
+.week-summary-table {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.week-summary-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.week-summary-table img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.number {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #165526;
+}
+
+.summary-label {
+    font-size: 0.75rem;
+    color: #2c5a36;
+}
+
+.plans::-webkit-scrollbar {
+    width: 5px;
+}
+
+.plans::-webkit-scrollbar-track {
+    background: #e2e9dd;
+    border-radius: 10px;
+}
+
+.plans::-webkit-scrollbar-thumb {
+    background: #9abb8a;
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .page {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        padding-bottom: 80px;
+    }
+    .main {
+        border-radius: 20px;
+        margin-top: 0;
+        padding: 12px;
+    }
+    .week_table {
+        min-width: 500px;
+    }
+    .week-button {
+        padding: 4px 4px;
+        font-size: 14px;
+    }
+    .week-button b {
+        font-size: 0.8rem;
+    }
+    .week-button span {
+        font-size: 0.6rem;
+    }
+    .bottom-section {
+        flex-direction: column;
+    }
+    .plans-column {
+        flex: auto;
+        min-height: 300px;
+    }
+    .summary-column {
+        min-width: auto;
+    }
+    .plan {
+        padding: 10px 12px;
+    }
+    .plan-title {
+        font-size: 0.85rem;
+    }
+    .week-summary {
+        padding: 15px;
+    }
+    .number {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .plan {
+        flex-wrap: wrap;
+    }
+    .plan-type {
+        order: 2;
+    }
+    .plan-actions {
+        order: 3;
+    }
+    .week-summary-table img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 10px;
+    }
+    .main h1 {
+        font-size: 1.5rem;
+    }
+    .bottom-nav-mobile {
+        padding: 8px 12px;
+    }
+    .bottom-nav-items .icon-small {
+        width: 22px;
+        height: 22px;
+    }
+    .bottom-nav-items .item-text {
+        font-size: 0.5rem;
+    }
+}
