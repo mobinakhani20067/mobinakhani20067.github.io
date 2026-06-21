@@ -1,0 +1,249 @@
+.main {
+    flex: 1;
+    background: #EFF5E9;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 15px 25px 25px 25px;
+    box-shadow: -5px 0 12px rgba(0, 0, 0, 0.03);
+    border-radius: 0 20px 0 0;
+    margin-top: 50px;
+}
+
+.main h1 {
+    padding-right: 15px;
+    flex-shrink: 0;
+    color: #165526;
+    margin-bottom: 15px;
+    border-right: 4px solid #2c6e3c;
+    padding-right: 15px;
+}
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 30px;
+    margin-bottom: 20px;
+}
+
+.form-table {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.form-table tr {
+    margin-bottom: 20px;
+    display: table-row;
+}
+
+.form-table td {
+    padding: 12px 8px;
+    vertical-align: middle;
+}
+
+.form-table td:first-child {
+    width: 130px;
+    white-space: nowrap;
+}
+
+.icon-label {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.form-table label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1f4228;
+    vertical-align: middle;
+}
+
+.form-table input[type="text"],
+.form-table select,
+.form-table input[type="time"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #d9e8d1;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-family: 'Vazir FD-WOL', 'B Nazanin', sans-serif;
+    transition: all 0.2s ease;
+    background-color: transparent;
+    color: #1f4228;
+    outline: none;
+}
+
+.form-table input[type="text"]:focus,
+.form-table select:focus,
+.form-table input[type="time"]:focus {
+    border-color: #2c7a47;
+    box-shadow: 0 0 0 3px rgba(44, 122, 71, 0.1);
+    background-color: #E9F1E1;
+}
+
+.form-table input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    accent-color: #2c7a47;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.form-table button {
+    width: 100%;
+    padding: 5px;
+    background: linear-gradient(135deg, #165526, #2c7a47);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Vazir FD-WOL', 'B Nazanin', sans-serif;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(21, 85, 38, 0.2);
+}
+
+.form-table button:hover {
+    background: linear-gradient(135deg, #1e6b33, #165526);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(21, 85, 38, 0.3);
+}
+
+.form-table td:empty {
+    width: 0;
+    padding: 0;
+}
+
+
+
+@media (max-width: 650px) {
+    .form-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .form-table td {
+        padding: 6px 8px;
+    }
+
+    .form-table td:first-child {
+        width: auto;
+        white-space: normal;
+    }
+
+    .form-table {
+        width: 100%;
+    }
+
+    .form-table td:empty {
+        display: none;
+    }
+
+    .form-table button {
+        margin-top: 10px;
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .form {
+        padding: 20px 15px;
+    }
+
+    .main h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-table input[type="text"],
+    .form-table select,
+    .form-table input[type="time"] {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .form-table label {
+        font-size: 0.9rem;
+    }
+
+    .icon-label {
+        width: 22px;
+        height: 22px;
+    }
+
+    .bottom-nav-mobile {
+        padding: 8px 12px;
+    }
+
+    .bottom-nav-items .icon-small {
+        width: 24px;
+        height: 24px;
+    }
+
+    .bottom-nav-items .item-text {
+        font-size: 0.55rem;
+    }
+
+    .bottom-nav-items li a {
+        font-size: 0.7rem;
+        gap: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 6px;
+    }
+
+    .main {
+        padding: 12px;
+    }
+
+    .main h1 {
+        font-size: 1.3rem;
+        padding-right: 12px;
+        margin-bottom: 15px;
+    }
+
+    .form {
+        padding: 18px 12px;
+    }
+
+    .form-table td {
+        padding: 5px 6px;
+    }
+
+    .form-table input[type="text"],
+    .form-table select,
+    .form-table input[type="time"] {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .form-table button {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+}
+
+.form-table input:hover,
+.form-table select:hover,
+.form-table input[type="time"]:hover {
+    border-color: #9abb8a;
+}
+
+.form-table td[colspan="2"] {
+    position: relative;
+}
