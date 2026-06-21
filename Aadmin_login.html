@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ورود به پنل مدیریت</title>
+    <link href="css/Aadmin-login.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-container">
+
+        <div class="login-card">
+            <div class="login-header">
+                <h2>ورود به پنل مدیریت</h2>
+                <p>نام کاربری و رمز عبور خود را وارد کنید</p>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">
+                        <svg width="18" height="18" fill="#1a472a" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        نام کاربری
+                    </label>
+                    <input type="text" id="username" class="form-input" placeholder="نام کاربری خود را وارد کنید" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <svg width="18" height="18" fill="#1a472a" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9v2c-1.66 0-3 1.34-3 3v6c0 1.66 1.34 3 3 3h14c1.66 0 3-1.34 3-3v-6c0-1.66-1.34-3-3-3V9c0-3.87-3.13-7-7-7z"/></svg>
+                        رمز عبور
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" class="form-input" placeholder="رمز عبور خود را وارد کنید" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <svg width="20" height="20" fill="#8aa08e" viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>مرا به خاطر بسپار</span>
+                    </label>
+                    <a href="#" class="forgot-pass">فراموشی رمز عبور</a>
+                </div>
+
+                <button type="submit" class="btn-login">ورود به پنل</button>
+
+                <div id="loginError" class="login-error" style="display:none;">
+                    <svg width="18" height="18" fill="#c0392b" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <span id="errorMessage">نام کاربری یا رمز عبور اشتباه است</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            <p>سامانه یکپارچه ورزش دانشگاه‌های کشور</p>
+            <p class="footer-sub">وزارت علوم، تحقیقات و فناوری | معاونت ورزشی</p>
+        </div>
+    </div>
+
+    <div class="login-bg-decoration">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
+    </div>
+</div>
+
+<script src="js/Aadmin-login.js"></script>
+</body>
+</html>

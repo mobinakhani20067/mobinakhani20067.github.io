@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>مدیریت ادمین‌ها</title>
+    <link href="css/Aadmin_mange-admins.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="admin-header">
+    <button class="mobile-menu-toggle" id="menuToggleBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </button>
+    <div class="admin-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+            <path d="M12 2L1 9l4 2.18v6L12 22l7-3.82v-6l2-1.09V17h2V9L12 2z"/>
+        </svg>
+        <span>مدیریت ادمین‌ها</span>
+    </div>
+    <div class="admin-user">
+        <div class="profile-container">
+            <button class="profile-btn" id="profileBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="dropdown-header">
+                    <div class="dropdown-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2d6a3f" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div class="dropdown-name" id="dropdownUserName">نام ادمین</div>
+                </div>
+                <a href="Aadmin_profile.html" class="dropdown-item">
+                    <svg width="18" height="18" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    مشاهده پروفایل
+                </a>
+                <a href="#" class="dropdown-item" onclick="logout()">
+                    <svg width="18" height="18" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    خروج
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar" id="sidebarMenu">
+    <ul class="sidebar-menu">
+        <li><a href="Aadmin_dashboard.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></span> داشبورد</a></li>
+        <li><a href="Aadmin_uni_request.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span> درخواست‌ها</a></li>
+        <li><a href="Aadmin_universities.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 22l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg></span> دانشگاه‌ها</a></li>
+        <li><a href="Aadmin_news.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2h6v2h-6V6zm0 4h6v2h-6v-2zm0 4h6v2h-6v-2zM4 6h6v2H4V6zm0 4h6v2H4v-2zm0 4h6v2H4v-2z"/></svg></span> اخبار</a></li>
+        <li><a href="Aadmin_tickets.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h10v2H7zm0 4h7v2H7z"/></svg></span> تیکت‌ها</a></li>
+        <li class="active"><a href="#"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span> مدیریت ادمین‌ها</a></li>
+        <li><a href="Aadmin_reports.html"><span class="menu-icon"><svg width="22" height="22" fill="#2c3e2f" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 14H7v-2h4v2zm0-4H7v-2h4v2zm0-4H7V7h4v2zm6 6h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg></span> گزارشات پیشرفته</a></li>
+    </ul>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="main-content" id="mainContent">
+    <div id="listView">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalAdmins">0</div>
+                <div class="stat-label">کل ادمین‌ها</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeAdmins">0</div>
+                <div class="stat-label">ادمین‌های فعال</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="roleCount">0</div>
+                <div class="stat-label">نقش‌های تعریف شده</div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="section-title">
+                    <svg width="30" height="30" fill="#1c542c" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    لیست ادمین‌ها
+                </h3>
+                <button class="btn-add" onclick="openAddAdminModal()">
+                    <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    افزودن ادمین جدید
+                </button>
+            </div>
+            
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label>جستجو:</label>
+                    <input type="text" id="searchInput" class="search-input" placeholder="نام کاربری..." onkeyup="filterAdmins()">
+                </div>
+                <div class="filter-group">
+                    <label>نقش:</label>
+                    <select id="roleFilter" class="filter-select" onchange="filterAdmins()">
+                        <option value="all">همه نقش‌ها</option>
+                        <option value="super">مدیر کل</option>
+                        <option value="admin">مدیر ارشد</option>
+                        <option value="manager">مدیر بخش</option>
+                        <option value="viewer">کاربر عادی</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>وضعیت:</label>
+                    <select id="statusFilter" class="filter-select" onchange="filterAdmins()">
+                        <option value="all">همه</option>
+                        <option value="active">فعال</option>
+                        <option value="inactive">غیرفعال</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>دسترسی:</label>
+                    <select id="permFilter" class="filter-select" onchange="filterAdmins()">
+                        <option value="all">همه دسترسی‌ها</option>
+                        <option value="full">دسترسی کامل</option>
+                        <option value="limited">دسترسی محدود</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>نام کاربری</th>
+                            <th>سمت / نقش</th>
+                            <th>سطح دسترسی</th>
+                            <th>وضعیت</th>
+                            <th>آخرین فعالیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="adminModal" class="admin-modal">
+    <div class="admin-modal-content">
+        <h3 id="modalTitle">
+            <svg width="24" height="24" fill="#1c542c" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/></svg>
+            افزودن ادمین جدید
+        </h3>
+        <div class="form-group">
+            <label>نام کاربری</label>
+            <input type="text" id="adminUsername" placeholder="نام کاربری را وارد کنید">
+        </div>
+        <div class="form-group">
+            <label>رمز عبور</label>
+            <input type="password" id="adminPassword" placeholder="رمز عبور را وارد کنید">
+        </div>
+        <div class="form-group">
+            <label>سمت / نقش</label>
+            <select id="adminRole">
+                <option value="super">مدیر کل (Super Admin)</option>
+                <option value="admin">مدیر ارشد (Admin)</option>
+                <option value="manager">مدیر بخش (Manager)</option>
+                <option value="viewer">کاربر عادی (Viewer)</option>
+            </select>
+        </div>
+        
+        <div class="permission-group">
+            <div class="permission-title">
+                <svg width="18" height="18" fill="#1a472a" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                سطح دسترسی‌ها
+            </div>
+            <div class="permission-items">
+                <label class="permission-item"><input type="checkbox" id="permDashboard"> داشبورد</label>
+                <label class="permission-item"><input type="checkbox" id="permRequests"> مدیریت درخواست‌ها</label>
+                <label class="permission-item"><input type="checkbox" id="permUniversities"> مدیریت دانشگاه‌ها</label>
+                <label class="permission-item"><input type="checkbox" id="permNews"> مدیریت اخبار</label>
+                <label class="permission-item"><input type="checkbox" id="permTickets"> مدیریت تیکت‌ها</label>
+                <label class="permission-item"><input type="checkbox" id="permAdmins"> مدیریت ادمین‌ها</label>
+                <label class="permission-item"><input type="checkbox" id="permReports"> مشاهده گزارشات</label>
+                <label class="permission-item"><input type="checkbox" id="permSettings"> تنظیمات سیستم</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>وضعیت</label>
+            <select id="adminStatus">
+                <option value="active">فعال</option>
+                <option value="inactive">غیرفعال</option>
+            </select>
+        </div>
+        
+        <div class="modal-buttons">
+            <button class="btn-icon" onclick="saveAdmin()" style="background:#2b7a44; color:white;">
+                <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                ذخیره
+            </button>
+            <button class="btn-icon" onclick="closeAdminModal()" style="background:#6c757d; color:white;">
+                <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                انصراف
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/Aadmin-manage-admins.js"></script>
+<script src="js/logout.js"></script>
+</body>
+</html>
