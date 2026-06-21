@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>افتخارات ورزشی </title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+	<link href="css/sport-honors.css" rel="stylesheet">
+	<link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+    <div class="floating-support" id="supportBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header"><span>پشتیبانی</span><button class="close-chat" id="closeChat" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">×</button></div>
+        <div class="chatbot-messages" id="chatMessages"><div class="message bot-message">سلام! چطور میتونم کمک کنم؟</div></div>
+        <div class="quick-replies">
+            <button class="quick-reply-btn" data-msg="رزرو سالن">رزرو سالن</button>
+            <button class="quick-reply-btn" data-msg="ساعات کاری">ساعات کاری</button>
+            <button class="quick-reply-btn" data-msg="قوانین">قوانین</button>
+            <button class="quick-reply-btn" data-msg="تماس">شماره تماس</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatInput" placeholder="پیام...">
+            <button class="chatbot-send" id="sendMessage">➤</button>
+        </div>
+    </div>
+
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+				<li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="achievements-wrapper">
+        <div class="achievements-layout">
+            <div class="main-achievements-content">
+                <div class="page-header">
+                    <h1>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/>
+                        </svg>
+                        افتخارات ورزشی دانشگاه
+                    </h1>
+                    <p>افتخارات و موفقیت‌های ورزشی دانشجویان و تیم‌های دانشگاه</p>
+                </div>
+
+                <div class="search-bar">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="جستجوی افتخارات...">
+                        <svg class="search-icon-pos" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div id="achievementsContainer"></div>
+            </div>
+        </div>
+    </div>
+	<script src="js/background.js"></script>
+    <script src="js/sport-honors.js"></script>
+</body>
+</html>

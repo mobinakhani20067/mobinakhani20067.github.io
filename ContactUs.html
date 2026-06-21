@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>تماس با ما</title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/ContactUs.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="Notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item active"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h3><span class="info-icon icon-contact-info" style="width:24px;height:24px;"></span> اطلاعات تماس</h3>
+            <p><span class="info-icon icon-phone"></span> <strong>تلفن:</strong> ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            <p><span class="info-icon icon-email"></span> <strong>ایمیل:</strong> info@nusd.ac.ir</p>
+            <p><span class="info-icon icon-location"></span> <strong>آدرس:</strong> قم، بلوار امین، شهرک قدس، دانشگاه ملی مهارت دختران قم</p>
+            <div class="map-placeholder">
+                <img src="img/map.png" alt="نقشه">
+            </div>
+			<h3><span class="info-icon icon-support" style="width:24px;height:24px;"></span> ساعات پشتیبانی</h3>
+            <p><strong>شنبه تا چهارشنبه:</strong> ۹ صبح تا ۵ بعدازظهر</p>
+            <p><strong>پنجشنبه:</strong> ۹ صبح تا ۳ بعدازظهر</p>
+            <p><strong>جمعه:</strong> تعطیل</p>
+        </section>
+
+        <section>
+            <h3><span class="info-icon icon-message" style="width:24px;height:24px;"></span> ارسال پیام</h3>
+            <form id="contactForm">
+                <label for="fullName">نام کامل شما:</label>
+                <input type="text" id="fullName" placeholder="نام کامل خود را وارد کنید" required>
+
+                <label for="email">آدرس ایمیل:</label>
+                <input type="email" id="email" placeholder="آدرس ایمیل خود را وارد کنید" required>
+
+                <label for="subject">موضوع پیام:</label>
+                <select id="subject" required>
+                    <option value="">انتخاب موضوع</option>
+                    <option value="پرسش">پرسش</option>
+                    <option value="پشتیبانی">پشتیبانی</option>
+                    <option value="نظرات">نظرات</option>
+                    <option value="انتقاد">انتقاد</option>
+                    <option value="پیشنهاد">پیشنهاد</option>
+                </select>
+
+                <label for="message">پیام خود را بنویسید:</label>
+                <textarea id="message" rows="5" placeholder="پیام خود را بنویسید..." required></textarea>
+                <button type="submit" class="submit">ارسال پیام</button>
+            </form>
+        </section>
+    </main>
+    <div id="trackingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="background: rgba(26, 71, 42, 0.98); width: 90%; max-width: 400px; border-radius: 28px; padding: 30px; text-align: center; direction: rtl; border: 1px solid rgba(255,217,102,0.3);">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ffd966" stroke-width="1.5" style="margin: 0 auto 15px auto; display: block;">
+                <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <circle cx="7" cy="15" r="1.5" fill="#ffd966" stroke="none"/>
+                <circle cx="12" cy="15" r="1.5" fill="#ffd966" stroke="none"/>
+                <circle cx="17" cy="15" r="1.5" fill="#ffd966" stroke="none"/>
+            </svg>
+            <h3 style="color: #ffd966; margin-bottom: 10px;">پیام شما با موفقیت ثبت شد</h3>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">کد پیگیری خود را ذخیره کنید:</p>
+            <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 15px; margin-bottom: 15px;">
+                <div style="font-size: 1.5rem; font-weight: bold; font-family: monospace; color: #ffd966; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,217,102,0.3); margin-bottom: 10px; direction: ltr;" id="trackingCode">T-2408-3952</div>
+                <button onclick="copyTrackingCode()" style="background: #2d6a3f; color: white; border: none; padding: 8px 20px; border-radius: 25px; cursor: pointer;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="display: inline; vertical-align: middle; margin-left: 5px;">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    کپی کد
+                </button>
+            </div>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">این کد را برای پیگیری پیام خود نزد خود نگه دارید</p>
+            <button onclick="closeTrackingModal()" style="background: rgba(255,255,255,0.2); color: #ffd966; border: 1px solid rgba(255,217,102,0.3); padding: 8px 30px; border-radius: 25px; cursor: pointer; margin-top: 10px;">بستن</button>
+        </div>
+    </div>
+    <div id="toastMsg" style="visibility: hidden; min-width: 250px; background: #2d6a3f; color: white; text-align: center; border-radius: 50px; padding: 12px; position: fixed; bottom: 30px; right: 30px; z-index: 10000; font-size: 0.9rem; opacity: 0; transition: 0.3s;">پیام شما با موفقیت ثبت شد</div>
+    <div class="footer">
+        <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است</p>
+    </div>
+    <script src="js/background.js"></script>
+    <script src="js/ContactUs.js"></script>
+</body>
+</html>

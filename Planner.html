@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>برنامه ریزی</title>
+	<link href="css/menu - planner.css" rel="stylesheet">
+	<link href="css/planner_index.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="page">
+    <nav class="menu">
+            <ul class="menu-items">
+                <h2>برنامه‌ریزی</h2>
+                <li><a href="profile.html"><span class="icon icon-profile"></span><span class="item">پروفایل</span></a></li>
+                <li><a href="Planner -addTask.html"><span class="icon icon-addTask"></span><span class="item">افزودن کار</span></a></li>
+                <li><a href="Planner -todayTask.html"><span class="icon icon-todayTask"></span><span class="item">کار های امروز</span></a></li>
+                <li><a href="Planner - WeeklyPlan.html"><span class="icon icon-weekly"></span><span class="item">کار های این هفته</span></a></li>
+                <li><a href="Planner_clander.html"><span class="icon icon-clander"></span><span class="item">تقویم</span></a></li>
+            </ul>
+   </nav>
+    <div class="main">
+        <div class="image-container">
+            <img src="img/banner-planner.jpg" alt="Banner برنامه ریزی">
+            <div class="overlay-text">
+                <h1>برنامه ریزی</h1>
+                <h4>مسیر موفقیت با نظم و انضباط</h4>
+            </div>
+        </div>
+        <div class="banner-buttons">
+            <div class="buttons-grid">
+                <button type="button" class="btn-planner" onClick="goAddTask() ">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E" class="btn-icon" alt="افزودن کار">
+                    <span class="btn-text">افزودن کار</span>
+                </button>
+                <button type="button" class="btn-planner" onClick="goTodayTask()">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E" class="btn-icon" alt="کار های امروز">
+                    <span class="btn-text">کار های امروز</span>
+                </button>
+                <button type="button" class="btn-planner" onClick="goWeekly()">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10h5v2H7v-2zm0 4h5v-2H7v2zm0-8h5v2H7V6zm10 0h-3v2h3V6zm0 4h-3v2h3v-2zm0 4h-3v2h3v-2zm-8 4h10v2H9v-2zM5 4h14c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3C/svg%3E" class="btn-icon" alt="کار های این هفته">
+                    <span class="btn-text">کار های این هفته</span>
+                </button>
+                <button type="button" class="btn-planner" onClick="goClander()">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM7 11h5v5H7v-5z'/%3E%3C/svg%3E" class="btn-icon" alt="تقویم">
+                    <span class="btn-text">تقویم</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="js/planner.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ورود </title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+<nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" id="home" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+				<li><a href="login.html" id="loginn" class="menu-item active"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" id="booking" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" id="schedule" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" id="notice" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" id="rules" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" id="contact" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <article class="content" id="login">
+        <nav class="buttons">
+            <ul>
+                <li class="td"><input class="button" type="button" value="ورود" title="ورود" onclick="clickingOnLogin()" style="border-bottom: 2px solid #ffd966; color:#ffd966"></li>
+                <li class="td"><input class="button" type="button" value="بازیابی رمز عبور" title="بازیابی رمز عبور" onclick="clickingOnReset()"></li>
+            </ul>
+        </nav>
+
+        <form id="loginForm" onsubmit="return false;">
+            <div class="form-group">
+                <input class="txt_login" type="text" id="username" placeholder=" ">
+                <label for="username" class="float-label">نام کاربری</label>
+                <span class="error-message" id="usernameError"></span>
+            </div>
+            
+            <div class="form-group">
+                <input class="txt_login" type="password" id="password" placeholder=" ">
+                <label for="password" class="float-label">رمز عبور</label>
+                <span class="error-message" id="passwordError"></span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; width: 85%; margin: 0 auto;">
+                <div style="display: flex; align-items: center;">
+                    <input type="checkbox" id="remember">
+                    <label class="rememberMe" for="remember">مرا به خاطر بسپار</label>
+                </div>
+                <div>
+                    <a class="forget" onclick="clickingOnReset()">رمز عبور خود را فراموش کردید؟</a>
+                </div>
+            </div>
+            
+           <button class="btn_submit" type="submit" id="loginBtn" onclick="validateAndSubmit()">ورود</button>
+        </form>
+    </article>
+
+    <article class="content" id="reset" style="display:none">
+        <nav class="buttons">
+            <ul>
+                <li class="td"><input class="button" type="button" value="ورود" title="ورود" onclick="clickingOnLogin()"></li>
+                <li class="td"><input class="button" type="button" value="بازیابی رمز عبور" title="بازیابی رمز عبور" onclick="clickingOnReset()" style="border-bottom: 2px solid #ffd966; color:#ffd966"></li>
+            </ul>
+        </nav>
+        
+        <div id="resetStep1">
+            <div class="form-group" style="width: 85%; margin: 20px auto;">
+                <input type="tel" class="txt_login" id="phone2" placeholder=" ">
+                <label for="phone2" class="float-label">شماره تلفن</label>
+                <span class="error-message" id="phoneError"></span>
+            </div>
+            <button class="btn_submit" type="button" id="sendCodeBtn" onclick="sendCode()">دریافت کد</button>
+        </div>
+        
+        <div id="resetStep2" style="display: none;">
+            
+            <div class="form-group" style="width: 85%; margin: 20px auto;">
+                <input type="text" class="txt_login" id="verificationCode" placeholder=" ">
+                <label for="verificationCode" class="float-label">کد تایید</label>
+                <span class="error-message" id="codeError"></span>
+            </div>
+            
+            <div class="form-group" style="width: 85%; margin: 20px auto;">
+                <input type="password" class="txt_login" id="newPassword" placeholder=" ">
+                <label for="newPassword" class="float-label">رمز عبور جدید</label>
+                <span class="error-message" id="newPasswordError"></span>
+            </div>
+            
+            <div class="form-group" style="width: 85%; margin: 20px auto;">
+                <input type="password" class="txt_login" id="confirmPassword" placeholder=" ">
+                <label for="confirmPassword" class="float-label">تکرار رمز عبور</label>
+                <span class="error-message" id="confirmPasswordError"></span>
+            </div>
+            
+            <button class="btn_submit" type="button" onclick="changePassword()">تغییر رمز عبور</button>
+            <button class="btn_submit" type="button" onclick="backToStep1()" style="background-color: rgba(255,255,255,0.2); color:#ffd966; margin-top: 0;">بازگشت</button>
+        </div>
+    </article>
+
+    <script src="js/background.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

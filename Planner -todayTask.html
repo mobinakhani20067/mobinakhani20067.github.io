@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>برنامه امروز</title>
+	<link href="css/menu - planner.css" rel="stylesheet">
+	<link href="css/planner_today_task.css" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+ 	 <nav class="menu">
+            <ul class="menu-items">
+                <h2>برنامه‌ریزی</h2>
+                <li><a href="profile.html"><span class="icon icon-profile"></span><span class="item">پروفایل</span></a></li>
+                <li ><a href="Planner -addTask.html"><span class="icon icon-addTask"></span><span class="item">افزودن کار</span></a></li>
+                <li class="active"><a href="Planner -todayTask.html"><span class="icon icon-todayTask"></span><span class="item">کار های امروز</span></a></li>
+                <li><a href="Planner - WeeklyPlan.html"><span class="icon icon-weekly"></span><span class="item">کار های این هفته</span></a></li>
+                <li><a href="Planner_clander.html"><span class="icon icon-clander"></span><span class="item">تقویم</span></a></li>
+            </ul>
+        </nav>
+    <div class="main">
+        <h1 class="daily-title"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23165526'%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E" class="icon"> برنامه های امروز</h1>
+        <div class="two-columns">
+            <div class="right-progress">
+                <div class="progress-circle">
+                    <svg viewBox="0 0 180 180">
+                        <circle class="bg-circle" cx="90" cy="90" r="80" stroke="#d4e8c8" stroke-width="10" fill="none"/>
+                        <circle class="progress-fill" cx="90" cy="90" r="80" stroke="#165526" stroke-width="10" fill="none" stroke-dasharray="502" stroke-dashoffset="502"/>
+                    </svg>
+                    <div class="progress-text" id="progressPercent">0%<br><small>تکمیل</small></div>
+                </div>
+                <div class="stats-detail">
+                    <div class="stats-number"><span id="completedCount">0</span> / <span id="totalCount">0</span></div>
+                    <div class="stats-label">انجام شده از کل کارها</div>
+                </div>
+            </div>
+
+            <div class="left-content">
+                <div class="filters-row">
+                    <div class="filter-btn" data-filter="همه" onclick="selectDay(this, 'همه')">همه</div>
+                    <div class="filter-btn" data-filter="مهم" onclick="selectDay(this, 'مهم')">مهم</div>
+                    <div class="filter-btn" data-filter="درسی" onclick="selectDay(this, 'درسی')">درسی</div>
+                    <div class="filter-btn" data-filter="کاری" onclick="selectDay(this, 'کاری')">کاری</div>
+                    <div class="filter-btn" data-filter="ورزشی" onclick="selectDay(this, 'ورزشی')">ورزشی</div>
+                    <div class="filter-btn" data-filter="سایر" onclick="selectDay(this, 'سایر')">سایر</div>
+                </div>
+
+                <div class="showPlan">
+                    <div class="showPlan2">
+                        <div class="plans" id="plansList"></div>
+                        <div class="none-plan" id="emptyState" style="display: none;">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d9e8d1'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23165526' font-size='14'%3E📅%3C/text%3E%3C/svg%3E" alt="هیچ برنامه‌ای">
+                            <b>هیچ برنامه‌ای تعریف نشده</b><br>
+                            <span>برای شروع یک برنامه اضافه کنید</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-nav-mobile">
+        <a href="profile.html">
+            <div class="nav-icon icon-profile-mobile"></div>
+            <span class="nav-text">پروفایل</span>
+        </a>
+        <a href="Planner -addTask.html" >
+            <div class="nav-icon icon-addTask-mobile"></div>
+            <span class="nav-text">افزودن</span>
+        </a>
+        <a href="Planner -todayTask.html" class="active-mobile">
+            <div class="nav-icon icon-todayTask-mobile"></div>
+            <span class="nav-text">امروز</span>
+        </a>
+        <a href="Planner - WeeklyPlan.html">
+            <div class="nav-icon icon-weekly-mobile"></div>
+            <span class="nav-text">هفته</span>
+        </a>
+        <a href="Planner_clander.html"  >
+            <div class="nav-icon icon-clander-mobile"></div>
+            <span class="nav-text">تقویم</span>
+        </a>
+    </div>
+<script src="js/planner-today.js"></script>
+</body>
+</html>

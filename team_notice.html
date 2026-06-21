@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>اطلاعیه‌های تیم یابی</title>
+	<link href="css/menu.css" rel="stylesheet"><br>
+	<link href="css/team_notice.css" rel="stylesheet">
+</head>
+<body>
+ <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">گزارشات</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="Report.html"><span class="icon-report icon-img"></span> گزارش مشکل</a></li>
+                    <li><a href="report-History.html"><span class="icon-reportHistory icon-img"></span> تاریخچه گزارشات</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-marketplace icon-img"></span><span class="item">بازارچه ورزشی</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+					<li><a href="add_ads.html"><span class="icon-add icon-img"></span> افزودن آگهی</a></li>
+                    <li><a href="my-ads.html"><span class="icon-dashboard icon-img"></span> آگهی‌های من</a></li>
+                </ul>
+            </li>
+             <li>
+            <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                <div class="left-icons"><span class="icon-clipboard-check icon-img"></span><span class="item">برنامه‌ها</span></div>
+                <span class="arrow">▼</span>
+            </div>
+            <ul class="submenu">
+                <li><a href="meal_Plan.html"><span class="icon-mealPlan icon-img"></span> برنامه غذایی</a></li>
+                <li><a href="Sport_plan.html"><span class="icon-sportPlan icon-img"></span> برنامه ورزشی</a></li>
+                <li><a href="Planner.html"><span class="icon-Planner icon-img"></span> برنامه ریزی</a></li>
+            </ul>
+        </li>
+		 <li>
+		<div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+			<div class="left-icons"><span class="icon-list icon-img"></span><span class="item">سرویس‌ها</span></div>
+			<span class="arrow">▼</span>
+		</div>
+		<ul class="submenu">
+			<li><a href="class.html"><span class="icon-classTime icon-img"></span> ساعت کلاس</a></li>
+			<li><a href="reservation.html"><span class="icon-reserveCloset icon-img"></span> رزرو کمد</a></li>
+			<li><a href="team_notice.html"><span class="icon-team icon-img"></span>اطلاعیه تیم یابی</a></li>
+		</ul>
+        </li>
+        <li><a href="good_club_offer.html" class="direct-link"><span class="icon-gym icon-img"></span><span class="item">معرفی باشگاه</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+	<div class="main">
+		<div class="title"><h1> اطلاعیه‌های تیم یابی</h1></div>
+		
+		<div class="filters">
+			<input type="search" id="searchInput" placeholder="🔍 جستجو در عنوان اطلاعیه...">
+			<select id="sportFilter">
+				<option value="">🏅 همه ورزش‌ها</option>
+				<option value="فوتبال">⚽ فوتبال</option>
+				<option value="والیبال">🏐 والیبال</option>
+				<option value="بسکتبال">🏀 بسکتبال</option>
+				<option value="فوتسال">⚽ فوتسال</option>
+				<option value="هندبال">🤾🏻 هندبال</option>
+				<option value="پینگ پنگ">🏓 پینگ پنگ</option>
+				<option value="دارت">🎯 دارت</option>
+				<option value="فوتسال">⚽ فوتسال</option>
+				<option value="شنا">🏊 شنا</option>
+				<option value="تنیس">🎾 تنیس</option>
+			</select>
+		</div>
+		
+		<div class="announcements-grid" id="announcementsGrid"></div>
+		<div id="noDataMessage" class="no-data">❌ اطلاعیه‌ای یافت نشد</div>
+		<div class="pagination" id="paginationControls"></div>
+	</div>
+</div>
+<div id="applyModal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">📝 فرم درخواست عضویت</div>
+		<div class="form-group"><label>نام و نام خانوادگی:</label><input type="text" id="fullName" placeholder="نام و نام خانوادگی خود را وارد کنید"></div>
+		<div class="form-group"><label>شماره دانشجویی:</label><input type="text" id="studentId" placeholder="شماره دانشجویی"></div>
+		<div class="form-group"><label>رشته تحصیلی:</label><input type="text" id="fieldStudy" placeholder="مثال: مهندسی کامپیوتر"></div>
+		<div class="form-group"><label>ترم تحصیلی:</label><select id="term">
+			<option value="">انتخاب کنید</option>
+			<option value="1">ترم 1</option><option value="2">ترم 2</option><option value="3">ترم 3</option>
+			<option value="4">ترم 4</option><option value="5">ترم 5</option><option value="6">ترم 6</option>
+			<option value="7">ترم 7</option><option value="8">ترم 8</option><option value="8">ترم 9</option>
+			<option value="8">ترم 10</option><option value="8">ترم 11</option><option value="8">ترم 12</option>
+		</select></div>
+		<div class="form-group"><label>سابقه ورزشی:</label><textarea id="experience" rows="2" placeholder="سابقه ورزشی خود را وارد کنید..."></textarea></div>
+		<div class="form-group"><label>شماره تماس:</label><input type="tel" id="phone" placeholder="09xxxxxxxxx"></div>
+		<input type="hidden" id="teamId">
+		<input type="hidden" id="teamName">
+		<div class="modal-footer">
+			<button class="btn-submit" onclick="submitRequest()">📨 ارسال درخواست</button>
+			<button class="btn-close" onclick="closeModal()">❌ انصراف</button>
+		</div>
+	</div>
+</div>
+	<script src="js/menu.js"></script>
+<script src="js/team-notice.js"></script>
+</body>
+</html>

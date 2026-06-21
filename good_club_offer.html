@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>معرفی باشگاه</title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/good-club-offer.css" rel="stylesheet">
+</head>
+<body>
+ <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">گزارشات</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="Report.html"><span class="icon-report icon-img"></span> گزارش مشکل</a></li>
+                    <li><a href="report-History.html"><span class="icon-reportHistory icon-img"></span> تاریخچه گزارشات</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-marketplace icon-img"></span><span class="item">بازارچه ورزشی</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+					<li><a href="add_ads.html"><span class="icon-add icon-img"></span> افزودن آگهی</a></li>
+                    <li><a href="my-ads.html"><span class="icon-dashboard icon-img"></span> آگهی‌های من</a></li>
+                </ul>
+            </li>
+             <li>
+            <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                <div class="left-icons"><span class="icon-clipboard-check icon-img"></span><span class="item">برنامه‌ها</span></div>
+                <span class="arrow">▼</span>
+            </div>
+            <ul class="submenu">
+                <li><a href="meal_Plan.html"><span class="icon-mealPlan icon-img"></span> برنامه غذایی</a></li>
+                <li><a href="Sport_plan.html"><span class="icon-sportPlan icon-img"></span> برنامه ورزشی</a></li>
+                <li><a href="Planner.html"><span class="icon-Planner icon-img"></span> برنامه ریزی</a></li>
+            </ul>
+        </li>
+		 <li>
+		<div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+			<div class="left-icons"><span class="icon-list icon-img"></span><span class="item">سرویس‌ها</span></div>
+			<span class="arrow">▼</span>
+		</div>
+		<ul class="submenu">
+			<li><a href="class.html"><span class="icon-classTime icon-img"></span> ساعت کلاس</a></li>
+			<li><a href="reservation.html"><span class="icon-reserveCloset icon-img"></span> رزرو کمد</a></li>
+			<li><a href="team_notice.html"><span class="icon-team icon-img"></span>اطلاعیه تیم یابی</a></li>
+		</ul>
+        </li>
+        <li><a href="good_club_offer.html" class="direct-link"><span class="icon-gym icon-img"></span><span class="item">معرفی باشگاه</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+    <div class="main">
+        <h1> معرفی باشگاه‌های ورزشی</h1>
+
+        <div class="add-gym-card">
+            <div class="section-title">
+                معرفی باشگاه جدید
+            </div>
+            <form id="newGymForm">
+                <div class="form-group">
+                    <label>نام باشگاه <span class="required">*</span></label>
+                    <input type="text" id="gymName" placeholder="مثال: باشگاه ورزشی المپیک">
+                </div>
+                <div class="form-group">
+                    <label>آدرس <span class="required">*</span></label>
+                    <input type="text" id="gymAddress" placeholder="آدرس دقیق باشگاه">
+                </div>
+                <div class="form-group">
+                    <label>توضیحات <span class="required">*</span></label>
+                    <textarea id="gymDesc" placeholder="امکانات، تجهیزات، مزایا و ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>تصویر باشگاه</label>
+                    <div class="image-source-group">
+                        <label class="image-source-option"><input type="radio" name="gymImageSource" value="link" checked> لینک عکس</label>
+                        <label class="image-source-option"><input type="radio" name="gymImageSource" value="upload"> آپلود عکس</label>
+                    </div>
+                    <div id="gymLinkGroup">
+                        <input type="text" id="gymImageUrl" placeholder="https://example.com/gym.jpg">
+                    </div>
+                   <div id="gymUploadGroup" style="display: none;">
+    <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 3v12m0 0l-3-3m3 3l3-3"/>
+                <rect x="4" y="15" width="16" height="4" rx="1"/>
+                <path d="M4 11h16"/>
+            </svg>
+        </div>
+        <div class="upload-text">
+            برای آپلود کلیک کنید یا <strong>عکس را بکشید و رها کنید</strong>
+        </div>
+        <div class="upload-hint">
+            فرمت‌های مجاز: JPG, PNG, GIF (حداکثر ۵ مگابایت)
+        </div>
+        <button type="button" class="upload-btn" onclick="document.getElementById('gymImageUpload').click()">
+            انتخاب عکس از دستگاه
+        </button>
+        <div id="selectedFileName" class="selected-filename" style="display: none;"></div>
+    </div>
+    <input type="file" id="gymImageUpload" accept="image/*">
+</div>
+<div class="image-preview-area" id="gymImagePreview">
+	<img id="previewGymImg" src="">
+</div>
+</div>
+<button type="submit" class="submit-gym-btn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+	<path d="M20 6L9 17l-5-5"/>
+</svg>
+ثبت باشگاه
+</button>
+</form>
+</div>
+    <div class="section-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e5a3a" stroke-width="1.8">
+            <path d="M19 4h-3a5 5 0 0 0-5 5v3"/>
+            <path d="M19 4h-3a5 5 0 0 0-5 5v3" transform="translate(0, 8)"/>
+        </svg>
+        باشگاه‌های معرفی شده توسط من
+    </div>
+    <div id="myGymsContainer"></div>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast-msg"></div>
+<script src="js/menu.js"></script>
+<script src="js/good-club-offer.js"></script>
+</body>
+</html>

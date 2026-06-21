@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>پروفایل ورزشی دانشجویی</title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/profile.css" rel="stylesheet">
+</head>
+<body>
+	<button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">گزارشات</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="Report.html"><span class="icon-report icon-img"></span> گزارش مشکل</a></li>
+                    <li><a href="report-History.html"><span class="icon-reportHistory icon-img"></span> تاریخچه گزارشات</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-marketplace icon-img"></span><span class="item">بازارچه ورزشی</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+					<li><a href="add_ads.html"><span class="icon-add icon-img"></span> افزودن آگهی</a></li>
+                    <li><a href="my-ads.html"><span class="icon-dashboard icon-img"></span> آگهی‌های من</a></li>
+                </ul>
+            </li>
+             <li>
+            <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                <div class="left-icons"><span class="icon-clipboard-check icon-img"></span><span class="item">برنامه‌ها</span></div>
+                <span class="arrow">▼</span>
+            </div>
+            <ul class="submenu">
+                <li><a href="meal_Plan.html"><span class="icon-mealPlan icon-img"></span> برنامه غذایی</a></li>
+                <li><a href="Sport_plan.html"><span class="icon-sportPlan icon-img"></span> برنامه ورزشی</a></li>
+                <li><a href="Planner.html"><span class="icon-Planner icon-img"></span> برنامه ریزی</a></li>
+            </ul>
+        </li>
+		 <li>
+		<div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+			<div class="left-icons"><span class="icon-list icon-img"></span><span class="item">سرویس‌ها</span></div>
+			<span class="arrow">▼</span>
+		</div>
+		<ul class="submenu">
+			<li><a href="class.html"><span class="icon-classTime icon-img"></span> ساعت کلاس</a></li>
+			<li><a href="reservation.html"><span class="icon-reserveCloset icon-img"></span> رزرو کمد</a></li>
+			<li><a href="team_notice.html"><span class="icon-team icon-img"></span>اطلاعیه تیم یابی</a></li>
+		</ul>
+        </li>
+        <li><a href="good_club_offer.html" class="direct-link"><span class="icon-gym icon-img"></span><span class="item">معرفی باشگاه</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+    <div class="page">
+        <div class="main">
+        <h1>پروفایل ورزشی</h1>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="avatar">🏃</div>
+                    <div class="info">
+                        <h2>فاطمه محمدی</h2>
+                        <p><span class="student-badge">دانشجوی مهندسی کامپیوتر - ترم 4</span></p>
+                        <p style="margin-top: 8px;">شماره دانشجویی: 402111234567</p>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">🏅 تعداد مدال</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">⚽ مسابقات شرکت کرده</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">🥇 مدال طلا</div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item"><span class="info-label">تاریخ تولد:</span><span class="info-value">1384/03/15</span></div>
+                    <div class="info-item"><span class="info-label">قد:</span><span class="info-value">165 سانتی‌متر</span></div>
+                    <div class="info-item"><span class="info-label">وزن:</span><span class="info-value">60 کیلوگرم</span></div>
+                    <div class="info-item"><span class="info-label">جنسیت:</span><span class="info-value">زن</span></div>
+                    <div class="info-item"><span class="info-label">شماره تماس:</span><span class="info-value">۰۹۱۲۳۴۵۶۷۸۹</span></div>
+                    <div class="info-item"><span class="info-label">شماره تماس اضطراری:</span><span class="info-value">۰۹۳۶۵۴۳۲۱۰</span></div>
+                    <div class="info-item"><span class="info-label">ایمیل:</span><span class="info-value">m.mohammady@gmail.com</span></div>
+                    <div class="info-item"><span class="info-label">رشته ورزشی اصلی:</span><span class="info-value">هندبال</span></div>
+                    <div class="info-item"><span class="info-label">پست تخصصی:</span><span class="info-value"> دروازه بان</span></div>
+                    <div class="info-item"><span class="info-label">تیم دانشگاهی:</span><span class="info-value">هندبالیست ها</span></div>
+                </div>
+
+                <button class="change-password-btn" id="openChangePwdModal">🔐 تغییر رمز عبور</button>
+            </div>
+        </div>
+    </div>
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">تغییر رمز عبور</div>
+            <div id="stepPhone">
+                <input type="tel" id="phoneNumber" class="modal-input" placeholder="شماره تماس خود را وارد کنید" value="09123456789">
+                <button id="sendCodeBtn" class="modal-btn">📨 ارسال کد تایید</button>
+            </div>
+            
+            <div id="stepCode" style="display:none;">
+                <input type="text" id="verificationCode" class="modal-input" placeholder="کد تایید ۶ رقمی">
+                <div id="timerDisplay" class="timer-text">⏱️ زمان باقی‌مانده: ۰۲:۰۰</div>
+                <div class="row-buttons">
+                    <button id="resendCodeBtn" class="modal-btn modal-btn-secondary flex-half" style="background:#81A984;">ارسال مجدد</button>
+                    <button id="verifyCodeBtn" class="modal-btn flex-half">تایید کد</button>
+                </div>
+                <div id="codeError" class="error-msg"></div>
+            </div>
+            
+            <div id="stepNewPass" style="display:none;">
+                <input type="password" id="newPassword" class="modal-input" placeholder="رمز عبور جدید">
+                <input type="password" id="confirmPassword" class="modal-input" placeholder="تکرار رمز عبور جدید">
+                <button id="submitNewPassBtn" class="modal-btn">✅ ثبت رمز جدید</button>
+                <div id="passError" class="error-msg"></div>
+            </div>
+            
+            <button id="closeModalBtn" class="modal-btn modal-btn-secondary" style="margin-top:15px; background:#aaa;">بستن</button>
+        </div>
+    </div>
+    <script src="js/menu.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

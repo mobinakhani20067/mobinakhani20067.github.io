@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>باشگاه‌های خوب </title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+	<link href="css/good-clubs.css" rel="stylesheet">
+	<link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+    <div class="floating-support" id="supportBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header"><span>پشتیبانی</span><button class="close-chat" id="closeChat" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">×</button></div>
+        <div class="chatbot-messages" id="chatMessages"><div class="message bot-message">سلام! چطور میتونم کمک کنم؟</div></div>
+        <div class="quick-replies">
+            <button class="quick-reply-btn" data-msg="رزرو سالن">رزرو سالن</button>
+            <button class="quick-reply-btn" data-msg="ساعات کاری">ساعات کاری</button>
+            <button class="quick-reply-btn" data-msg="قوانین">قوانین</button>
+            <button class="quick-reply-btn" data-msg="تماس">شماره تماس</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatInput" placeholder="پیام...">
+            <button class="chatbot-send" id="sendMessage">➤</button>
+        </div>
+    </div>
+
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+				<li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="gyms-wrapper">
+        <div class="gyms-layout">
+        
+			
+            <div class="main-gyms-content">
+                <div class="page-header">
+                    <h1>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M19 4h-3a5 5 0 0 0-5 5v3"/>
+                            <path d="M19 4h-3a5 5 0 0 0-5 5v3" transform="translate(0, 8)"/>
+                            <line x1="5" y1="9" x2="19" y2="9"/>
+                        </svg>
+                        باشگاه‌های خوب ورزشی
+                    </h1>
+                    <p>معرفی باشگاه‌های ورزشی خوب توسط دانشجویان</p>
+                </div>
+
+                <div class="search-bar">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="جستجوی باشگاه...">
+                        <svg class="search-icon-pos" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div id="gymsContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastMsg" class="toast-msg"></div>
+	<script src="js/background.js"></script>
+    <script src="js/good-clubs.js"></script>
+</body>
+</html>

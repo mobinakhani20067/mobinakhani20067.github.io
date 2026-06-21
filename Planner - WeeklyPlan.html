@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>برنامه هفتگی</title>
+    <link href="css/menu - planner.css" rel="stylesheet">
+    <link href="css/planner_weekly.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <nav class="menu">
+            <ul class="menu-items">
+                <h2>برنامه‌ریزی</h2>
+                <li><a href="profile.html"><span class="icon icon-profile"></span><span class="item">پروفایل</span></a></li>
+                <li><a href="Planner -addTask.html"><span class="icon icon-addTask"></span><span class="item">افزودن کار</span></a></li>
+                <li><a href="Planner -todayTask.html"><span class="icon icon-todayTask"></span><span class="item">کار های امروز</span></a></li>
+                <li class="active"><a href="Planner - WeeklyPlan.html"><span class="icon icon-weekly"></span><span class="item">کار های این هفته</span></a></li>
+                <li><a href="Planner_clander.html"><span class="icon icon-clander"></span><span class="item">تقویم</span></a></li>
+            </ul>
+        </nav>
+        
+        <div class="main">
+            <h1>برنامه هفتگی</h1>
+            <div class="week-table-wrapper">
+                <table class="week_table" cellspacing="8">
+                    <tr id="weekDaysRow">
+                        <!--با جاوا پر میشه-->
+                    </tr>
+                </table>
+            </div>
+            <div class="bottom-section">
+                <div class="plans-column">
+                    <div class="showPlan">
+                        <div class="showPlan2">
+                            <div class="none-plan" id="emptyState">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d9e8d1'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23165526' font-size='14'%3E📅%3C/text%3E%3C/svg%3E" alt="هیچ برنامه‌ای">
+                                <b>هیچ برنامه‌ای تعریف نشده</b><br>
+                                <span>روی روز کلیک کنید تا برنامه اضافه کنید</span>
+                            </div>
+                            <div class="plans" id="plansList" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-column">
+                    <div class="week-summary">
+                        <h3>خلاصه هفته</h3>
+                        <hr>
+                        <table class="week-summary-table">
+                            <tr>
+                                <td rowspan="2"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23165526'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="کل کارها" style="width:45px;height:45px"></td>
+                                <td><span class="number" id="totalTasks">0</span></td>
+                            </tr>
+                            <tr>
+                                <td class="summary-label"><span>کل کارها</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23165526'%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E" alt="انجام شده" style="width:45px;height:45px"></td>
+                                <td><span class="number" id="completedTasks">0</span></td>
+                            </tr>
+                            <tr>
+                                <td class="summary-label"><span>انجام شده</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav-mobile">
+        <a href="profile.html">
+            <div class="nav-icon icon-profile-mobile"></div>
+            <span class="nav-text">پروفایل</span>
+        </a>
+        <a href="Planner -addTask.html">
+            <div class="nav-icon icon-addTask-mobile"></div>
+            <span class="nav-text">افزودن</span>
+        </a>
+        <a href="Planner -todayTask.html">
+            <div class="nav-icon icon-todayTask-mobile"></div>
+            <span class="nav-text">امروز</span>
+        </a>
+        <a href="Planner - WeeklyPlan.html" class="active-mobile">
+            <div class="nav-icon icon-weekly-mobile"></div>
+            <span class="nav-text">هفته</span>
+        </a>
+        <a href="Planner_clander.html">
+            <div class="nav-icon icon-clander-mobile"></div>
+            <span class="nav-text">تقویم</span>
+        </a>
+    </div>
+
+    <script src="js/planner-weekly.js"></script>
+</body>
+</html>

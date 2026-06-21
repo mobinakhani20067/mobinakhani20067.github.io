@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>تقویم</title>
+	<link href="css/menu - planner.css" rel="stylesheet">
+	<link href="css/planner_clander.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <nav class="menu">
+            <ul class="menu-items">
+                <h2>برنامه‌ریزی</h2>
+                <li><a href="profile.html"><span class="icon icon-profile"></span><span class="item">پروفایل</span></a></li>
+                <li><a href="Planner -addTask.html"><span class="icon icon-addTask"></span><span class="item">افزودن کار</span></a></li>
+                <li><a href="Planner -todayTask.html"><span class="icon icon-todayTask"></span><span class="item">کار های امروز</span></a></li>
+                <li><a href="Planner - WeeklyPlan.html"><span class="icon icon-weekly"></span><span class="item">کار های این هفته</span></a></li>
+                <li  class="active"><a href="Planner_clander.html"><span class="icon icon-clander"></span><span class="item">تقویم</span></a></li>
+            </ul>
+   </nav>
+        <div class="main">
+            <h1><span class="icon icon-clander"></span> تقویم</h1>
+            <div class="calendar-header">
+                <button class="nav-btn" id="nextBtn">‹</button>
+                <div class="month-year" id="monthYear"></div>
+                <button class="nav-btn" id="prevBtn">›</button>
+            </div>
+            <div class="weekdays">
+                <div class="weekday">شنبه</div>
+                <div class="weekday">یکشنبه</div>
+                <div class="weekday">دوشنبه</div>
+                <div class="weekday">سه‌شنبه</div>
+                <div class="weekday">چهارشنبه</div>
+                <div class="weekday">پنجشنبه</div>
+                <div class="weekday">جمعه</div>
+            </div>
+            <div class="calendar-grid" id="calendar"></div>
+        </div>
+    </div>
+        <div class="bottom-nav-mobile">
+        <a href="profile.html">
+            <div class="nav-icon icon-profile-mobile"></div>
+            <span class="nav-text">پروفایل</span>
+        </a>
+        <a href="Planner -addTask.html">
+            <div class="nav-icon icon-addTask-mobile"></div>
+            <span class="nav-text">افزودن</span>
+        </a>
+        <a href="Planner -todayTask.html">
+            <div class="nav-icon icon-todayTask-mobile"></div>
+            <span class="nav-text">امروز</span>
+        </a>
+        <a href="Planner - WeeklyPlan.html">
+            <div class="nav-icon icon-weekly-mobile"></div>
+            <span class="nav-text">هفته</span>
+        </a>
+        <a href="Planner_clander.html"  class="active-mobile">
+            <div class="nav-icon icon-clander-mobile"></div>
+            <span class="nav-text">تقویم</span>
+        </a>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <h3>✏️ افزودن برنامه</h3>
+            <p id="modalDate"></p>
+            <input type="text" id="eventInput" placeholder="عنوان برنامه...">
+            <div class="modal-buttons">
+                <button class="btn-save" id="saveBtn">ذخیره</button>
+                <button class="btn-cancel" id="cancelBtn">انصراف</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/planner_clander.js"></script>
+</body>
+</html>

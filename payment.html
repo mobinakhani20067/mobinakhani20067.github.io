@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درگاه پرداخت</title>
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="1.5">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <line x1="2" y1="10" x2="22" y2="10"/>
+                    <path d="M8 14h8"/>
+                </svg>
+                <span class="sidebar-brand-name">پرداخت‌یار</span>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">مبلغ قابل پرداخت</div>
+                <div class="sidebar-amount" id="amountDisplay">۰</div>
+                <div class="sidebar-amount-text" id="amountText">صفر تومان</div>
+                <div class="sidebar-currency">تومان</div>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">زمان باقی‌مانده</div>
+                <div class="sidebar-timer" id="timerClock">۱۵:۰۰</div>
+                <div class="sidebar-timer-label">دقیقه</div>
+            </div>
+
+			<div class="sidebar-divider"></div>
+        </div>
+        <div class="main">
+            <div class="header">
+                <div class="header-title">
+                    <h1>تکمیل پرداخت</h1>
+                    <p>اطلاعات کارت خود را وارد کنید</p>
+                </div>
+            </div>
+
+            <div class="body">
+                <form id="paymentForm">
+                    <div class="field">
+                        <label>شماره کارت</label>
+                        <div class="input-group">
+                            <input type="text" id="cardNumber" maxlength="19" placeholder="۰۰۰۰-۰۰۰۰-۰۰۰۰-۰۰۰۰" dir="ltr">
+                            <div class="card-brand" id="cardBrand">
+                                <svg width="28" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <circle cx="8" cy="12" r="3"/>
+                                    <circle cx="16" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="field half">
+                            <label>تاریخ انقضا</label>
+                            <div class="input-group date-group">
+                                <input type="text" id="expireMonth" maxlength="2" placeholder="ماه">
+                                <span class="sep-slash">/</span>
+                                <input type="text" id="expireYear" maxlength="2" placeholder="سال">
+                            </div>
+                        </div>
+                        <div class="field half">
+                            <label>CVV2</label>
+                            <div class="input-group">
+                                <input type="password" id="cvv2" maxlength="4" placeholder="•••">
+                                <button type="button" class="cvv-hint" id="cvvHint">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 16v-4M12 8h.01"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row two-col">
+                        <div class="field">
+                            <label>رمز یکبار مصرف</label>
+                            <div class="input-group">
+                                <input type="text" id="otp" maxlength="6" placeholder="کد ۶ رقمی">
+                                <button type="button" class="btn-otp" id="getOtpBtn">دریافت</button>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>کد امنیتی</label>
+                            <div class="input-group captcha-group">
+                                <span class="captcha" id="captchaText">A3F9</span>
+                                <input type="text" id="captchaInput" maxlength="4" placeholder="کد">
+                                <button type="button" class="btn-refresh" id="refreshCaptcha">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M1 20v-6h6"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="field half">
+                            <label>شماره تلفن <span class="optional">(اختیاری)</span></label>
+                            <input type="tel" id="phoneNumber" placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                        </div>
+                        <div class="field half">
+                            <label>ایمیل <span class="optional">(اختیاری)</span></label>
+                            <input type="email" id="email" placeholder="name@domain.com">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="btn-primary" id="payBtn">
+                            <span class="btn-loader"></span>
+                            <span class="btn-text">پرداخت</span>
+                        </button>
+                        <button type="button" class="btn-secondary" id="backBtn">بازگشت</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="processingModal">
+        <div class="modal-box">
+            <div class="spinner"></div>
+            <h3>در حال اتصال به بانک</h3>
+            <p>لطفاً چند لحظه صبر کنید...</p>
+        </div>
+    </div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-box success">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <h3>پرداخت موفق</h3>
+            <p>در حال انتقال به صفحه میزبان</p>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-box error">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </div>
+            <h3>پرداخت ناموفق</h3>
+            <p id="errorMsg">اطلاعات وارد شده صحیح نیست</p>
+            <button class="btn-retry" id="retryBtn">تلاش مجدد</button>
+        </div>
+    </div>
+    <div class="modal" id="timeoutModal">
+        <div class="modal-box error">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+            </div>
+            <h3>زمان به پایان رسید</h3>
+            <p>لطفاً دوباره تلاش کنید</p>
+            <button class="btn-retry" id="timeoutBackBtn">بازگشت</button>
+        </div>
+    </div>
+    <script src="js/payment.js"></script>
+</body>
+</html>

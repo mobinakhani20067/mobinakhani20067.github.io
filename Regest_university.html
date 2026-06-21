@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ثبت دانشگاه جدید</title>
+    <link href="css/main-menu1.css" rel="stylesheet">
+	<link href="css/regest_university.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <img src="img/logo2.jpg" alt="لوگو">
+        </div>
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+      <ul class="nav-menu" id="navMenu">
+            <li><a href="main_index.html">خانه</a></li>
+            <li><a href="Aadmin_login.html">ورود مدیران</a></li>
+            <li><a href="regest_university.html" class="active">ثبت دانشگاه جدید</a></li>
+            <li><a href="waiting_line.html">صف انتظار</a></li>
+            <li><a href="privacy.html">حریم خصوصی</a></li>
+            <li><a href="support.html">پشتیبانی</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-header">
+    <h1>ثبت ورزشگاه دانشگاه جدید</h1>
+    <p>اطلاعات دانشگاه خود را وارد کنید تا در سامانه ثبت شود</p>
+</div>
+
+<div class="container">
+    <form id="universityForm">
+        <table class="form" align="center" border="0">
+            <tr>
+                <td><label>نام دانشگاه:</label></td>
+                <td class="td-input"><input type="text" id="uniName" placeholder="نام دانشگاه را وارد کنید"> <b class="error-message" id="uniNameError"></b></td>
+                <td class="td-label"><label>نام رئیس دانشگاه:</label></td>
+                <td class="td-input"><input type="text" id="presidentName" placeholder="نام رئیس دانشگاه را وارد کنید"> <b class="error-message" id="presidentNameError"></b></td>
+                <td class="td-label"><label>تلفن دانشگاه:</label></td>
+                <td class="td-input"><input type="tel" id="uniPhone" placeholder="تلفن دانشگاه" style="text-align: right"> <b class="error-message" id="uniPhoneError"></b></td>
+            </tr>
+            <tr>
+                <td><label>شماره رئیس دانشگاه:</label></td>
+                <td class="td-input"><input type="tel" id="presidentPhone" placeholder="شماره رئیس دانشگاه" style="text-align: right"> <b class="error-message" id="presidentPhoneError"></b></td>
+                <td class="td-label"><label>استان دانشگاه:</label></td>
+                <td class="td-input">
+                    <select id="provinceSelect">
+                        <option value="">انتخاب استان...</option>
+                    </select>
+                    <b class="error-message" id="provinceError"></b>
+                </td>
+                <td class="td-label"><label>شهر:</label></td>
+                <td class="td-input">
+                    <select id="citySelect" disabled>
+                        <option value="">ابتدا استان را انتخاب کنید</option>
+                    </select>
+                    <b class="error-message" id="cityError"></b>
+                </td>
+            </tr>
+            <tr>
+                <td><label>آدرس دانشگاه:</label></td>
+                <td colspan="5"><input type="text" id="address" placeholder="آدرس کامل دانشگاه" style="width: 100%"> <b class="error-message" id="addressError"></b></td>
+            </tr>
+            <tr><td colspan="6" class="section-title"><label>ورزش های قابل اجرا در سالن</label></td></tr>
+            <tr class="checkbox-row">
+                <td><span>بسکتبال <input type="checkbox" value="بسکتبال"></span></td>
+                <td><span>والیبال <input type="checkbox" value="والیبال"></span></td>
+                <td><span>فوتسال <input type="checkbox" value="فوتسال"></span></td>
+                <td><span>هندبال <input type="checkbox" value="هندبال"></span></td>
+                <td><span>بدمینتون <input type="checkbox" value="بدمینتون"></span></td>
+                <td><span>پینگ پنگ <input type="checkbox" value="پینگ پنگ"></span></td>
+            </tr>
+            <tr class="checkbox-row">
+                <td><span>دارت <input type="checkbox" value="دارت"></span></td>
+                <td><span>ژیمناستیک <input type="checkbox" value="ژیمناستیک"></span></td>
+                <td><span>شطرنج <input type="checkbox" value="شطرنج"></span></td>
+                <td><span>تیراندازی <input type="checkbox" value="تیراندازی"></span></td>
+                <td></td><td></td>
+            </tr>
+            <tr><td colspan="6" class="section-title"><label>امکانات جانبی دانشگاه</label></td></tr>
+            <tr class="checkbox-row">
+                <td><span>زمین چمن <input type="checkbox" value="زمین چمن"></span></td>
+                <td><span>زمین تنیس <input type="checkbox" value="زمین تنیس"></span></td>
+                <td><span>استخر <input type="checkbox" value="استخر"></span></td>
+                <td></td><td></td><td></td>
+            </tr>
+            <tr><td colspan="6" class="section-title"><label>آپلود عکس از قسمت های ورزشگاه</label></td></tr>
+            <tr>
+                <td colspan="2">
+                    <div class="file-upload">
+                        <input type="file" id="file1" accept="image/*">
+                        <div class="file-upload-label">انتخاب عکس ۱</div>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div class="file-upload">
+                        <input type="file" id="file2" accept="image/*">
+                        <div class="file-upload-label">انتخاب عکس ۲</div>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div class="file-upload">
+                        <input type="file" id="file3" accept="image/*">
+                        <div class="file-upload-label">انتخاب عکس ۳</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: center;"><button type="submit" class="submit">ثبت اطلاعات دانشگاه</button></td>
+            </tr>
+        </table>
+    </form>
+    <div><img src="img/footer.png" class="footer" alt=""></div>
+</div>
+
+<div class="modal" id="adminLoginModal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeAdminLogin()">&times;</span>
+        <h3 class="modal-title">ورود به پنل مدیریت</h3>
+        <form onsubmit="adminLogin(event)">
+            <div class="form-group">
+                <label>نام کاربری</label>
+                <input type="text" id="adminUser" required>
+            </div>
+            <div class="form-group">
+                <label>رمز عبور</label>
+                <input type="password" id="adminPass" required>
+            </div>
+            <button type="submit" class="submit-btn">ورود به پنل</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/main-menu1.js"></script>
+<script src="js/regest-university.js"></script>
+</body>
+</html>
