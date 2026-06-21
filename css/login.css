@@ -1,0 +1,273 @@
+
+@charset "utf-8";
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    direction: rtl;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    width: 400px;
+    max-width: 90%;
+    height: auto;
+    margin: 40px auto 30px auto;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(0px);
+    border: 1px solid rgba(255, 217, 102, 0.25);
+    overflow: hidden;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+	margin-bottom: 30px;
+}
+
+.buttons ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.buttons .td {
+    width: 50%;
+    text-align: center;
+    padding: 0;
+}
+
+.button {
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid transparent;
+}
+
+.button:hover {
+    color: #ffd966;
+}
+
+.form-group {
+    position: relative;
+    margin: 25px auto;
+    width: 85%;
+}
+
+.txt_login {
+    width: 100%;
+    padding: 14px 12px 6px 12px;
+    border: 1.5px solid rgba(255, 217, 102, 0.3);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    outline: none;
+    font-size: 17px;
+    color: white;
+    transition: all 0.2s ease;
+	height: 50px;
+}
+
+.txt_login:focus {
+    border-color: #ffd966;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.txt_login::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.float-label {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: 0.2s ease-out;
+    background: transparent;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.txt_login:focus ~ .float-label,
+.txt_login:not(:placeholder-shown) ~ .float-label {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 17px;
+    color: #ffd966;
+    background: rgba(13, 46, 26, 0.8);
+    border-radius: 8px;
+}
+
+.txt_login:focus::placeholder {
+    opacity: 0;
+}
+
+.txt_login.error {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.txt_login.error:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.txt_login.error:not(:placeholder-shown) ~ .float-label,
+.txt_login.error:focus ~ .float-label {
+    color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 10px;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+
+.btn_submit {
+    background-color: #2d6a3f;
+    border: none;
+    width: 85%;
+    padding: 12px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin: 10px auto 25px auto;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.btn_submit:enabled {
+    background-color: #2d6a3f;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.btn_submit:enabled:hover {
+    background-color: #1f5230;
+    transform: scale(1.02);
+}
+
+.btn_submit:disabled {
+    background-color: rgba(45, 106, 63, 0.5);
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+#sendCodeBtn:disabled {
+    background-color: rgba(45, 106, 63, 0.5);
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.forget {
+    font-size: 14px;
+    text-decoration: underline;
+    color: #ffd966;
+    cursor: pointer;
+}
+
+.rememberMe {
+    font-size: 14px;
+    margin-right: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: #ffd966;
+}
+
+
+@media (max-width: 600px) {
+    .content {
+        width: 90%;
+        margin: 70px auto 15px auto;
+        border-radius: 24px;
+		height: auto;
+    }
+    
+    .buttons {
+        padding: 15px 15px 0 15px;
+		margin-bottom: 30px;
+    }
+    
+    .button {
+        font-size: 20px;
+        padding: 8px 0;
+    }
+    
+    .form-group {
+        width: 88%;
+        margin: 20px auto;
+    }
+    
+    .txt_login {
+        padding: 12px 10px 5px 10px;
+        font-size: 20px;
+		height: 55px;
+    }
+    
+    .float-label {
+        font-size: 20px;
+        right: 10px;
+    }
+    
+    .txt_login:focus ~ .float-label,
+    .txt_login:not(:placeholder-shown) ~ .float-label {
+        font-size: 20px;
+    }
+    
+    .btn_submit {
+        width: 88%;
+        padding: 10px;
+        font-size: 14px;
+		margin-top: 30px;
+    }
+    
+    .forget, .rememberMe {
+        font-size: 17px;
+		margin-bottom: 10px;
+    }
+    
+}
+
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body, html {
+    overflow-x: hidden;
+    position: relative;
+}
