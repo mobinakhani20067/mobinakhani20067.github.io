@@ -1,0 +1,251 @@
+.search {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px 15px;
+    margin: 20px 0;
+    background-color: transparent !important;
+    border: solid 2px #CBECA7;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+.search:focus {
+    outline: none;
+    border-color: #81A984;
+    box-shadow: 0 0 5px rgba(129,169,132,0.3);
+}
+.table-wrapper {
+overflow-x: auto;
+width: 100%;
+border-radius: 12px;
+background: transparent;
+overflow: hidden;
+}
+table {
+width: 100%;
+min-width: 800px;
+border-collapse: collapse;
+border-radius: 12px;
+overflow: hidden;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+tbody tr:hover {
+    background-color: #f0f7f0;
+    transition: 0.2s;
+}
+th, td {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 14px 10px;
+    vertical-align: middle;
+    text-align: center;
+}
+th {
+    background: #ECF8E0;
+    color: #2c5a2e;
+    font-size: 14px;
+}
+td {
+    color: #555;
+    font-size: 13px;
+}
+td a, td[onclick] {
+    cursor: pointer;
+    color: #2c5a2e;
+    text-decoration: underline;
+}
+.table-reserve img {
+    width: 22px;
+    height: 22px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.table-reserve img:hover {
+    transform: scale(1.1);
+}
+.action {
+    text-align: center;
+    white-space: nowrap;
+}
+.reserve-type {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+.reserve-type.daily { background: #E3F2FD; color: #1565C0; }
+.reserve-type.long { background: #E8F5E9; color: #2E7D32; }
+
+.pagination {
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+.pagination button {
+    padding: 6px 12px;
+    cursor: pointer;
+    margin: 0;
+    border: 1px solid #CBECA7;
+    background: white;
+    border-radius: 8px;
+    color: #2c5a2e;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+.pagination button:hover {
+    background: #CBECA7;
+    transform: scale(1.02);
+}
+.pagination button.active {
+    background: #81A984;
+    color: white;
+    border-color: #81A984;
+}
+#noDataMessage.no-data {
+    text-align: center;
+    padding: 50px;
+    font-size: 20px;
+    color: #999;
+    background: transparent;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 90%;
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 25px;
+    border: solid 2px #CBECA7;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+    direction: rtl;
+    animation: fadeIn 0.3s ease;
+}
+.modal-header {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #2c5a2e;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: solid 2px #CBECA7;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: #81A984;
+}
+.form-group input[readonly] {
+    background: #f0f0f0;
+    cursor: not-allowed;
+}
+.modal-footer {
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-save:hover { background-color: #45a049; transform: scale(1.02); }
+.btn-close {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-close:hover { background-color: #d32f2f; transform: scale(1.02); }
+
+@media (max-width: 550px) {
+    .modal-content {
+        padding: 18px;
+        width: 95%;
+    }
+    .modal-header { font-size: 18px; }
+    .form-group label { font-size: 13px; }
+    .form-group input { padding: 8px; font-size: 13px; }
+    .btn-save, .btn-close { padding: 6px 16px; font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+    .table-reserve th, .table-reserve td {
+        padding: 8px 5px;
+        font-size: 11px;
+    }
+    .table-reserve img {
+        width: 18px;
+        height: 18px;
+    }
+    .search {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    .pagination button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
