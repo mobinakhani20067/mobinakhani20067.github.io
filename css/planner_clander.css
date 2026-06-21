@@ -1,0 +1,366 @@
+.main {
+    flex: 1;
+    background: #EFF5E9;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+
+.main h1 {
+    color: #165526;
+    margin-bottom: 15px;
+    border-right: 4px solid #2c6e3c;
+    padding-right: 15px;
+    flex-shrink: 0;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.month-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #165526;
+}
+
+.nav-btn {
+    background: #165526;
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.weekday {
+    background: #d9e8d1;
+    padding: 8px 5px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #165526;
+    font-size: 1.1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.calendar-day {
+    background: #f5faf0;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+.calendar-grid .calendar-day {
+    background: #f5faf0;
+    border-radius: 10px;
+    min-height: 45px;
+}
+
+.calendar-grid .calendar-day .day-number {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #1f4228;
+}
+.calendar-day:hover {
+    background: #e0ecd6;
+    transform: translateY(-1px);
+}
+
+.calendar-day.has-event {
+    background: #c8e0bc;
+    border-color: #2c7a47;
+}
+
+.calendar-day.today {
+    background: #ffe6b3;
+    border-color: #e6a017;
+}
+
+.day-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1f4228;
+}
+
+.empty-day {
+    background: #f0f5ec;
+    opacity: 0.4;
+    cursor: default;
+    min-height: 65px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.modal h3 {
+    color: #165526;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #d9e8d1;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    margin: 12px 0;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-buttons button {
+    padding: 8px 22px;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-save {
+    background: #165526;
+    color: white;
+}
+
+.btn-cancel {
+    background: #e0e0e0;
+}
+
+@media (max-width: 900px) {
+    .page {
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 80px;
+    }
+    
+    .main {
+        margin-top: 0;
+    }
+    .calendar-header,
+    .weekdays,
+    .calendar-grid {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .calendar-day {
+        min-height: 55px;
+        padding: 4px 2px;
+    }
+    
+    .day-number {
+        font-size: 0.85rem;
+    }
+    
+    .weekday {
+        font-size: 0.7rem;
+        padding: 5px;
+		font-weight: bold;
+    }
+}
+
+@media (max-width: 550px) {
+    .calendar-day {
+        min-height: 50px;
+    }
+}
+
+        .empty-day {
+            background: #f0f5ec;
+            opacity: 0.4;
+            cursor: default;
+            min-height: 45px;
+        }
+.calendar-day.past {
+    background: #e0e0e0;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.calendar-day.past:hover {
+    transform: none;
+    background: #e0e0e0;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.modal h3 {
+    color: #165526;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #d9e8d1;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    margin: 12px 0;
+    font-family: inherit;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-buttons button {
+    padding: 8px 22px;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-save {
+    background: #165526;
+    color: white;
+}
+
+.btn-cancel {
+    background: #e0e0e0;
+}
+
+@media (max-width: 900px) {
+    .page {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        padding-bottom: 0;
+    }
+
+    
+    .main {
+        border-radius: 20px;
+        padding: 15px;
+        margin-top: 0;
+    }
+
+    .main h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .calendar-day {
+        min-height: 55px;
+        padding: 4px 2px;
+    }
+
+    .day-number {
+        font-size: 0.85rem;
+    }
+
+    .weekday {
+        font-size: 0.7rem;
+        padding: 5px;
+    }
+}
+        
