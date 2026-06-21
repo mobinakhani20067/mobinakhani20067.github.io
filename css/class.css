@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+@keyframes fadeContent {
+	from {
+	opacity: 0;
+	transform: translateY(10px);
+	}
+	to {
+	opacity: 1;
+	transform: translateY(0);
+	}
+}
+
+.main {
+	animation: fadeContent 0.4s ease-out;
+}
+.student-card {
+	border-radius: 15px;
+	padding: 20px;
+	margin-bottom: 25px;
+	width: 99%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+}
+.student-card h3 {
+	color: #2c5a2e;
+	margin-bottom: 15px;
+	padding-right: 10px;
+	border-right: 4px solid #2c6e3c;
+}
+.student-info {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-between;
+}
+.info-item {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	min-width: 150px;
+}
+.info-item label {
+	font-size: 12px;
+	color: #999;
+	font-weight: 600;
+}
+.info-item .value {
+	font-size: 16px;
+	color: #333;
+	font-weight: 600;
+}
+.status-badge {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+}
+.status-present { background: #d4edda; color: #155724; }
+.status-absent { background: #f8d7da; color: #721c24; }
+.status-late { background: #fff3cd; color: #856404; }
+.status-upcoming { background: #cce5ff; color: #004085; }
+.status-cancelled { background: #e0e0e0; color: #555; }
+
+.table-responsive {
+	overflow-x: auto;
+	width: 99%;
+	border-radius: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+table {
+	width: 100%;
+	min-width: 700px;
+	border-collapse: collapse;
+	background: white;
+}
+th, td {
+	padding: 12px 10px;
+	text-align: center;
+	border-bottom: 1px solid #e0e0e0;
+}
+th {
+	background: #ECF8E0;
+	color: #2c5a2e;
+	font-size: 14px;
+}
+td {
+	color: #555;
+	font-size: 13px;
+}
+
+.stats-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	width: 99%;
+	margin: 20px auto;
+}
+.stat-card {
+	flex: 1;
+	min-width: 120px;
+	padding: 15px;
+	border-radius: 15px;
+	text-align: center;
+	background-color: #E7F6D7;
+}
+.stat-number {
+	font-size: 28px;
+	font-weight: bold;
+	color: #165526;
+}
+.stat-label {
+	font-size: 12px;
+	color: #666;
+	margin-top: 5px;
+}
+
+.no-data {
+	text-align: center;
+	padding: 50px;
+	font-size: 16px;
+	color: #999;
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.student-info { flex-direction: column; gap: 10px; }
+	.stats-grid { flex-direction: column; }
+}
