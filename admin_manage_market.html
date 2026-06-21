@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>مدیریت بازارچه ورزشی </title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin-manage-market.css" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+    <div class="main">
+        <h1>
+            مدیریت بازارچه ورزشی
+        </h1>
+
+        <div class="filters">
+            <input type="search" id="searchInput" placeholder="جستجو در عنوان، توضیحات، نام کاربر...">
+            <select id="typeFilter">
+                <option value="all">همه آگهی‌ها</option>
+                <option value="rent">اجاره</option>
+                <option value="sale">فروش</option>
+                <option value="donate">اهدایی رایگان</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table-listings">
+                <thead>
+					<tr>
+						<th>نوع</th>
+						<th>عنوان</th>
+						<th>قیمت</th>
+						<th>آگهی‌دهنده</th>
+						<th>تاریخ ثبت</th>
+						<th>عملیات</th>
+					</tr>
+				</thead>
+                <tbody id="listingsTableBody"></tbody>
+            </table>
+        </div>
+        <div id="noDataMessage" class="no-data">هیچ آگهی‌ای یافت نشد</div>
+        <div id="paginationControls" class="pagination"></div>
+    </div>
+</div>
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                <path d="M17 3l4 4L7 21H3v-4L17 3z"/>
+            </svg>
+            ویرایش آگهی
+        </div>
+        
+        <div class="form-group">
+            <label>نوع آگهی:</label>
+            <select id="editType">
+                <option value="sale">فروش</option>
+                <option value="rent">اجاره</option>
+                <option value="donate">اهدایی (رایگان)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>عنوان:</label>
+            <input type="text" id="editTitle" placeholder="عنوان محصول">
+        </div>
+        
+        <div class="form-group">
+            <label>توضیحات:</label>
+            <textarea id="editDesc" rows="3" placeholder="توضیحات کامل محصول"></textarea>
+        </div>
+        
+        <div class="form-group" id="editPriceGroup">
+            <label>قیمت:</label>
+            <input type="text" id="editPrice" placeholder="مبلغ به تومان">
+            <div id="editPriceWords" class="price-words" style="display: none; font-size: 13px; color: #2c7a4a; margin-top: 8px; padding: 6px 12px; background: #e8f5e8; border-radius: 20px; text-align: center;"></div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-save" onclick="saveEdit()">ذخیره تغییرات</button>
+            <button class="btn-close" onclick="closeEditModal()">لغو</button>
+        </div>
+    </div>
+</div>
+<div id="toastMsg" class="toast-msg"></div>
+
+<script src="js/admin-manage-market.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

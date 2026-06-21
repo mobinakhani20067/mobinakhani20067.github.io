@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>ساعت کلاس</title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/class.css" rel="stylesheet">
+</head>
+<body>
+ <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">گزارشات</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="Report.html"><span class="icon-report icon-img"></span> گزارش مشکل</a></li>
+                    <li><a href="report-History.html"><span class="icon-reportHistory icon-img"></span> تاریخچه گزارشات</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-marketplace icon-img"></span><span class="item">بازارچه ورزشی</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+					<li><a href="add_ads.html"><span class="icon-add icon-img"></span> افزودن آگهی</a></li>
+                    <li><a href="my-ads.html"><span class="icon-dashboard icon-img"></span> آگهی‌های من</a></li>
+                </ul>
+            </li>
+             <li>
+            <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                <div class="left-icons"><span class="icon-clipboard-check icon-img"></span><span class="item">برنامه‌ها</span></div>
+                <span class="arrow">▼</span>
+            </div>
+            <ul class="submenu">
+                <li><a href="meal_Plan.html"><span class="icon-mealPlan icon-img"></span> برنامه غذایی</a></li>
+                <li><a href="Sport_plan.html"><span class="icon-sportPlan icon-img"></span> برنامه ورزشی</a></li>
+                <li><a href="Planner.html"><span class="icon-Planner icon-img"></span> برنامه ریزی</a></li>
+            </ul>
+        </li>
+		 <li>
+		<div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+			<div class="left-icons"><span class="icon-list icon-img"></span><span class="item">سرویس‌ها</span></div>
+			<span class="arrow">▼</span>
+		</div>
+		<ul class="submenu">
+			<li><a href="class.html"><span class="icon-classTime icon-img"></span> ساعت کلاس</a></li>
+			<li><a href="reservation.html"><span class="icon-reserveCloset icon-img"></span> رزرو کمد</a></li>
+			<li><a href="team_notice.html"><span class="icon-team icon-img"></span>اطلاعیه تیم یابی</a></li>
+		</ul>
+        </li>
+        <li><a href="good_club_offer.html" class="direct-link"><span class="icon-gym icon-img"></span><span class="item">معرفی باشگاه</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+
+<div class="page">
+	<div class="main" id="main">
+		<h1 class="title"> ساعت کلاس</h1>
+		<div class="student-card">
+			<h3>👩‍🎓 اطلاعات دانشجو</h3>
+			<div class="student-info">
+				<div class="info-item"><label>نام و نام خانوادگی</label><div class="value">فاطمه محمدی</div></div>
+				<div class="info-item"><label>شماره دانشجویی</label><div class="value">402111234567</div></div>
+				<div class="info-item"><label>رشته تحصیلی</label><div class="value">مهندسی کامپیوتر</div></div>
+				<div class="info-item"><label>ترم</label><div class="value">ترم 4</div></div>
+			</div>
+		</div>
+		<div class="student-card" style="margin-top: 0;">
+			<h3>🏃‍♀️ حضور و غیاب درس تربیت بدنی - نیمسال اول ۱۴۰۵</h3>
+			<p style="color:#666; font-size:12px; margin-top:5px;">مربی: خانم ناهید رضایی | محل: سالن ورزشی | زمان: سه‌شنبه‌ها ساعت 14:00 - 16:00</p>
+		</div>
+		<div class="table-responsive">
+			<table id="attendanceTable">
+				<thead>
+					<tr>
+						<th>جلسه</th>
+						<th>تاریخ</th>
+						<th>وضعیت</th>
+					</tr>
+				</thead>
+				<tbody id="attendanceBody"></tbody>
+			</table>
+			<div id="noDataMessage" class="no-data">❌ اطلاعاتی یافت نشد</div>
+		</div>
+		<div class="stats-grid">
+			<div class="stat-card"><div class="stat-number" id="presentCount">0</div><div class="stat-label">✅ حضور</div></div>
+			<div class="stat-card"><div class="stat-number" id="absentCount">0</div><div class="stat-label">❌ غیبت</div></div>
+			<div class="stat-card"><div class="stat-number" id="lateCount">0</div><div class="stat-label">⏰ تأخیر</div></div>
+			<div class="stat-card"><div class="stat-number" id="cancelledCount">0</div><div class="stat-label">❌ کنسل شده</div></div>
+			<div class="stat-card"><div class="stat-number" id="remainingCount">0</div><div class="stat-label">📅 جلسه مانده</div></div>
+			<div class="stat-card"><div class="stat-number" id="totalCount">16</div><div class="stat-label">📊 کل جلسات</div></div>
+		</div>
+	</div>
+</div>
+	<script src="js/menu.js"></script>
+<script src="js/class.js"></script>
+</body>
+</html>

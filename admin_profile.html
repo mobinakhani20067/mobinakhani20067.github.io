@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>پروفایل ادمین</title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin_profile.css" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+	<div class="main">
+		<div class="title"><h1> پروفایل ادمین</h1></div>
+		<div class="profile-container" id="profileContainer">
+			<div class="profile-header">
+				<div class="profile-avatar" id="avatarContainer">
+					<img id="avatarImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23CBECA7'/%3E%3Ccircle cx='50' cy='40' r='22' fill='%23165526'/%3E%3Cpath d='M20 75 Q50 85 80 75 L80 100 L20 100 Z' fill='%23165526'/%3E%3Crect x='30' y='55' width='40' height='8' rx='4' fill='%23165526'/%3E%3C/svg%3E" style="display:block;">
+				</div>
+				<button class="edit-avatar-btn" onclick="openAvatarModal()">✏️</button>
+				<h2 id="displayName">دکتر سارا مرادی</h2>
+				<p>مدیر سامانه | دانشکده فنی و حرفه‌ای دختران قم</p>
+			</div>
+			
+			<div class="profile-body" id="profileBody">
+				<div class="info-section">
+					<h3>📋 اطلاعات شخصی</h3>
+					<div class="info-grid" id="personalInfo">
+						<div class="info-item">
+							<label>نام کامل</label>
+							<div class="view-field info-value" id="valFullName">دکتر سارا مرادی</div>
+							<input type="text" class="edit-field" id="editFullName" value="دکتر سارا مرادی" style="display:none;">
+						</div>
+						<div class="info-item">
+							<label>کد پرسنلی</label>
+							<div class="view-field info-value" id="valPersonnelId">STF-1402-089</div>
+							<input type="text" class="edit-field" id="editPersonnelId" value="STF-1402-089" style="display:none;" readonly>
+						</div>
+						<div class="info-item">
+							<label>سمت</label>
+							<div class="view-field info-value" id="valPosition">مدیر سامانه یکپارچه</div>
+							<select class="edit-field" id="editPosition" style="display:none;">
+								<option value="مدیر سامانه یکپارچه">مدیر سامانه یکپارچه</option>
+								<option value="معاون آموزشی">معاون آموزشی</option>
+								<option value="مدیر فنی">مدیر فنی</option>
+								<option value="کارشناس ارشد">کارشناس ارشد</option>
+								<option value="سرپرست">سرپرست</option>
+							</select>
+						</div>
+						<div class="info-item">
+							<label>دانشکده / محل خدمت</label>
+							<div class="view-field info-value" id="valDepartment">دانشکده فنی و حرفه‌ای دختران قم</div>
+							<select class="edit-field" id="editDepartment" style="display:none;">
+								<option value="دانشکده فنی و حرفه‌ای دختران قم">دانشکده فنی و حرفه‌ای دختران قم</option>
+								<option value="دانشکده مهندسی فناوری">دانشکده مهندسی فناوری</option>
+								<option value="دانشکده علوم پایه">دانشکده علوم پایه</option>
+								<option value="دانشکده مدیریت">دانشکده مدیریت</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="info-section">
+					<h3>📞 اطلاعات تماس</h3>
+					<div class="info-grid" id="contactInfo">
+						<div class="info-item">
+							<label>ایمیل سازمانی</label>
+							<div class="view-field info-value" id="valEmail">s.moradi@qom.fd.ir</div>
+							<input type="email" class="edit-field" id="editEmail" value="s.moradi@qom.fd.ir" style="display:none;">
+						</div>
+						<div class="info-item">
+							<label>شماره تماس داخلی</label>
+							<div class="view-field info-value" id="valPhone">025-36654321</div>
+							<input type="tel" class="edit-field" id="editPhone" value="025-36654321" style="display:none;">
+						</div>
+						<div class="info-item">
+							<label>شماره همراه</label>
+							<div class="view-field info-value" id="valMobile">09123456789</div>
+							<input type="tel" class="edit-field" id="editMobile" value="09123456789" style="display:none;">
+						</div>
+						<div class="info-item">
+							<label>دفتر کار</label>
+							<div class="view-field info-value" id="valOffice">ساختمان مرکزی، طبقه دوم، اتاق 204</div>
+							<input type="text" class="edit-field" id="editOffice" value="ساختمان مرکزی، طبقه دوم، اتاق 204" style="display:none;">
+						</div>
+					</div>
+				</div>
+				
+				<div class="action-buttons">
+					<button class="btn-edit" id="editBtn" onclick="enableEditMode()">✏️ ویرایش اطلاعات</button>
+					<button class="btn-save" id="saveBtn" onclick="saveProfile()" style="display:none;">💾 ذخیره تغییرات</button>
+					<button class="btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">❌ انصراف</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="avatarModal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">📸 تغییر عکس پروفایل</div>
+		<div class="avatar-preview" id="modalAvatarPreview">
+			<img id="modalPreviewImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23CBECA7'/%3E%3Ccircle cx='50' cy='40' r='22' fill='%23165526'/%3E%3Cpath d='M20 75 Q50 85 80 75 L80 100 L20 100 Z' fill='%23165526'/%3E%3Crect x='30' y='55' width='40' height='8' rx='4' fill='%23165526'/%3E%3C/svg%3E" style="display:block;">
+		</div>
+		<input type="file" id="avatarInput" accept="image/*" style="margin: 10px 0; width: 100%;">
+		<div class="modal-footer">
+			<button class="btn-save" onclick="saveAvatar()">ذخیره</button>
+			<button class="btn-cancel" onclick="closeAvatarModal()">انصراف</button>
+		</div>
+	</div>
+</div>
+<script src="js/menu.js"></script>
+<script src="js/admin-profile.js"></script>
+</body>
+</html>

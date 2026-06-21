@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>مدیریت وسایل گمشده</title>
+    <link href="css/menu.css" rel="stylesheet">
+	<link href="css/Aadmin_mange-losts.css" rel="stylesheet">
+</head>
+<body>
+<button class="menu-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+<div class="menu-overlay" onclick="closeMobileMenu()"></div>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+
+<div class="page">
+    <div class="main">
+        <div class="header-actions">
+            <h1>مدیریت وسایل گمشده</h1>
+            <button class="add-btn" onclick="openAddModal()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                افزودن وسیله جدید
+            </button>
+        </div>
+
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="جستجو در نام، مکان...">
+            <select id="statusFilter">
+                <option value="all">همه</option>
+                <option value="searching">در جستجو</option>
+                <option value="found">پیدا شده</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table-lost">
+                <thead>
+                    <tr>
+                        <th>نام وسیله</th>
+                        <th>مکان</th>
+                        <th>تاریخ ثبت</th>
+                        <th>وضعیت</th>
+                        <th>درخواست‌های مالکیت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="lostTableBody"></tbody>
+            </table>
+        </div>
+        <div id="noDataMessage" class="no-data">هیچ وسیله‌ای یافت نشد</div>
+        <div id="paginationControls" class="pagination"></div>
+    </div>
+</div>
+<div id="itemModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalTitle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            افزودن وسیله جدید
+        </div>
+        <div class="form-group">
+            <label>نام وسیله:</label>
+            <input type="text" id="itemName" placeholder="مثال: کیف ورزشی مشکی">
+        </div>
+        <div class="form-group">
+            <label>مکان:</label>
+            <input type="text" id="itemLocation" placeholder="مثال: سالن بدنسازی">
+        </div>
+        <div class="form-group">
+            <label>تاریخ ثبت:</label>
+            <input type="text" id="itemDate" placeholder="۱۴۰۴/۰۳/۱۵">
+        </div>
+        <div class="form-group">
+            <label>وضعیت:</label>
+            <select id="itemStatus">
+                <option value="searching">در جستجو</option>
+                <option value="found">پیدا شده</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-save" onclick="saveItem()">ذخیره</button>
+            <button class="btn-close" onclick="closeItemModal()">لغو</button>
+        </div>
+    </div>
+</div>
+<div id="claimsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            درخواست‌های مالکیت
+        </div>
+        <div id="claimsList" class="claims-list"></div>
+        <div class="modal-footer">
+            <button class="btn-close" onclick="closeClaimsModal()">بستن</button>
+        </div>
+    </div>
+</div>
+<div id="toastMsg" class="toast-msg"></div>
+<script src="js/admin-add-losts.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

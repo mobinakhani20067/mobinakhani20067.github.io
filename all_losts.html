@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>وسایل گمشده </title>
+    <link href="css/main-menu.css" rel="stylesheet">
+	<link href="css/background.css" rel="stylesheet">
+	<link href="css/all-losts.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="Notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/>
+                <path d="M12 2v12m-3-3 3 3 3-3"/>
+                <path d="M4 8h16"/>
+            </svg>
+            وسایل گمشده
+        </h1>
+        <p>لیست تمام وسایلی که در محوطه دانشگاه گم شده یا پیدا شده است</p>
+    </div>
+
+    <div class="filter-section">
+        <div class="filter-box">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">همه</button>
+                <button class="filter-btn" data-filter="searching">در جستجو</button>
+                <button class="filter-btn" data-filter="found">پیدا شده</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="lost-list" id="lostList"></div>
+
+    <div class="footer">
+        <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است</p>
+    </div>
+
+    <div class="go-up-btn" id="goUpBtn">↑</div>
+
+    <div class="claim-modal" id="claimModal">
+        <div class="claim-modal-content">
+            <h3 id="modalTitle">ادعای مالکیت وسیله</h3>
+            <div class="form-group">
+                <label>نام و نام خانوادگی</label>
+                <input type="text" id="claimantName" placeholder="نام و نام خانوادگی خود را وارد کنید">
+            </div>
+            <div class="form-group">
+                <label>شماره تماس</label>
+                <input type="tel" id="claimantPhone" placeholder="۰۹XXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label>توضیحات تکمیلی و مشخصات وسیله</label>
+                <textarea id="claimantDesc" placeholder="رنگ، برند، ویژگی‌های خاص و هر چیزی که به اثبات مالکیت کمک می‌کند..."></textarea>
+            </div>
+            <button class="submit-claim" onclick="submitClaim()">ارسال درخواست به ادمین</button>
+            <button class="close-modal" onclick="closeClaimModal()">انصراف</button>
+        </div>
+    </div>
+<script src="js/background.js"></script>
+    <script src="js/all-losts.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>مدیریت اطلاعیه‌ها</title>
+    <link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin-add-notice.css" rel="stylesheet">
+</head>
+<body>
+ <button class="menu-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+<div class="menu-overlay" onclick="closeMobileMenu()"></div>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+    <div class="main">
+        <div class="title"><h1>مدیریت اطلاعیه‌ها</h1></div>
+        
+        <div class="add-announcement">
+            <h3 id="formTitle">افزودن اطلاعیه جدید</h3>
+            <div class="form-row">
+                <div class="field-group">
+                    <label>عنوان اطلاعیه:</label>
+                    <input type="text" id="announceTitle" placeholder="مثال: تعطیلی دانشگاه">
+                </div>
+                <div class="field-group">
+                    <label>دسته بندی:</label>
+                    <select id="announceCategory" onchange="toggleExtraFields()">
+                        <option value="">انتخاب کنید</option>
+                        <option value="بنر صفحه اصلی">بنر صفحه اصلی</option>
+                        <option value="اعلامیه تیم یابی">اعلامیه تیم یابی</option>
+                        <option value="اعلامیه دانشگاه">اعلامیه دانشگاه</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row" id="sportField" style="display:none;">
+                <div class="field-group">
+                    <label>نوع ورزش:</label>
+                    <select id="announceSport">
+                        <option value="">انتخاب کنید</option>
+                        <option value="فوتبال">فوتبال</option>
+                        <option value="والیبال">والیبال</option>
+                        <option value="بسکتبال">بسکتبال</option>
+                        <option value="فوتسال">فوتسال</option>
+                        <option value="هندبال">هندبال</option>
+                        <option value="پینگ پنگ">پینگ پنگ</option>
+                        <option value="دارت">دارت</option>
+                        <option value="شنا">شنا</option>
+                        <option value="تنیس">تنیس</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row" id="priorityField" style="display:none;">
+                <div class="field-group">
+                    <label>اولویت اطلاعیه:</label>
+                    <select id="announcePriority">
+                        <option value="عادی">عادی</option>
+                        <option value="مهم">مهم</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label>متن اطلاعیه:</label>
+                    <textarea id="announceDesc" placeholder="متن اطلاعیه را وارد کنید..."></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label>آپلود عکس (اختیاری):</label>
+                    <input type="file" id="announceImage" accept="image/*">
+                    <div class="image-preview" id="imagePreview">
+                        <img id="previewImg" src="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group button-group">
+                    <button class="btn-submit" id="submitBtn" onclick="addAnnouncement()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        ثبت اطلاعیه
+                    </button>
+                    <button class="btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        انصراف از ویرایش
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="filters">
+            <input type="search" id="searchInput" placeholder="جستجو در عنوان اطلاعیه...">
+            <select id="categoryFilter">
+                <option value="">همه دسته‌بندی‌ها</option>
+                <option value="بنر صفحه اصلی">بنر صفحه اصلی</option>
+                <option value="اعلامیه تیم یابی">اعلامیه تیم یابی</option>
+                <option value="اعلامیه دانشگاه">اعلامیه دانشگاه</option>
+            </select>
+        </div>
+        <div class="table-responsive">
+            <table id="announcementsTable">
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>عنوان</th>
+                        <th>دسته بندی</th>
+                        <th>اولویت</th>
+                        <th>متن اطلاعیه</th>
+                        <th>تاریخ ثبت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+            <div id="noDataMessage" class="no-data">موردی یافت نشد</div>
+        </div>
+        
+        <div class="pagination" id="paginationControls"></div>
+    </div>
+</div>
+<script src="js/menu.js"></script>
+<script src="js/admin-addNotice.js"></script>
+</body>
+</html>

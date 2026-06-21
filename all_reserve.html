@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>همه رزروها</title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/allReserves.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="Notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffd966" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            رزروهای آتی
+        </h1>
+        <p>لیست تمام رزروهای ثبت شده شما</p>
+    </div>
+
+    <div class="filter-section">
+        <div class="filter-box">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">همه</button>
+                <button class="filter-btn" data-filter="confirmed">تأیید شده</button>
+                <button class="filter-btn" data-filter="pending">در انتظار</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="reserve-list" id="reserveList"></div>
+
+    <div class="footer">
+        <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است.</p>
+    </div>
+
+    <div class="go-up-btn" id="goUpBtn">↑</div>
+
+    <script src="js/background.js"></script>
+    <script src="js/all-reserve.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>گزارشات</title>
+    <link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin-view_reports.css" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+    <div class="page">
+        <div class="main">
+            <div class="title"><h1>گزارشات</h1></div>
+            
+            <div class="filters">
+                <input type="search" id="searchInput" placeholder="جستجو در کد تیکت، نام...">
+                <select id="categoryFilter">
+                    <option value="">همه دسته‌بندی‌ها</option>
+                    <option value="کمبود امکانات">کمبود امکانات</option>
+                    <option value="نظافت">نظافت</option>
+                    <option value="ایمنی">ایمنی</option>
+                    <option value="آسیب وسایل">آسیب وسایل</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">همه وضعیت‌ها</option>
+                    <option value="در حال بررسی">در حال بررسی</option>
+                    <option value="برطرف شده">برطرف شده</option>
+                    <option value="رد شده">رد شده</option>
+                    <option value="دیده نشده">دیده نشده</option>
+                </select>
+            </div>
+            
+            <div class="table-responsive">
+                <table id="reportsTable">
+                    <thead>
+                        <tr>
+                            <th>کد تیکت</th>
+                            <th>گزارش دهنده</th>
+                            <th>شماره دانشجویی</th>
+                            <th>دسته بندی</th>
+                            <th>وضعیت</th>
+                            <th>تاریخ ثبت</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+                <div id="noDataMessage" class="no-data">موردی یافت نشد</div>
+            </div>
+            
+            <div class="pagination" id="paginationControls"></div>
+        </div>
+    </div>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                جزئیات و ویرایش گزارش
+            </div>
+            <div class="form-group"><label>کد تیکت:</label><input type="text" id="detailId" readonly></div>
+            <div class="form-group"><label>نام گزارش دهنده:</label><input type="text" id="detailUser" readonly></div>
+            <div class="form-group"><label>شماره دانشجویی:</label><input type="text" id="detailStudentId" readonly></div>
+            <div class="form-group"><label>دسته بندی:</label><input type="text" id="detailCategory" readonly></div>
+            <div class="form-group"><label>توضیحات:</label><input type="text" id="detailDesc" readonly placeholder="توضیحات تکمیلی"></div>
+            <div class="form-group"><label>وضعیت فعلی:</label>
+                <select id="detailStatus">
+                    <option value="در حال بررسی">در حال بررسی</option>
+                    <option value="برطرف شده">برطرف شده</option>
+                    <option value="رد شده">رد شده</option>
+                    <option value="دیده نشده">دیده نشده</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-save" onclick="saveChanges()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    ذخیره تغییرات
+                </button>
+                <button class="btn-close" onclick="closeModal()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                    بستن
+                </button>
+            </div>
+        </div>
+    </div>
+<script src="js/menu.js"></script>
+<script src="js/admin-view-reports.js"></script>
+</body>
+</html>

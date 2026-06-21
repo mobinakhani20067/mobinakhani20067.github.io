@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>نظرات پشتیبانی</title>
+    <link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin-view-comments.css" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+    <div class="page">
+        <div class="main">
+            <div class="title"><h1>نظرات پشتیبانی</h1></div>
+            
+            <div class="filters">
+                <input type="search" id="searchInput" placeholder="جستجو در نام، کد پیام...">
+                <select id="subjectFilter">
+                    <option value="">همه موضوعات</option>
+                    <option value="پرسش">پرسش</option>
+                    <option value="پشتیبانی">پشتیبانی</option>
+                    <option value="نظرات">نظرات</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">همه وضعیت‌ها</option>
+                    <option value="خوانده شده">خوانده شده</option>
+                    <option value="خوانده نشده">خوانده نشده</option>
+                    <option value="پاسخ داده شده">پاسخ داده شده</option>
+                </select>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>کد پیام</th><th>نام</th><th>ایمیل</th><th>موضوع</th><th>وضعیت</th><th>تاریخ</th><th>جزئیات</th></tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+                <div id="noDataMessage" class="no-data">موردی یافت نشد</div>
+            </div>
+            
+            <div class="pagination" id="paginationControls"></div>
+        </div>
+    </div>
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                جزئیات پیام
+            </div>
+            <div class="form-group"><label>کد پیام:</label><input type="text" id="detailId" readonly></div>
+            <div class="form-group"><label>نام:</label><input type="text" id="detailName" readonly></div>
+            <div class="form-group"><label>ایمیل:</label><input type="text" id="detailEmail" readonly></div>
+            <div class="form-group"><label>موضوع:</label><input type="text" id="detailSubject" readonly></div>
+            <div class="form-group"><label>تاریخ:</label><input type="text" id="detailDate" readonly></div>
+            <div class="form-group"><label>پیام:</label><textarea id="detailMessage" rows="3" readonly></textarea></div>
+            <div class="form-group"><label>وضعیت:</label>
+                <select id="detailStatus">
+                    <option value="خوانده شده">خوانده شده</option>
+                    <option value="خوانده نشده">خوانده نشده</option>
+                    <option value="پاسخ داده شده">پاسخ داده شده</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="replyDisplay" style="display:none;">
+                <label>پاسخ قبلی:</label>
+                <textarea id="oldReply" rows="2" readonly style="background:#f0f0f0;"></textarea>
+            </div>
+            
+            <div class="reply-section">
+                <h4>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                    پاسخ به کاربر
+                </h4>
+                <div class="form-group"><label>پاسخ:</label><textarea id="replyMessage" rows="2" placeholder="پاسخ خود را وارد کنید..."></textarea></div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-reply" onclick="sendReply()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                    ارسال پاسخ
+                </button>
+                <button class="btn-save" onclick="saveCommentStatus()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    ذخیره وضعیت
+                </button>
+                <button class="btn-close" onclick="closeModal()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                    بستن
+                </button>
+            </div>
+        </div>
+    </div>
+<script src="js/menu.js"></script>
+<script src="js/admin-view-comments.js"></script>
+</body>
+</html>
