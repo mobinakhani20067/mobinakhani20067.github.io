@@ -1,0 +1,252 @@
+
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto 50px auto;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 30px;
+    border: 1px solid rgba(255, 217, 102, 0.25);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid rgba(255, 217, 102, 0.3);
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    color: #ffd966;
+    font-size: 1.8rem;
+    border-right: 4px solid #ffd966;
+    padding-right: 18px;
+    margin-bottom: 12px;
+}
+
+.header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    padding-right: 22px;
+}
+
+.rules-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rule-item {
+    border: 1px solid rgba(255, 217, 102, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rule-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 217, 102, 0.5);
+}
+.icon-placeholder:hover{
+	opacity: 90%;
+}
+.rule-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 18px 22px;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.icon-placeholder {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: rgba(255, 217, 102, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	opacity: 70%;
+}
+
+.icon-placeholder svg {
+    stroke: #ffd966;
+}
+
+.rule-header h3 {
+    flex: 1;
+    font-size: 1rem;
+    color: #ffd966;
+    margin: 0;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    font-size: 20px;
+    color: #ffd966;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.rule-item.open .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.rule-content {
+    display: none;
+    padding: 0 22px 22px 22px;
+    border-top: 1px solid rgba(255, 217, 102, 0.15);
+}
+
+.rule-item.open .rule-content {
+    display: block;
+}
+
+.rule-content ul {
+    padding-right: 25px;
+    margin: 15px 0;
+}
+
+.rule-content li {
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    font-size: 0.85rem;
+}
+
+.footer {
+    width: 100%;
+    margin-top: 25px;
+}
+
+@media (max-width: 900px) {
+    .container {
+        margin: 20px 15px;
+        padding: 25px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header p {
+        font-size: 0.85rem;
+    }
+    
+    .rule-header {
+        padding: 15px 18px;
+        gap: 15px;
+    }
+    
+    .icon-placeholder {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .rule-header h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 15px 12px;
+        padding: 18px;
+        border-radius: 20px;
+    }
+    
+    .header {
+        padding-bottom: 12px;
+        margin-bottom: 18px;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+        padding-right: 12px;
+    }
+    
+    .header p {
+        font-size: 0.75rem;
+        padding-right: 16px;
+    }
+    
+    .rule-header {
+        padding: 12px 15px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    
+    .icon-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .rule-header h3 {
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .toggle-icon {
+        font-size: 18px;
+    }
+    
+    .rule-content {
+        padding: 0 15px 15px 15px;
+    }
+    
+    .rule-content ul {
+        padding-right: 20px;
+    }
+    
+    .rule-content li {
+        font-size: 0.75rem;
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 10px 8px;
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.1rem;
+    }
+    
+    .rule-header {
+        padding: 10px 12px;
+    }
+    
+    .icon-placeholder {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .rule-header h3 {
+        font-size: 0.75rem;
+    }
+    
+    .rule-content li {
+        font-size: 0.7rem;
+    }
+}
