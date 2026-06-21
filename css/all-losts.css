@@ -1,0 +1,308 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d2e1a;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.page-header {
+    max-width: 1200px;
+    margin: 30px auto 20px auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: #ffd966;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.page-header p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+}
+
+.page-header svg {
+    width: 40px;
+    height: 40px;
+    stroke: #ffd966;
+}
+
+.filter-section {
+    max-width: 1200px;
+    margin: 20px auto 30px auto;
+    padding: 0 24px;
+}
+
+.filter-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border: 1px solid rgba(255,217,102,0.2);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,217,102,0.3);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+.filter-btn:hover {
+    background: rgba(255,217,102,0.2);
+}
+
+.filter-btn.active {
+    background: #ffd966;
+    color: #1a472a;
+    border-color: #ffd966;
+}
+
+.lost-list {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lost-item-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border: 1px solid rgba(255,217,102,0.2);
+    transition: 0.3s;
+}
+
+.lost-item-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-5px);
+}
+
+.lost-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    flex: 2;
+}
+
+.lost-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,217,102,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lost-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #ffd966;
+}
+
+.lost-details h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.lost-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.lost-meta span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lost-meta svg {
+    width: 12px;
+    height: 12px;
+    stroke: rgba(255,255,255,0.6);
+}
+
+.lost-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-found {
+    background: #ffd966;
+    color: #1a472a;
+}
+
+.status-searching {
+    background: rgba(180, 83, 9, 0.9);
+    color: #ffd966;
+}
+
+.claim-btn {
+    background: transparent;
+    border: 1px solid #ffd966;
+    color: #ffd966;
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.claim-btn:hover {
+    background: rgba(255,217,102,0.2);
+}
+
+.claim-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.claim-modal-content {
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.claim-modal-content h3 {
+    color: #1a472a;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #4a5a4a;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #e0e5e0;
+    border-radius: 12px;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2d6a3f;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submit-claim {
+    background: #2d6a3f;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.close-modal {
+    background: #ccc;
+    color: #666;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .lost-item-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .lost-info {
+        justify-content: center;
+        flex-direction: column;
+    }
+    .lost-meta {
+        justify-content: center;
+    }
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    .lost-actions {
+        justify-content: center;
+    }
+}
