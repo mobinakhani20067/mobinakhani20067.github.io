@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>مدیریت مقالات ورزشی </title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/admin-add-article.css" rel="stylesheet">
+</head>
+<body>
+	<button class="menu-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+    <div class="menu-overlay" onclick="closeMobileMenu()"></div>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+<div class="page">
+    <div class="main">
+        <div class="header-actions">
+            <h1>
+                مدیریت مقالات ورزشی
+            </h1>
+            <button class="add-btn" onclick="openAddModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                افزودن مقاله جدید
+            </button>
+        </div>
+
+        <div class="filters">
+            <input type="search" id="searchInput" placeholder="جستجو در عنوان، هشتگ‌ها...">
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table-articles">
+                <thead>
+                    <tr>
+                        <th>تصویر</th>
+                        <th>عنوان</th>
+                        <th>هشتگ‌ها</th>
+                        <th>تاریخ</th>
+                        <th>زمان مطالعه</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="articlesTableBody"></tbody>
+            </table>
+        </div>
+        <div id="noDataMessage" class="no-data">هیچ مقاله‌ای یافت نشد</div>
+        <div id="paginationControls" class="pagination"></div>
+    </div>
+</div>
+
+<div id="articleModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalTitle">
+            افزودن مقاله جدید
+        </div>
+        <div class="form-group">
+            <label>عنوان:</label>
+            <input type="text" id="articleTitle" placeholder="عنوان مقاله">
+        </div>
+        <div class="form-group">
+            <label>متن کامل:</label>
+            <textarea id="articleFullText" placeholder="متن کامل مقاله..." oninput="updateReadTime()"></textarea>
+        </div>
+        <div class="form-group">
+            <label>زمان مطالعه:</label>
+            <input type="text" id="articleReadTime" class="readonly-field" readonly placeholder="به طور خودکار محاسبه می‌شود">
+        </div>
+        <div class="form-group">
+            <label>هشتگ‌ها:</label>
+            <input type="text" id="articleHashtags" placeholder="مثال: بدنسازی,تغذیه,تمرین">
+            <small>هشتگ‌ها را با کاما (,) جدا کنید</small>
+        </div>
+        
+        <div class="form-group">
+            <label>تصویر:</label>
+            <div class="image-source-group">
+                <label class="image-source-option">
+                    <input type="radio" name="imageSource" value="upload" onchange="toggleImageSource()"> آپلود عکس
+                </label>
+                <label class="image-source-option">
+                    <input type="radio" name="imageSource" value="link" onchange="toggleImageSource()" checked> لینک عکس
+                </label>
+            </div>
+        </div>
+        <div class="form-group" id="uploadGroup" style="display: none;">
+            <label></label>
+            <input type="file" id="articleImageUpload" accept="image/*" onchange="handleImageUpload()">
+            <small>فرمت‌های مجاز: jpg, png, jpeg, gif</small>
+        </div>
+        <div class="form-group" id="linkGroup">
+            <label></label>
+            <input type="text" id="articleImageUrl" placeholder="https://example.com/image.jpg">
+        </div>
+        <div class="image-preview" id="imagePreview">
+            <img id="previewImg" src="" alt="پیش‌نمایش تصویر">
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-save" onclick="saveArticle()">ذخیره</button>
+            <button class="btn-close" onclick="closeArticleModal()">لغو</button>
+        </div>
+    </div>
+</div>
+
+<div id="previewModal" class="modal">
+    <div class="modal-content preview-modal-content">
+        <div class="modal-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10z"/>
+            </svg>
+            پیش‌نمایش مقاله
+        </div>
+        <div class="preview-article" id="previewContent"></div>
+        <div class="modal-footer">
+            <button class="btn-close" onclick="closePreviewModal()">بستن</button>
+        </div>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast-msg"></div>
+<script src="js/admin-add-article.js"></script>
+</body>
+</html>

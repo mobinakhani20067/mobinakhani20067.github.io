@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>مدیریت نیازمندی‌ها</title>
+    <link href="css/menu.css" rel="stylesheet">
+    <link href="css/admin-add-requeriment.css" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <div class="menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="menu-close-mobile" id="menuCloseMobileBtn">✕</button>
+            <button class="menu-toggle-collapse" id="menuCollapseBtn">✕</button>
+        </div>
+        <ul class="menu-items">
+            <li><a href="admin_profile.html" class="direct-link"><span class="icon-profile icon-img"></span><span class="item">پروفایل</span></a></li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-clipboard icon-img"></span><span class="item">تیکت ها</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_viewReport.html" class="direct-link"><span class="icon-reports icon-img"></span><span class="item"> گزارشات</span></a></li>
+                    <li><a href="admin-view_comments.html" class="direct-link"><span class="icon-comments icon-img"></span><span class="item"> نظرات پشتیبانی </span></a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="menu-item-header" onclick="toggleSubmenu(this, event)">
+                    <div class="left-icons"><span class="icon-reservation icon-img"></span><span class="item">امور رزرو</span></div>
+                    <span class="arrow">▼</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="admin_Request_for_reserve.html" class="direct-link"><span class="icon-reserveRequest icon-img"></span><span class="item"> درخواست های رزرو</span></a></li>
+                    <li><a href="admin_closetReserve.html" class="direct-link"><span class="icon-reserveClosets icon-img"></span><span class="item"> رزرو های کمد</span></a></li>
+                </ul>
+            </li>
+            <li><a href="admin_addNotice.html" class="direct-link"><span class="icon-notice icon-img"></span><span class="item"> مدیریت اطلاعیه ها</span></a></li>
+            <li><a href="admin_add_requirement.html" class="direct-link"><span class="icon-needs icon-img"></span><span class="item"> مدیریت نیازمندی‌ها</span></a></li>
+            <li><a href="admin_manage_market.html" class="direct-link"><span class="icon-marketplace icon-img"></span><span class="item"> مدیریت بازارچه</span></a></li>
+            <li><a href="admin_add_trainer.html" class="direct-link"><span class="icon-trainers icon-img"></span><span class="item"> مدیریت مربی ها</span></a></li>
+            <li><a href="admin_manage_losts.html" class="direct-link active"><span class="icon-lost icon-img"></span><span class="item"> مدیریت وسایل گمشده</span></a></li>
+            <li><a href="admin_add_article.html" class="direct-link"><span class="icon-articles icon-img"></span><span class="item"> مدیریت مقالات</span></a></li>
+            <li><a href="index.html" class="direct-link"><span class="icon-logout icon-img"></span><span class="item">خروج </span></a></li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <div class="main">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h1>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#165526" stroke-width="1.5">
+                        <path d="M12 3L1 9l11 6 11-6-11-6z"/>
+                        <path d="M3 9l9 5 9-5"/>
+                        <path d="M3 13l9 5 9-5"/>
+                        <path d="M3 17l9 5 9-5"/>
+                    </svg>
+                    مدیریت نیازمندی‌های دانشگاه
+                </h1>
+                <button class="add-btn" onclick="openAddModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    افزودن نیازمندی جدید
+                </button>
+            </div>
+            
+            <div class="filters">
+                <input type="search" id="searchInput" placeholder="جستجو در عنوان، توضیحات...">
+                <select id="statusFilter">
+                    <option value="all">همه نیازمندی‌ها</option>
+                    <option value="active">در حال جمع‌آوری</option>
+                    <option value="completed">تکمیل شده</option>
+                </select>
+                <button id="showLogsBtn" class="logs-btn">تاریخچه تکمیل دستی</button>
+            </div>
+            
+            <div class="table-wrapper">
+                <table class="table_needs">
+                    <thead>
+                        <tr>
+                            <th>عنوان</th>
+                            <th>توضیحات</th>
+                            <th>هدف (تومان)</th>
+                            <th>جمع‌آوری شده</th>
+                            <th>پیشرفت</th>
+                            <th>مشارکت</th>
+                            <th>وضعیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="needsTableBody"></tbody>
+                </table>
+            </div>
+            <div id="noDataMessage" class="no-data">موردی یافت نشد</div>
+            <div id="paginationControls" class="pagination"></div>
+        </div>
+    </div>
+    <div id="needModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalTitle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+                    <path d="M12 3L1 9l11 6 11-6-11-6z"/>
+                </svg>
+                افزودن نیازمندی جدید
+            </div>
+            <div class="form-group">
+                <label>عنوان:</label>
+                <input type="text" id="needTitle" placeholder="مثال: تاتامی ورزشی 10 عدد">
+            </div>
+            <div class="form-group">
+                <label>توضیحات:</label>
+                <textarea id="needDesc" placeholder="توضیحات کامل نیازمندی..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>مبلغ هدف:</label>
+                <input type="number" id="needTarget" placeholder="مبلغ به تومان" step="10000">
+            </div>
+            <div id="targetWords" class="amount-words" style="display: none;"></div>
+            <div class="modal-footer">
+                <button class="btn-save" onclick="saveNeed()">ذخیره</button>
+                <button class="btn-close" onclick="closeNeedModal()">لغو</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastMsg" class="toast-msg"></div>
+    
+    <script src="js/admin-add-requeriment.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
