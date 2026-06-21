@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(135deg, #0f2b1a 0%, #1a472a 100%);
+    min-height: 100vh;
+    font-family: 'Vazir FD-WOL', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+canvas#animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,217,102,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+.error-404 {
+    text-align: center;
+    padding: 40px 30px;
+    animation: fadeInUp 0.7s ease-out;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glitch-text {
+    font-size: 220px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+    color: #ffd966;
+    text-shadow: 
+        3px 3px 0 rgba(192,57,43,0.3),
+        -3px -3px 0 rgba(255,217,102,0.3);
+    letter-spacing: 25px;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: "۴۰۴";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #0f2b1a 0%, #1a472a 100%);
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-text::before {
+    left: -2px;
+    text-shadow: 2px 0 #c0392b;
+    animation: glitch 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: 2px;
+    text-shadow: -2px 0 #ffd966;
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0% {
+        clip: rect(0, 900px, 0, 0);
+    }
+    10% {
+        clip: rect(10px, 900px, 40px, 0);
+    }
+    20% {
+        clip: rect(30px, 900px, 80px, 0);
+    }
+    30% {
+        clip: rect(50px, 900px, 100px, 0);
+    }
+    40% {
+        clip: rect(70px, 900px, 130px, 0);
+    }
+    50% {
+        clip: rect(90px, 900px, 160px, 0);
+    }
+    60% {
+        clip: rect(110px, 900px, 190px, 0);
+    }
+    70% {
+        clip: rect(130px, 900px, 220px, 0);
+    }
+    80% {
+        clip: rect(150px, 900px, 250px, 0);
+    }
+    90% {
+        clip: rect(170px, 900px, 280px, 0);
+    }
+    100% {
+        clip: rect(190px, 900px, 310px, 0);
+    }
+}
+
+.error-title {
+    font-size: 2.2rem;
+    color: #ffd966;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.error-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 2;
+}
+
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #ffd966;
+    color: #1a472a;
+    border: none;
+    padding: 15px 42px;
+    border-radius: 60px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    font-family: 'Vazir FD-WOL', Tahoma, sans-serif;
+}
+
+.home-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    background: #ffed9e;
+}
+
+.home-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: #1a472a;
+    stroke-width: 2.2;
+    fill: none;
+}
+
+.decor-line {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd966, #ffd966, transparent);
+    margin: 30px auto 0;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+    }
+    .glitch-text {
+        font-size: 120px;
+        letter-spacing: 15px;
+    }
+    .error-title {
+        font-size: 1.6rem;
+    }
+    .error-text {
+        font-size: 0.9rem;
+        padding: 0 15px;
+        line-height: 1.8;
+    }
+    .home-btn {
+        padding: 12px 32px;
+        font-size: 0.9rem;
+    }
+    .decor-line {
+        width: 80px;
+    }
+}
