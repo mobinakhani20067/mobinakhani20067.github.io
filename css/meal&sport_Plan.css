@@ -1,0 +1,193 @@
+.form { 
+	width: 100%; 
+	max-width: 800px; 
+	margin: 0 auto; 
+	border-collapse: collapse; 
+}
+.form td { 
+	padding: 8px; 
+	vertical-align: top; 
+}
+
+.text_box, .combobox {
+	width: 100%;
+	height: 38px;
+	border-radius: 8px;
+	border: solid 2px #CBECA7;
+	padding: 0 10px;
+	font-size: 14px;
+	background-color: transparent;
+
+}
+.text_box:focus, .combobox:focus { 
+	outline: none; 
+	border-color: #81A984; 
+}
+
+.button {
+	margin-top: 20px;
+	background-color: #CBECA7;
+	border: none;
+	height: 40px;
+	border-radius: 10px;
+	color: green;
+	width: 100%;
+	max-width: 250px;
+	font-weight: 600;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+.button:hover { 
+	background-color: #81A984; 
+	color: white; 
+	transform: scale(1.02); 
+}
+.button:disabled { 
+	opacity: 0.6; 
+	cursor: not-allowed; 
+}
+
+.error { 
+	color: #d32f2f; 
+	font-size: 11px; 
+	display: none; 
+	background: #ffebee; 
+	padding: 4px 12px; 
+	border-radius: 20px; 
+	margin: 0 3px; 
+}
+.error.show { 
+	display: inline-block; 
+}
+.error-row { 
+	text-align: center; 
+	padding: 5px !important; 
+}
+
+.meal {
+	width: 100%;
+	max-width: 400px;
+	border-radius: 15px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F4F8F4;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	overflow: hidden;
+}
+.meal table { 
+	width: 100%; 
+}
+.meal td { 
+	padding: 12px; 
+}
+.meal-img { 
+	width: 80px; 
+	height: 80px; 
+	border-radius: 12px; 
+	object-fit: cover; }
+.meal b { 
+	font-size: 18px; 
+	color: #2c5a2e; 
+}
+.meal p { 
+	font-size: 13px; 
+	color: #555; 
+	margin-top: 5px; 
+}
+
+.form2 {
+	border-radius: 15px;
+	background-color: #F4F8F4;
+	width: 100%;
+	max-width: 700px;
+	margin: 20px auto 0;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.form2Header {
+	width: 100%;
+	height: 45px;
+	background-color: #ECF2ED;
+	border-radius: 15px 15px 0 0;
+	line-height: 45px;
+	padding-right: 15px;
+	text-align: right;
+	font-size: 16px;
+	color: #2c5a2e;
+}
+.form2-table { 
+	font-size: 14px; 
+	width: 100%; 
+	padding: 0 15px 15px 15px; 
+	border-collapse: collapse; 
+}
+.sport-section { 
+	width: 100%; 
+	margin-bottom: 15px; 
+	background: white; 
+	border-radius: 12px; 
+	padding: 10px; 
+}
+.sport-section th { 
+	font-size: 15px; 
+	color: #2c5a2e; 
+	padding: 8px;
+	text-align: right; 
+	background: #ECF2ED; 
+	border-radius: 8px; 
+	display: block; 
+}
+.sport-section td { 
+	padding: 6px; 
+	vertical-align: middle; 
+}
+.sport-img { 
+	text-align: center; 
+}
+.sport-img img { 
+	width: 60px; 
+	height: 60px; 
+	border: solid 2px #CBECA7; 
+	border-radius: 12px; 
+	margin: 3px; 
+	object-fit: cover; 
+}
+
+@media (max-width: 768px) {
+	.form td { 
+		display: block;
+		 width: 100%; 
+		}
+	.form tr { 
+		display: block; 
+		margin-bottom: 5px; 
+	}
+	.sport-section td { 
+		display: block; 
+		width: 100%; 
+		text-align: center; 
+	}
+	.sport-img img { 
+		width: 50px; 
+		height: 50px; 
+	}
+}
+
+@keyframes fadeIn { from { 
+	opacity: 0; transform: 
+	translateY(20px); } to { opacity: 1; transform: translateY(0); } 
+}
+#meal, #sport { 
+	animation: fadeIn 0.4s ease; 
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.main, .student-card, .schedule-table, .stats-grid {
+    animation: fadeIn 0.4s ease;
+}
