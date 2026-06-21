@@ -1,0 +1,457 @@
+@charset "utf-8";
+@keyframes fadeContent {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main {
+    animation: fadeContent 0.4s ease-out;
+}
+.add-gym-card {
+            
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.section-title {
+    font-size: 1.2rem;
+    color: #1e5a3a;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8f0e8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2c3e2f;
+    font-size: 0.9rem;
+}
+.form-group label .required {
+    color: #e74c3c;
+}
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: solid 2px #CBECA7;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background-color: transparent;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #2c7a4a;
+    box-shadow: 0 0 0 3px rgba(44,122,74,0.1);
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+.image-source-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+.image-source-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+.image-preview-area {
+    margin-top: 10px;
+    display: none;
+}
+.image-preview-area img {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 12px;
+    border: 2px solid #CBECA7;
+}
+.submit-gym-btn {
+    background: linear-gradient(135deg, #1e5a3a 0%, #2c7a4a 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+.submit-gym-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30,90,58,0.3);
+}
+
+.my-gyms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.my-gym-item {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.my-gym-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f0f6f0;
+    border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.my-gym-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1e5a3a;
+}
+.my-gym-date {
+    font-size: 12px;
+    color: #888;
+}
+.my-gym-address {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fafafa;
+}
+.my-gym-desc {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+}
+.my-gym-image {
+    padding: 0 20px;
+}
+.my-gym-image img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.comments-admin-section {
+    padding: 15px 20px;
+    background: #f9fafb;
+    margin-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+.comments-title {
+    font-weight: bold;
+    color: #2c7a4a;
+    margin-bottom: 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.comment-item-admin {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-right: 3px solid #2c7a4a;
+}
+.comment-author {
+    font-weight: bold;
+    color: #1e5a3a;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.comment-text {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+}
+.comment-date {
+    font-size: 10px;
+    color: #999;
+}
+.reply-form {
+    margin-top: 10px;
+    padding-right: 20px;
+}
+.reply-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.reply-btn {
+    background: #2c7a4a;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.reply-display {
+    background: #f0f7f0;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #2c7a4a;
+}
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    background: white;
+    border-radius: 20px;
+}
+.delete-gym-btn {
+    background: #f8d7da;
+    color: #721c24;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.delete-gym-btn:hover {
+    background: #f5c6cb;
+}
+.toast-msg {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: #2c7a4a;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    pointer-events: none;
+}
+    .toast-msg.show { opacity: 1; transform: translateY(0); }
+    .toast-msg.error { background: #e74c3c; }
+
+.image-source-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    background: #f8faf8;
+    padding: 12px 15px;
+    border-radius: 50px;
+    display: inline-flex;
+    width: auto;
+}
+
+.image-source-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #2c5a2e;
+    padding: 5px 12px;
+    border-radius: 30px;
+    transition: all 0.2s;
+}
+
+.image-source-option:hover {
+    background: #e8f5e8;
+}
+
+.image-source-option input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2c7a4a;
+}
+
+#gymLinkGroup {
+    margin-bottom: 15px;
+}
+
+#gymLinkGroup input {
+    width: 100%;
+    padding: 12px 15px;
+    border: solid 2px #CBECA7;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.2s;
+    background: white;
+}
+
+#gymLinkGroup input:focus {
+    outline: none;
+    border-color: #2c7a4a;
+    box-shadow: 0 0 0 3px rgba(44,122,74,0.1);
+}
+
+#gymUploadGroup {
+    margin-bottom: 15px;
+}
+
+.upload-area {
+    border: 2px dashed #CBECA7;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fefefe;
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: #2c7a4a;
+    background: #f8fff8;
+    transform: translateY(-2px);
+}
+
+.upload-area.dragover {
+    border-color: #2c7a4a;
+    background: #e8f5e8;
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    background: #e8f5e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #2c7a4a;
+    stroke-width: 1.5;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.upload-text strong {
+    color: #2c7a4a;
+    font-weight: bold;
+}
+
+.upload-hint {
+    font-size: 11px;
+    color: #999;
+}
+
+#gymImageUpload {
+    display: none;
+}
+
+.upload-btn {
+    background: #2c7a4a;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 12px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.upload-btn:hover {
+    background: #1e5a3a;
+    transform: scale(1.02);
+}
+
+/* پیش‌نمایش عکس */
+.image-preview-area {
+    margin-top: 15px;
+    display: none;
+    position: relative;
+}
+
+.image-preview-area img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid #CBECA7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.remove-image-btn:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+.remove-image-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: white;
+}
+
+.selected-filename {
+    font-size: 11px;
+    color: #2c7a4a;
+    margin-top: 8px;
+    text-align: center;
+    background: #e8f5e8;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+#gymUploadGroup {
+    display: none;
+}
