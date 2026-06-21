@@ -4,983 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>دانشگاه ملی مهارت دختران قم</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazir FD-WOL', Tahoma, sans-serif;
-        }
-
-        body {
-            background: #0d2e1a;
-            min-height: 100vh;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        /* گرادیانت متحرک ملایم */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -2;
-            background: linear-gradient(135deg, #123d20 0%, #1a5530 30%, #0f331c 70%, #0a2615 100%);
-            background-size: 200% 200%;
-            animation: smoothFlow 18s ease infinite;
-        }
-
-        @keyframes smoothFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(255,217,102,0.08) 0%, transparent 80%),
-                        radial-gradient(circle at 70% 80%, rgba(255,217,102,0.06) 0%, transparent 80%);
-            animation: pulseGlow 8s ease infinite;
-        }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-            100% { opacity: 0.3; }
-        }
-
-        /* منو */
-        .menu {
-            background: rgba(10, 30, 16, 1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255,217,102,0.25);
-        }
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 24px;
-            flex-wrap: wrap;
-        }
-        .menu-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .logo {
-            width: 50px;
-            height: 55px;
-            background: linear-gradient(145deg, #ffd966, #ffed9e);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #1a472a;
-            font-size: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-			background-image: url("logo.jpg");
-			background-size: cover;
-        }
-        .hamburger-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        #navMenu {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-        }
-        .menu-item {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            padding: 8px 18px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .menu-item:hover {
-            color: white;
-            background: rgba(255,255,255,0.12);
-        }
-        .menu-item.active {
-            color: #ffd966;
-            background: rgba(255,217,102,0.18);
-			
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .menu-item.active .menu-icon {
-            filter: brightness(0) saturate(100%) invert(89%) sepia(37%) saturate(722%) hue-rotate(2deg) brightness(106%) contrast(101%);
-        }
-
-        .menu-icon {
-            width: 20px;
-            height: 20px;
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .icon-home { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Cpolyline points='9 22 9 12 15 12 15 22'/%3E%3C/svg%3E"); }
-        .icon-booking { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E"); }
-        .icon-schedule { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E"); }
-        .icon-uni { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"); }
-        .icon-rules { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Cpath d='M12 2v20M17 7H7M17 12H7M17 17H7'/%3E%3C/svg%3E"); }
-        .icon-contact { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='1.5'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E"); }
-
-        .menu-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-.notification-btn {
-position: relative;
-background: none;
-border: none;
-cursor: pointer;
-padding: 8px;
-border-radius: 50%;
-}
-.notification-icon {
-width: 33px;
-height: 33px;
-display: block;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234a5568' viewBox='0 0 24 24'%3E%3Cpath d='M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z'/%3E%3C/svg%3E");
-background-size: contain;
-filter: brightness(0) invert(1);
-}
-.notification-badge {
-position: absolute;
-top: 2px;
-right: 3px;
-background: #e74c3c;
-color: white;
-font-size: 10px;
-font-weight: bold;
-width: 20px;
-height: 20px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-        .profile-container {
-            position: relative;
-        }
-        .profile-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            cursor: pointer;
-            padding: 5px 12px 5px 8px;
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-        .profile-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        .profile-avatar-img {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(145deg, #ffd966, #f5b042);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a472a;
-            font-weight: bold;
-        }
-        .profile-name {
-            color: white;
-            font-size: 0.85rem;
-        }
-        .profile-dropdown {
-            position: absolute;
-            top: 48px;
-            left: 0;
-            background: rgba(255,255,255,0.98);
-            background: rgba(0,0,0,0.2)
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            display: none;
-            flex-direction: column;
-            min-width: 160px;
-            z-index: 200;
-            overflow: hidden;
-        }
-        .profile-dropdown.show {
-            display: flex;
-        }
-        .dropdown-item {
-            padding: 12px 20px;
-            text-decoration: none;
-            color: #1a472a;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .dropdown-item:hover {
-            background: #e8f5e9;
-        }
-
-        /* هدر */
-        .hero-section {
-            padding: 80px 24px;
-            text-align: center;
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero-content h1 {
-            color: #ffd966;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .hero-content p {
-            color: rgba(255,255,255,0.88);
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: #ffd966;
-            color: #1a472a;
-            padding: 14px 32px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-            background: #ffed9e;
-        }
-        .btn-outline {
-            background: rgba(255,255,255,0.12);
-            border: 1.5px solid #ffd966;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-outline:hover {
-            background: rgba(255,217,102,0.2);
-            transform: translateY(-3px);
-        }
-
-        /* آمار */
-        .stats-grid {
-            max-width: 1200px;
-            margin: -40px auto 50px;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 28px;
-            padding: 25px 20px;
-            text-align: center;
-            border: 1px solid rgba(255,217,102,0.2);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .stat-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .stat-card:hover {
-            background: rgba(255,255,255,0.14);
-            border-color: #ffd966;
-            transform: translateY(-5px);
-        }
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: white;
-            margin: 10px 0 5px;
-        }
-        .stat-label {
-            color: rgba(255,255,255,0.75);
-            font-size: 0.85rem;
-        }
-
-        /* اسلایدر */
-        .news-slider-section {
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 24px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-        .news-slider-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slider-box {
-            background: rgba(255,255,255,0.96);
-            border-radius: 32px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .slide {
-            display: none;
-        }
-        .slide.active-slide {
-            display: block;
-            animation: fadeSlide 0.5s ease;
-        }
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .slide h3 {
-            color: #1a472a;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        .slide p {
-            color: #4a5a4a;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        .slide-date {
-            background: #ffd966;
-            padding: 5px 18px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 15px;
-            color: #1a472a;
-            font-weight: 500;
-        }
-        .dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            background: #cbdccb;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .dot.active {
-            width: 28px;
-            border-radius: 10px;
-            background: #ffd966;
-        }
-
-        /* بخش نوآورانه - فاصله استاتیک */
-        .innovative-row {
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .glass-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 28px;
-            padding: 28px;
-            border: 1px solid rgba(255,217,102,0.2);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .glass-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .glass-card h3 {
-            color: #ffd966;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-        }
-        .distance-info {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.25);
-            border-radius: 20px;
-            margin-bottom: 15px;
-        }
-        .uni-address {
-            font-size: 1rem;
-            color: white;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-        .travel-times-static {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .travel-item {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 16px;
-        }
-        .travel-item span:first-child {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.6);
-            display: block;
-        }
-        .travel-item span:last-child {
-            font-size: 0.9rem;
-            color: #ffd966;
-            font-weight: bold;
-            display: block;
-            margin-top: 5px;
-        }
-        .lost-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            margin-bottom: 10px;
-        }
-        .lost-item strong {
-            color: white;
-        }
-
-        /* لینک سریع */
-        .quick-section {
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 24px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-        .quick-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .quick-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .quick-title h3 {
-            color: #ffd966;
-            font-size: 1.5rem;
-        }
-        .quick-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .quick-item {
-            background: rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            border: 1px solid rgba(255,217,102,0.2);
-            transition: 0.3s;
-        }
-        .quick-item:hover {
-            background: rgba(255,217,102,0.15);
-            transform: translateY(-5px);
-            border-color: #ffd966;
-        }
-        .quick-item svg {
-            width: 40px;
-            height: 40px;
-            stroke: #ffd966;
-            margin-bottom: 10px;
-        }
-        .quick-item span {
-            display: block;
-            color: white;
-            font-weight: 500;
-        }
-
-        /* دو کارت - با پشتیبانی شبیه کد دوم */
-        .two-cards {
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-        .two-cards.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .info-card {
-            background: rgba(255,255,255,0.08);
-
-            border-radius: 28px;
-            padding: 28px;
-            border: 1px solid rgba(255,217,102,0.2);
-        }
-        .info-card h3 {
-            color: #ffd966;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .reserve-list {
-            list-style: none;
-        }
-        .reserve-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            margin-bottom: 10px;
-        }
-        .reserve-title {
-            font-weight: bold;
-            color: white;
-        }
-        .reserve-meta {
-            font-size: 11px;
-            color: rgba(255,255,255,0.65);
-        }
-        .badge-success {
-            background: rgba(46,125,50,0.85);
-            color: white;
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-size: 11px;
-        }
-        .badge-warning {
-            background: rgba(180,83,9,0.85);
-            color: white;
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-size: 11px;
-        }
-        .view-all {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .view-all a {
-            color: #ffd966;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-       /* آیکون هدفون */
-.support-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 15px auto;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z'/%3E%3Cpath d='M12 19c-1.1 0-2 .9-2 2v1h4v-1c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* استایل ستاره‌ها */
-.rating-stars-container {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.rating-stars {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-    direction: ltr;
-}
-
-.rating-stars .star {
-    font-size: 45px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: rgba(255,255,255,0.5);
-}
-
-.rating-stars .star:hover,
-.rating-stars .star.active {
-    color: #ffc107;
-    transform: scale(1.1);
-}
-
-.rating-info {
-    margin-top: 8px;
-}
-
-.rating-value {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffc107;
-}
-
-.rating-small-stars {
-    display: inline-flex;
-    gap: 2px;
-    margin: 0 8px;
-}
-
-.rating-small-stars .star-small {
-    font-size: 17px;
-    color: #ffc107;
-}
-
-.rating-count {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-}
-
-.rating-message {
-    font-size: 12px;
-    margin-top: 8px;
-    color: #ffc107;
-}
-.support-card {
-	background: linear-gradient(145deg, #2656BA, #1a44a0);
-	position: relative;
-	overflow: hidden;
-	color: white;
-	border-radius: 28px;
-	padding: 28px;
-}
-.support-card .support-box, .support-card .thank-box { position: relative; z-index: 1; color: white; }
-.support-card h4,p { color: white; }
-.btn-support {
-	background: white;
-	color: #2656BA;
-	padding: 8px 20px;
-	border-radius: 50px;
-	border: none;
-	cursor: pointer;
-	margin-top: 10px;
-	font-weight: bold;
-}
-.thank-box { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 15px; padding-top: 15px; }
-
-
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(10, 31, 16, 0.9);
-            color: #c8e0c8;
-            font-size: 0.8rem;
-            margin-top: 20px;
-        }
-
-        /* دکمه بالا */
-        .go-up-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(145deg, #2d6a3f, #1a472a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-            z-index: 99;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-            border: 2px solid rgba(255,217,102,0.6);
-        }
-        .go-up-btn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .go-up-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            background: linear-gradient(145deg, #1b5e2a, #0f3d1a);
-        }
-        .go-up-btn::before {
-            content: "";
-            position: absolute;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: rgba(45,106,63,0.35);
-            animation: pulseRing 2s infinite;
-        }
-        @keyframes pulseRing {
-            0% { transform: scale(1); opacity: 0.5; }
-            70% { transform: scale(1.3); opacity: 0; }
-            100% { transform: scale(1.3); opacity: 0; }
-        }
-
-        /* مودال */
-        .phone-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .phone-modal-content {
-            background: white;
-            border-radius: 32px;
-            padding: 35px;
-
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        .phone-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1a472a;
-            margin: 20px 0;
-            direction: ltr;
-            letter-spacing: 2px;
-        }
-
-        /* چت بات */
-        .floating-support {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(145deg, #2d6a3f, #1b5e2a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 99;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-            border: 2px solid rgba(255,217,102,0.5);
-        }
-        .floating-support svg {
-            width: 28px;
-            height: 28px;
-            stroke: white;
-        }
-        .chatbot-container {
-            position: fixed;
-            bottom: 100px;
-            left: 30px;
-            width: 320px;
-            max-width: calc(100vw - 60px);
-            background: white;
-            border-radius: 24px;
-            display: none;
-            flex-direction: column;
-            z-index: 100;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-        }
-        .chatbot-container.active {
-            display: flex;
-        }
-        .chatbot-header {
-            background: #1a472a;
-            color: white;
-            padding: 14px;
-            border-radius: 24px 24px 0 0;
-            display: flex;
-            justify-content: space-between;
-        }
-        .chatbot-messages {
-            height: 300px;
-            overflow-y: auto;
-            padding: 12px;
-            background: #f5f8f5;
-            display: flex;
-            flex-direction: column;
-        }
-        .message {
-            padding: 8px 14px;
-            border-radius: 18px;
-            margin-bottom: 8px;
-            max-width: 85%;
-        }
-        .bot-message {
-            background: #e8f5e8;
-            color: #1a472a;
-            align-self: flex-start;
-        }
-        .user-message {
-            background: #ffd966;
-            color: #1a472a;
-            align-self: flex-end;
-        }
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 10px;
-            background: #f5f8f5;
-            border-top: 1px solid #ddd;
-        }
-        .quick-reply-btn {
-            background: white;
-            border: 1px solid #2d6a3f;
-            padding: 5px 14px;
-            border-radius: 25px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .quick-reply-btn:hover {
-            background: #2d6a3f;
-            color: white;
-        }
-        .chatbot-input-area {
-            display: flex;
-            padding: 10px;
-            gap: 8px;
-            border-top: 1px solid #ddd;
-        }
-        .chatbot-input {
-            flex: 1;
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-        }
-        .chatbot-send {
-            background: #1a472a;
-            color: white;
-            border: none;
-            width: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger-btn { display: block; }
-            #navMenu {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-                gap: 10px;
-            }
-            #navMenu.active-mobile { display: flex; }
-            .stats-grid, .quick-grid, .two-cards, .innovative-row {
-                grid-template-columns: 1fr !important;
-            }
-            .stats-grid { margin-top: -20px; gap: 15px; }
-            .hero-content h1 { font-size: 1.8rem; }
-            .slider-box { padding: 20px; }
-            .travel-times-static { flex-direction: column; gap: 8px; }
-        }
-    </style>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="animated-bg"></div>
-
-    <!-- منو -->
     <nav class="menu">
         <div class="menu-container">
             <div class="menu-left">
-                <div class="logo"></div>
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
                 <button class="hamburger-btn" id="hamburgerBtn">☰</button>
             </div>
             <ul id="navMenu">
-                <li><a href="#" class="menu-item active"><span class="menu-icon icon-home"></span> خانه</a></li>
-                <li><a href="#" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
-                <li><a href="#" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس</a></li>
-                <li><a href="#" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه‌ها</a></li>
-                <li><a href="#" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
-                <li><a href="#" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+                <li><a href="index.html" class="menu-item active"><span class="menu-icon icon-home"></span> خانه</a></li>
+				<li><a href="login.html" class="menu-item "><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
             </ul>
-            <div class="menu-right">
-                <button class="notification-btn" id="notificationBtn"><span class="notification-icon"></span><span class="notification-badge">3</span></button>
-                <div class="profile-container">
-                    <button class="profile-btn" id="profileBtn">
-                        <div class="profile-avatar-img">ف</div>
-                        <span class="profile-name">فاطمه محمدی</span>
-                    </button>
-                    <div class="profile-dropdown" id="profileDropdown">
-                        <a href="#" class="dropdown-item">پنل کاربری</a>
-                        <a href="#" class="dropdown-item">خروج</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
 
-    <!-- هدر -->
     <div class="hero-section">
         <div class="hero-content">
             <h1>دانشگاه ملی مهارت دختران قم</h1>
             <p>رزرو، مدیریت و لذت بردن از امکانات ورزشی شما</p>
             <div class="hero-buttons">
-                <a href="#" class="btn-primary">
+                <a href="show_hall.html" class="btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
                     مشاهده سالن‌ها
                 </a>
-                <a href="#" class="btn-outline">
+                <a href="hallReservation.html" class="btn-outline">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -993,7 +52,6 @@ justify-content: center;
         </div>
     </div>
 
-    <!-- آمار -->
     <div class="stats-grid" id="statsGrid">
         <div class="stat-card"><div class="stat-number" data-target="8">0</div><div class="stat-label">رشته ورزشی</div></div>
         <div class="stat-card"><div class="stat-number" data-target="1340">0</div><div class="stat-label">دانشجو فعال</div></div>
@@ -1001,23 +59,22 @@ justify-content: center;
         <div class="stat-card"><div class="stat-number" data-target="25">0</div><div class="stat-label">مقام کشوری</div></div>
     </div>
 
-    <!-- اسلایدر خبری بدون عکس اضافی -->
     <div class="news-slider-section">
         <div class="slider-box">
             <div class="slide active-slide">
-                <h3>ثبت بیش از صد دانشگاه در کمتر از یک هفته</h3>
-                <p>هم اکنون بیش از صد دانشگاه در کمتر از یک هفته در سایت ثبت نام کردند و سایت مخصوص آنها در اختیارشان قرار گرفته</p>
+                <h3>برگزاری مسابقات دارت دانشجویی</h3>
+                <p>مسابقه دارت درون دانشگاه برگزار میشود. برای شرکت در مسابقه از طریق پنل کاربری خود اقدام کنید</p>
                 <span class="slide-date">۱۴۰۵/۰۳/۱۵</span>
             </div>
             <div class="slide">
                 <h3>مسابقات ورزشی همگانی</h3>
-                <p>اولین دوره مسابقات همگانی دانشگاه‌های مهارت کشور در قم برگزار می‌شود.</p>
-                <span class="slide-date">۱۴۰۴/۰۲/۲۸</span>
+                <p>اولین دوره مسابقات همگانی دانشگاه‌های مهارت کشور در قم برگزار می‌شود</p>
+                <span class="slide-date">۱۴۰۵/۰۲/۲۸</span>
             </div>
             <div class="slide">
                 <h3>دوره مربیگری بسکتبال</h3>
-                <p>دوره مربیگری درجه ۳ بسکتبال ویژه دانشجویان برگزار می‌گردد.</p>
-                <span class="slide-date">۱۴۰۴/۰۲/۲۵</span>
+                <p>دوره مربیگری درجه ۳ بسکتبال ویژه دانشجویان برگزار می‌گردد</p>
+                <span class="slide-date">۱۴۰۵/۰۲/۲۵</span>
             </div>
             <div class="dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1026,8 +83,6 @@ justify-content: center;
             </div>
         </div>
     </div>
-
-    <!-- بخش نوآورانه - فاصله استاتیک + وسایل گمشده -->
     <div class="innovative-row">
         <div class="glass-card">
             <h3>
@@ -1045,7 +100,6 @@ justify-content: center;
                 <div class="travel-item"><span>پیاده</span><span>۵۵ دقیقه</span></div>
                 <div class="travel-item"><span>با اتوبوس</span><span>۲۵ دقیقه</span></div>
             </div>
-            <p style="color:rgba(255,255,255,0.5); text-align:center; font-size:0.7rem; margin-top:12px;">زمان‌های تقریبی از مرکز شهر قم</p>
         </div>
 
         <div class="glass-card">
@@ -1058,39 +112,36 @@ justify-content: center;
                 وسایل گمشده
             </h3>
             <div class="lost-item">
-                <div><strong>کیف ورزشی مشکی</strong><br><span style="font-size:11px; color:#aaa;">سالن بدنسازی - دیروز</span></div>
-                <span style="background:#ffd966; padding:3px 12px; border-radius:20px; font-size:11px; color:#1a472a;">پیدا شده</span>
+                <div><strong>کیف ورزشی مشکی</strong><br><span class="Lost-date">سالن اصلی - دیروز</span></div>
+                <span class="found">پیدا شده</span>
             </div>
             <div class="lost-item">
-                <div><strong>بطری آب مدادی</strong><br><span style="font-size:11px; color:#aaa;">زمین فوتبال - ۲ روز پیش</span></div>
-                <span style="background:rgba(180,83,9,0.9); padding:3px 12px; border-radius:20px; font-size:11px;">در جستجو</span>
+                <div><strong>بطری آب</strong><br><span class="Lost-date">سالن اصلی - ۲ روز پیش</span></div>
+                <span class="in-search">در جستجو</span>
             </div>
             <div class="lost-item">
-                <div><strong>ساعت هوشمند گارمین</strong><br><span style="font-size:11px; color:#aaa;">رختکن سالن - ۵ روز پیش</span></div>
-                <span style="background:rgba(180,83,9,0.9); padding:3px 12px; border-radius:20px; font-size:11px;">در جستجو</span>
+                <div><strong>ساعت هوشمند</strong><br><span class="Lost-date">رختکن  - ۵ روز پیش</span></div>
+                <span class="in-search">در جستجو</span>
             </div>
             <div class="view-all" style="margin-top:15px;">
-                <a href="#" style="color:#ffd966;">مشاهده همه</a>
+                <a href="all_losts.html" style="color:#ffd966;">مشاهده همه</a>
             </div>
         </div>
     </div>
 
-    <!-- لینک سریع -->
     <div class="quick-section">
         <div class="quick-title"><h3>دسترسی سریع</h3></div>
         <div class="quick-grid">
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3L1 9l11 6 11-6-11-6z"/><path d="M3 9l9 5 9-5"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg><span>نیازمندی‌ها</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/><path d="M10 4h4v2h-4V4z"/></svg><span>بازارچه</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16v12H4z"/><path d="M8 6v12"/><path d="M12 6v12"/><path d="M16 6v12"/><path d="M4 10h16"/></svg><span>مقالات</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M5 20v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2"/></svg><span>مربیان</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/></svg><span>افتخارات</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="none"/></svg><span>سوالات</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/></svg><span>باشگاه‌ها</span></a>
-            <a href="#" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="7" cy="15" r="1.5"/><circle cx="12" cy="15" r="1.5"/><circle cx="17" cy="15" r="1.5"/></svg><span>تیکت</span></a>
+            <a href="Requirements.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3L1 9l11 6 11-6-11-6z"/><path d="M3 9l9 5 9-5"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg><span>نیازمندی‌ها</span></a>
+            <a href="sports_market.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/><path d="M10 4h4v2h-4V4z"/></svg><span>بازارچه</span></a>
+            <a href="articles.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16v12H4z"/><path d="M8 6v12"/><path d="M12 6v12"/><path d="M16 6v12"/><path d="M4 10h16"/></svg><span>مقالات</span></a>
+            <a href="trainers.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M5 20v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2"/></svg><span>مربیان</span></a>
+            <a href="sports_honors.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/></svg><span>افتخارات</span></a>
+            <a href="frequently_asked_questions.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="none"/></svg><span>سوالات</span></a>
+            <a href="good_clubs.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 4h-3a5 5 0 0 0-5 5v3"/><path d="M19 4h-3a5 5 0 0 0-5 5v3" transform="translate(0, 8)"/><line x1="5" y1="9" x2="19" y2="9"/></svg><span>باشگاه‌ها</span></a>
+            <a href="ticket_tracking.html" class="quick-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="7" cy="15" r="1.5"/><circle cx="12" cy="15" r="1.5"/><circle cx="17" cy="15" r="1.5"/></svg><span>تیکت</span></a>
         </div>
     </div>
-
-    <!-- رزروها و پشتیبانی -->
     <div class="two-cards">
         <div class="info-card">
             <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> رزروهای آتی</h3>
@@ -1099,42 +150,42 @@ justify-content: center;
                 <li class="reserve-item"><div><div class="reserve-title">زمین فوتبال</div><div class="reserve-meta">۲۳ می — ۱۶:۰۰ تا ۱۸:۰۰</div></div><span class="badge-warning">در انتظار</span></li>
                 <li class="reserve-item"><div><div class="reserve-title">منطقه باشگاهی</div><div class="reserve-meta">۲۵ می — ۰۹:۰۰ تا ۱۱:۰۰</div></div><span class="badge-success">تأیید شده</span></li>
             </ul>
-            <div class="view-all"><a href="#">نمایش همه رزروها</a></div>
+            <div class="view-all"><a href="all_reserve.html">نمایش همه رزروها</a></div>
         </div>
-       <div class="card support-card">
-                        <div class="support-box">
-                            <div class="support-icon"></div>
-                            <h4>نیاز به کمک دارید؟</h4>
-                            <p>برای دریافت کمک با تیم پشتیبانی تماس بگیرید.</p>
-                            <button class="btn-support" onClick="goSupport()">تماس با پشتیبانی</button>
-                        </div>
-                        <div class="thank-box">
-                            <h4>ممنون بابت کمک شما</h4>
-                            <p>چطور سرویس ما را امتیاز می‌دهید؟</p>
-                            <div class="rating-stars-container">
-                                <div class="rating-info">
-                                    <span class="rating-value" id="avgRatingValue">0</span>
-                                    <span class="rating-small-stars" id="avgStarsDisplay"></span>
-                                    <span class="rating-count" id="ratingCount">(0 نظر)</span>
-                                </div>
-                                <div class="rating-stars" id="ratingStars">
-                                    <span class="star" data-value="1">☆</span>
-                                    <span class="star" data-value="2">☆</span>
-                                    <span class="star" data-value="3">☆</span>
-                                    <span class="star" data-value="4">☆</span>
-                                    <span class="star" data-value="5">☆</span>
-                                </div>
-                                <div class="rating-message" id="ratingMessage"></div>
-                            </div>
-                        </div>
+
+        <div class="support-card">
+            <div class="support-box">
+                <div class="support-icon"></div>
+                <h4>نیاز به کمک دارید؟</h4>
+                <p>برای دریافت کمک با تیم پشتیبانی تماس بگیرید.</p>
+                <button class="btn-support" id="showPhoneBtn">تماس با پشتیبانی</button>
+            </div>
+            <div class="thank-box">
+                <h4>ممنون بابت کمک شما</h4>
+                <p>چطور سرویس ما را امتیاز می‌دهید؟</p>
+                <div class="rating-stars-container">
+                    <div class="rating-info">
+                        <span class="rating-value" id="avgRatingValue">0</span>
+                        <span class="rating-small-stars" id="avgStarsDisplay"></span>
+                        <span class="rating-count" id="ratingCount">(0 نظر)</span>
                     </div>
+                    <div class="rating-stars" id="ratingStars">
+                        <span class="star" data-value="1">☆</span>
+                        <span class="star" data-value="2">☆</span>
+                        <span class="star" data-value="3">☆</span>
+                        <span class="star" data-value="4">☆</span>
+                        <span class="star" data-value="5">☆</span>
+                    </div>
+                    <div class="rating-message" id="ratingMessage"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        <p>© ۱۴۰۴ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است.</p>
+        <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است.</p>
     </div>
 
-    <!-- مودال -->
     <div class="phone-modal" id="phoneModal">
         <div class="phone-modal-content">
             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#2d6a3f" stroke-width="1.5" style="margin:0 auto 15px auto; display:block;">
@@ -1143,14 +194,11 @@ justify-content: center;
             <h3 style="color:#1a472a;">شماره تماس پشتیبانی</h3>
             <div class="phone-number">۰۲۱-۱۲۳۴۵۶۷۸</div>
             <button class="btn-support" id="copyPhoneBtn" style="background:#1a472a;color:white;">کپی شماره</button>
-            <button class="btn-support-outline" onclick="closePhoneModal()" style="margin-top:15px; background:#8a9a8a; color:white; border:none;">بستن</button>
+            <button class="btn-support" onclick="closePhoneModal()" style="margin-top:15px; background:#8a9a8a; color:white; border:none;">بستن</button>
         </div>
     </div>
+<div class="go-up-btn" id="goUpBtn">↑</div>
 
-    <!-- دکمه بالا -->
-    <div class="go-up-btn" id="goUpBtn">↑</div>
-
-    <!-- چت بات -->
     <div class="floating-support" id="supportBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -1171,190 +219,7 @@ justify-content: center;
         </div>
     </div>
 
-    <script>
-        // منو همبرگر
-        const hamburger = document.getElementById('hamburgerBtn');
-        const navMenu = document.getElementById('navMenu');
-        if(hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
-        // پروفایل
-        const profileBtn = document.getElementById('profileBtn');
-        const profileDropdown = document.getElementById('profileDropdown');
-        if(profileBtn) profileBtn.onclick = (e) => { e.stopPropagation(); profileDropdown.classList.toggle('show'); };
-        document.onclick = (e) => { if(profileDropdown && profileBtn && !profileBtn.contains(e.target)) profileDropdown.classList.remove('show'); };
-
-        // انیمیشن شمارش اعداد
-        function animateNumbers() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(el => {
-                const target = parseInt(el.getAttribute('data-target'));
-                let current = 0;
-                const increment = target / 40;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if(current >= target) {
-                        el.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = Math.floor(current);
-                    }
-                }, 18);
-            });
-        }
-
-        // انیمیشن اسکرول
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-
-        document.querySelectorAll('.stat-card, .news-slider-section, .quick-section, .two-cards, .glass-card').forEach(el => observer.observe(el));
-
-        window.onload = () => {
-            animateNumbers();
-            document.querySelectorAll('.stat-card, .news-slider-section, .quick-section, .two-cards, .glass-card').forEach(el => {
-                if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
-            });
-        };
-
-        // دکمه بالا
-        const goUp = document.getElementById('goUpBtn');
-        window.onscroll = () => { window.scrollY > 300 ? goUp.classList.add('show') : goUp.classList.remove('show'); };
-        goUp.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // اسلایدر
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        function showSlide(idx) {
-            slides.forEach(s => s.classList.remove('active-slide'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[idx].classList.add('active-slide');
-            dots[idx].classList.add('active');
-            currentSlide = idx;
-        }
-        dots.forEach((dot, i) => dot.onclick = () => showSlide(i));
-        setInterval(() => { let n = (currentSlide + 1) % slides.length; showSlide(n); }, 5500);
-        // مودال
-        const phoneModal = document.getElementById('phoneModal');
-        const showPhone = document.getElementById('showPhoneBtn');
-        const copyPhone = document.getElementById('copyPhoneBtn');
-        if(showPhone) showPhone.onclick = () => phoneModal.style.display = 'flex';
-        if(copyPhone) copyPhone.onclick = () => { navigator.clipboard.writeText('۰۲۱-۱۲۳۴۵۶۷۸'); alert('شماره تماس کپی شد!'); };
-        window.closePhoneModal = () => phoneModal.style.display = 'none';
-        if(phoneModal) phoneModal.onclick = (e) => { if(e.target === phoneModal) phoneModal.style.display = 'none'; };
-
-        // چت بات
-        const supBtn = document.getElementById('supportBtn');
-        const chat = document.getElementById('chatbotContainer');
-        const closeChat = document.getElementById('closeChat');
-        const msgDiv = document.getElementById('chatMessages');
-        const inp = document.getElementById('chatInput');
-        const send = document.getElementById('sendMessage');
-        const qBtns = document.querySelectorAll('.quick-reply-btn');
-        const resp = { 'رزرو سالن': 'به بخش رزرو سالن مراجعه یا با ۰۲۱-۱۲۳۴۵۶۷۸ تماس بگیرید.', 'ساعات کاری': 'شنبه تا چهارشنبه ۸-۲۲، پنجشنبه ۸-۲۰، جمعه ۹-۱۸', 'قوانین': 'استفاده از لباس مناسب، رعایت نظافت و احترام به دیگران', 'تماس': '۰۲۱-۱۲۳۴۵۶۷۸', 'شماره تماس': '۰۲۱-۱۲۳۴۵۶۷۸' };
-        function addMsg(t, isUser) { let m = document.createElement('div'); m.className = 'message ' + (isUser ? 'user-message' : 'bot-message'); m.textContent = t; msgDiv.appendChild(m); msgDiv.scrollTop = msgDiv.scrollHeight; }
-        function getReply(msg) { for(let k in resp) if(msg.includes(k)) return resp[k]; return 'پاسخگوی شما هستیم!'; }
-        function sendMsg() { let m = inp.value.trim(); if(!m) return; addMsg(m, true); inp.value = ''; setTimeout(() => addMsg(getReply(m), false), 350); }
-        if(supBtn) supBtn.onclick = () => chat.classList.toggle('active');
-        if(closeChat) closeChat.onclick = () => chat.classList.remove('active');
-        if(send) send.onclick = sendMsg;
-        if(inp) inp.onkeypress = (e) => { if(e.key === 'Enter') sendMsg(); };
-        qBtns.forEach(btn => btn.onclick = () => { let m = btn.getAttribute('data-msg'); addMsg(m, true); setTimeout(() => addMsg(getReply(m), false), 350); });
-		
-		 // ========== سیستم امتیازدهی ==========
-        (function initRating() {
-            const stars = document.querySelectorAll('.rating-stars .star');
-            const ratingValueSpan = document.getElementById('avgRatingValue');
-            const ratingCountSpan = document.getElementById('ratingCount');
-            const avgStarsDisplay = document.getElementById('avgStarsDisplay');
-            const ratingMessage = document.getElementById('ratingMessage');
-            
-            if (!stars.length) return;
-            
-            let savedRating = localStorage.getItem('userRating');
-            let ratingCount = parseInt(localStorage.getItem('ratingCount') || 0);
-            let ratingSum = parseFloat(localStorage.getItem('ratingSum') || 0);
-            let avgRating = ratingCount > 0 ? (ratingSum / ratingCount).toFixed(1) : 0;
-            
-            function generateSmallStars(rating) {
-                let html = '';
-                let full = Math.floor(rating);
-                let half = rating % 1 >= 0.5;
-                for (let i = 1; i <= 5; i++) {
-                    if (i <= full) html += '<span class="star-small">★</span>';
-                    else if (i === full + 1 && half) html += '<span class="star-small">½</span>';
-                    else html += '<span class="star-small">☆</span>';
-                }
-                return html;
-            }
-            
-            function updateAvgDisplay() {
-                ratingValueSpan.textContent = avgRating;
-                ratingCountSpan.textContent = `(${ratingCount} نظر)`;
-                avgStarsDisplay.innerHTML = generateSmallStars(avgRating);
-            }
-            
-            function saveRating(score) {
-                if (savedRating) {
-                    ratingSum -= parseFloat(savedRating);
-                    ratingCount--;
-                }
-                savedRating = score;
-                ratingSum += score;
-                ratingCount++;
-                avgRating = (ratingSum / ratingCount).toFixed(1);
-                localStorage.setItem('userRating', score);
-                localStorage.setItem('ratingCount', ratingCount);
-                localStorage.setItem('ratingSum', ratingSum);
-                updateAvgDisplay();
-                ratingMessage.textContent = '✅ از امتیاز شما سپاسگزاریم!';
-                setTimeout(() => { ratingMessage.textContent = ''; }, 3000);
-            }
-            
-            updateAvgDisplay();
-            
-            if (savedRating) {
-                stars.forEach((star, index) => {
-                    if (index < savedRating) {
-                        star.innerHTML = '★';
-                        star.classList.add('active');
-                    }
-                });
-            }
-            
-            stars.forEach(star => {
-                star.addEventListener('mouseenter', function() {
-                    let val = parseInt(this.getAttribute('data-value'));
-                    stars.forEach((s, idx) => {
-                        if (idx < val) { s.innerHTML = '★'; s.style.color = '#ffc107'; }
-                        else { s.innerHTML = '☆'; s.style.color = 'rgba(255,255,255,0.5)'; }
-                    });
-                });
-                star.addEventListener('click', function() {
-                    let val = parseInt(this.getAttribute('data-value'));
-                    saveRating(val);
-                    stars.forEach((s, idx) => {
-                        if (idx < val) { s.innerHTML = '★'; s.classList.add('active'); }
-                        else { s.innerHTML = '☆'; s.classList.remove('active'); }
-                    });
-                });
-            });
-            const starsContainer = document.querySelector('.rating-stars');
-            if (starsContainer) {
-                starsContainer.addEventListener('mouseleave', function() {
-                    stars.forEach((star, idx) => {
-                        if (savedRating && idx < savedRating) { star.innerHTML = '★'; star.style.color = '#ffc107'; }
-                        else { star.innerHTML = '☆'; star.style.color = 'rgba(255,255,255,0.5)'; }
-                    });
-                });
-            }
-        })();
-
-    </script>
+    <script src="js/index.js"></script>
+    <script src="js/background.js"></script>
 </body>
 </html>
