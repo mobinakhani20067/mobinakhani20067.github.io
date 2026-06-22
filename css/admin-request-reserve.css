@@ -57,6 +57,22 @@
     background: transparent;
     -webkit-overflow-scrolling: touch;
 }
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
+}
+
 table {
     width: 100%;
     min-width: 800px;
@@ -367,7 +383,6 @@ td:first-child .warning-badge {
     animation: pulse 1.5s ease-in-out 2;
 }
 
-/* ========== ریسپانسیو موبایل ========== */
 @media (max-width: 768px) {
     .table-wrapper {
         overflow-x: auto;
@@ -376,86 +391,55 @@ td:first-child .warning-badge {
         padding: 0 5px;
         width: 100%;
     }
-    
     .table-wrapper table {
         min-width: 650px;
         width: 100%;
     }
-    
     th, td {
         padding: 10px 6px;
         font-size: 12px;
         white-space: nowrap;
     }
-    
     th {
         font-size: 12px;
     }
-    
     td {
         font-size: 11px;
     }
-    
     .filters {
         flex-direction: column;
         gap: 10px;
         padding: 12px;
         width: 100%;
     }
-    
     .filters input[type="search"],
     .filters select {
         min-width: 100%;
         font-size: 13px;
         padding: 8px 12px;
     }
-    
     .pagination button {
         padding: 5px 10px;
         font-size: 11px;
     }
-    
     .status-badge {
         font-size: 10px;
         padding: 3px 10px;
     }
-    
     .action-buttons {
         flex-wrap: wrap;
         gap: 4px;
     }
-    
     .action-btn {
         font-size: 10px;
         padding: 4px 10px;
     }
-    
     .action-btn svg {
         width: 12px;
         height: 12px;
     }
-    
     .progress-cell {
         min-width: 80px;
-    }
-    
-    /* نمایش اسکرول بار در موبایل */
-    .table-wrapper::-webkit-scrollbar {
-        height: 6px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-thumb {
-        background: #CBECA7;
-        border-radius: 10px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: #81A984;
     }
 }
 
@@ -483,23 +467,19 @@ td:first-child .warning-badge {
         padding: 6px 16px;
         font-size: 13px;
     }
-    
     .table-wrapper table {
         min-width: 550px;
     }
-    
     th, td {
         padding: 8px 4px;
         font-size: 10px;
     }
-    
     .add-btn {
         padding: 10px 18px;
         font-size: 12px;
         width: 100%;
         justify-content: center;
     }
-    
     .toast-msg {
         bottom: 15px;
         right: 15px;
