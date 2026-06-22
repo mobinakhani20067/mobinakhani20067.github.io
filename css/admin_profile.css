@@ -1,6 +1,6 @@
 @charset "utf-8";
 .profile-container {
-	width: 90%;
+	width: 98%;
 	margin: 20px auto;
 	background: white;
 	border-radius: 20px;
@@ -171,7 +171,7 @@
 }
 
 @media (max-width: 768px) {
-	.profile-container { width: 95%; }
+	.profile-container { width: 100%; }
 	.info-grid { grid-template-columns: 1fr; gap: 15px; }
 	.profile-avatar { width: 90px; height: 90px; }
 	.action-buttons { justify-content: center; }
