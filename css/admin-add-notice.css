@@ -35,6 +35,7 @@
     border-radius: 12px;
     margin-left: auto;
     margin-right: auto;
+    -webkit-overflow-scrolling: touch;
 }
 table {
     width: 100%;
@@ -146,7 +147,7 @@ td a, td[onclick] {
     border: solid 2px #CBECA7;
     border-radius: 10px;
     font-size: 14px;
-    background-color:transparent;
+    background-color: transparent;
 }
 .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
     outline: none;
@@ -238,11 +239,103 @@ td a, td[onclick] {
 .priority-normal { background: #d4edda; color: #155724; }
 
 @media (max-width: 768px) {
-    .form-row { flex-direction: column; gap: 10px; }
-    .add-announcement { width: 95%; padding: 15px; }
-    .table-responsive { width: 95%; }
-    .filters { width: 95%; }
-    th, td { padding: 8px 5px; font-size: 11px; }
+    .form-row { 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    .add-announcement { 
+        width: 95%; 
+        padding: 15px; 
+    }
+    .table-responsive { 
+        width: 95%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+        padding: 0 5px;
+    }
+    .table-responsive table {
+        min-width: 600px;
+        width: 100%;
+    }
+    .filters { 
+        width: 95%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+    }
+    .filters input[type="search"],
+    .filters select {
+        min-width: 100%;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    th, td { 
+        padding: 8px 5px; 
+        font-size: 11px;
+        white-space: nowrap;
+    }
+    th {
+        font-size: 11px;
+    }
+    td {
+        font-size: 10px;
+    }
+    .pagination button {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    .priority-badge {
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+    .table-responsive::-webkit-scrollbar {
+        height: 6px;
+    }
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #CBECA7;
+        border-radius: 10px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #81A984;
+    }
+}
+
+@media (max-width: 550px) {
+    .table-responsive table {
+        min-width: 500px;
+    }
+    th, td {
+        padding: 6px 4px;
+        font-size: 9px;
+    }
+    .btn-submit, .btn-cancel {
+        padding: 8px 16px;
+        font-size: 12px;
+        width: 100%;
+        justify-content: center;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .add-announcement {
+        padding: 12px;
+    }
+    .field-group label {
+        font-size: 12px;
+    }
+    .field-group input, .field-group select, .field-group textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .no-data {
+        font-size: 16px;
+        padding: 30px;
+    }
 }
 
 @keyframes fadeIn {
