@@ -141,7 +141,7 @@ body {
     top: 0;
     right: -100%;
     bottom: 0;
-    width: 95%;
+    width: 75%;
     max-width: 500px;
     background: linear-gradient(225deg, #a8c498 0%, #c8dbc0 40%, #d9e8d1 70%, #EBF1E5 100%);
     transition: right 0.3s ease;
