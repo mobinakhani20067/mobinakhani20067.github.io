@@ -19,9 +19,24 @@
     width: 100%;
     border-radius: 12px;
     background: transparent;
-    overflow: hidden;
     -webkit-overflow-scrolling: touch;
 }
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
+}
+
 table {
     width: 100%;
     min-width: 800px;
@@ -216,7 +231,16 @@ td a, td[onclick] {
 }
 .btn-close:hover { background-color: #d32f2f; transform: scale(1.02); }
 
-/* ========== ریسپانسیو موبایل ========== */
+@media (max-width: 992px) {
+    .table-wrapper table {
+        min-width: 750px;
+    }
+    th, td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 768px) {
     .table-wrapper {
         overflow-x: auto;
@@ -224,52 +248,28 @@ td a, td[onclick] {
         margin: 0 -5px;
         padding: 0 5px;
     }
-    
     .table-wrapper table {
-        min-width: 700px;
+        min-width: 650px;
         width: 100%;
     }
-    
     .table-reserve th, 
     .table-reserve td {
         padding: 8px 6px;
         font-size: 11px;
         white-space: nowrap;
     }
-    
     .table-reserve img {
         width: 18px;
         height: 18px;
     }
-    
     .search {
         font-size: 12px;
         padding: 8px 12px;
         max-width: 100%;
     }
-    
     .pagination button {
         padding: 4px 8px;
         font-size: 11px;
-    }
-    
-    /* نمایش اسکرول بار در موبایل */
-    .table-wrapper::-webkit-scrollbar {
-        height: 6px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-thumb {
-        background: #CBECA7;
-        border-radius: 10px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: #81A984;
     }
 }
 
@@ -282,11 +282,9 @@ td a, td[onclick] {
     .form-group label { font-size: 13px; }
     .form-group input { padding: 8px; font-size: 13px; }
     .btn-save, .btn-close { padding: 6px 16px; font-size: 13px; }
-    
     .table-wrapper table {
-        min-width: 600px;
+        min-width: 550px;
     }
-    
     .table-reserve th, 
     .table-reserve td {
         padding: 6px 4px;
