@@ -155,7 +155,7 @@ body {
         top: 0; 
         right: 0;
         bottom: 0;
-        width: 270px;
+        width: 250px;
         border-radius: 15px 0 0 15px; 
     }
     .menu.collapsed {
@@ -296,7 +296,7 @@ body {
 @media (max-width: 768px) { .main { margin: 65px 12px 12px 12px; padding: 15px; } }
 @media (min-width: 400px){
     .menu {
-    max-width: 280px;
+    max-width: 250px;
 }
 }
 .icon-profile { background-image: url("https://unpkg.com/@mdi/svg@7.4.47/svg/account.svg"); }
