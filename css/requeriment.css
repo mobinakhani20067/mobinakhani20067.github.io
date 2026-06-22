@@ -174,14 +174,14 @@ body {
 }
 
 .need-title {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: white;
     margin-bottom: 6px;
 }
 
 .need-desc {
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.5;
     margin-bottom: 12px;
@@ -209,7 +209,7 @@ body {
 .progress-stats {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 10px;
     margin-top: 6px;
     flex-wrap: wrap;
     gap: 6px;
@@ -244,7 +244,7 @@ body {
     padding: 8px 16px;
     border-radius: 30px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     width: 100%;
     margin-top: 12px;
@@ -403,15 +403,19 @@ body {
     background: #c0392b;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .needs-grid {
        grid-template-columns: repeat(3, 1fr);
     }
 }
-
-@media (max-width: 600px) {
-	  .needs-grid {
+@media (max-width: 900px) {
+    .needs-grid {
        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 500px) {
+	  .needs-grid {
+       grid-template-columns: repeat(1, 1fr);
     }
     .needs-wrapper {
         padding: 0 15px;
