@@ -603,7 +603,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
-    font-family: inherit;
+    font-size: 10px;
 }
 
 .pagination-container button:hover:not(:disabled) {
