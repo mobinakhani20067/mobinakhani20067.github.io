@@ -1,162 +1,155 @@
-        let ticketsData = [
-            { code: "T-1111-1111", date: "1405/02/20", status: "پاسخ داده شده", message: "بخش ورود به مشکل خورده", answer: "مشکل برطرف شده است. لطفا دوباره تلاش کنید.", answerDate: "1405/02/29" },
-            { code: "T-2222-2222", date: "1405/03/17", status: "در انتظار پاسخ", message: "من نمیتونم سالن رزرو کنم", answer: "", answerDate: "" },
-            { code: "T-3333-3333", date: "1405/03/12", status: "در انتظار پاسخ", message: "رزرو کمد ها به مشکل خورده", answer: "", answerDate: "" }
-        ];
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>قوانین سالن ورزشی </title>
+    <link href="css/main-menu.css" rel="stylesheet">
+    <link href="css/rules.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="Notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item active"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        function showToast(msg, isError = false) {
-            const toast = document.getElementById('toastMsg');
-            toast.textContent = msg;
-            toast.classList.add('show');
-            if (isError) toast.classList.add('error');
-            setTimeout(() => {
-                toast.classList.remove('show');
-                toast.classList.remove('error');
-            }, 3000);
-        }
+    <div class="container">
+        <div class="header">
+            <h1>قوانین سالن ورزشی</h1>
+            <p>لطفاً قوانین زیر را مطالعه و رعایت کنید تا تجربه‌ای ایمن، عادلانه و لذت‌بخش برای همه فراهم شود.</p>
+        </div>
 
-        function trackTicket() {
-            const codeInput = document.getElementById('trackingCodeInput');
-            const code = codeInput.value.trim();
-            
-            if (!code) {
-                showToast('لطفاً کد پیگیری را وارد کنید', true);
-                return;
-            }
-            
-            const ticket = ticketsData.find(t => t.code === code);
-            
-            if (!ticket) {
-                showToast('کد پیگیری وارد شده صحیح نمی‌باشد', true);
-                return;
-            }
-            
-            document.getElementById('resultCode').textContent = ticket.code;
-            document.getElementById('resultDate').textContent = ticket.date;
-            document.getElementById('resultStatus').textContent = ticket.status;
-            document.getElementById('resultMessage').textContent = ticket.message;
-            
-            const answerBox = document.getElementById('answerBox');
-            const noAnswerBox = document.getElementById('noAnswerBox');
-            
-            if (ticket.answer && ticket.answer !== '') {
-                answerBox.style.display = 'block';
-                noAnswerBox.style.display = 'none';
-                document.getElementById('resultAnswer').textContent = ticket.answer;
-                document.getElementById('answerDate').textContent = ticket.answerDate ? `تاریخ پاسخ: ${ticket.answerDate}` : '';
-            } else {
-                answerBox.style.display = 'none';
-                noAnswerBox.style.display = 'block';
-            }
-            
-            document.getElementById('resultModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeResultModal() {
-            document.getElementById('resultModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        window.onclick = function(event) {
-            const modal = document.getElementById('resultModal');
-            if (event.target === modal) {
-                closeResultModal();
-            }
-        }
-        
-        document.getElementById('trackingCodeInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                trackTicket();
-            }
-        });
-        
-        (function() {
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function(e) { e.stopPropagation(); navMenu.classList.toggle('active-mobile'); });
-                document.addEventListener('click', function(e) {
-                    if (navMenu.classList.contains('active-mobile') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                        navMenu.classList.remove('active-mobile');
-                    }
-                });
-            }
-        })();
-        
-        (function() {
-            const profileBtn = document.getElementById('profileBtn');
-            const profileDropdown = document.getElementById('profileDropdown');
-            if (profileBtn && profileDropdown) {
-                profileBtn.addEventListener('click', function(e) { e.stopPropagation(); profileDropdown.classList.toggle('show'); });
-                document.addEventListener('click', function(e) {
-                    if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-                        profileDropdown.classList.remove('show');
-                    }
-                });
-            }
-        })();
-        
-    const supBtn = document.getElementById('supportBtn');
-const chat = document.getElementById('chatbotContainer');
-const closeChat = document.getElementById('closeChat');
-const msgDiv = document.getElementById('chatMessages');
-const inp = document.getElementById('chatInput');
-const send = document.getElementById('sendMessage');
-const qBtns = document.querySelectorAll('.quick-reply-btn');
+        <div class="rules-list">
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="icon-placeholder">
+                        <img src="img/1.jpg" alt="قانون ۱" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+                    </div>
+                    <h3>۱. حضور و وقت‌شناسی</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <ul>
+                        <li>حداقل ۱۰ دقیقه قبل از زمان رزرو شده حضور یابید.</li>
+                        <li>رزرو شما شامل زمان آماده‌سازی و نظافت است.</li>
+                        <li>تأخیر در ورود، زمان رزرو شما را افزایش نمی‌دهد.</li>
+                    </ul>
+                </div>
+            </div>
 
-const resp = {
-    'رزرو سالن': 'به بخش رزرو سالن مراجعه یا با ۰۲۱-۱۲۳۴۵۶۷۸ تماس بگیرید.',
-    'ساعات کاری': 'شنبه تا چهارشنبه ۸-۲۲، پنجشنبه ۸-۲۰، جمعه ۹-۱۸',
-    'قوانین': 'استفاده از لباس مناسب، رعایت نظافت و احترام به دیگران',
-    'تماس': '۰۲۱-۱۲۳۴۵۶۷۸'
-};
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="icon-placeholder">
+                        <img src="img/2.jpg" alt="قانون ۲" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+                    </div>
+                    <h3>۲. لباس مناسب</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <ul>
+                        <li>لطفاً از لباس‌های مناسب ورزشی استفاده کنید.</li>
+                        <li>استفاده از کفش‌های ورزشی الزامی است.</li>
+                        <li>لباس‌های نامناسب ممکن است باعث عدم پذیرش شما شود.</li>
+                    </ul>
+                </div>
+            </div>
 
-function addMsg(t, isUser) {
-    let m = document.createElement('div');
-    m.className = 'message ' + (isUser ? 'user-message' : 'bot-message');
-    m.textContent = t;
-    msgDiv.appendChild(m);
-    msgDiv.scrollTop = msgDiv.scrollHeight;
-}
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="icon-placeholder">
+                        <img src="img/3.jpg" alt="قانون ۳" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+                    </div>
+                    <h3>۳. رعایت بهداشت</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <ul>
+                        <li>لطفاً تجهیزات ورزشی را پس از استفاده تمیز کنید.</li>
+                        <li>استفاده از حوله شخصی الزامی است.</li>
+                        <li>دستگاه‌ها و تجهیزات را به درستی استفاده کنید.</li>
+                    </ul>
+                </div>
+            </div>
 
-function getReply(msg) {
-    for (let k in resp) {
-        if (msg.includes(k)) return resp[k];
-    }
-    return 'پاسخگوی شما هستیم!';
-}
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="icon-placeholder">
+                        <img src="img/4.jpg" alt="قانون ۴" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+                    </div>
+                    <h3>۴. رفتار محترمانه</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <ul>
+                        <li>به دیگران احترام بگذارید و از ایجاد مزاحمت خودداری کنید.</li>
+                        <li>در صورت بروز مشکل، با مسئول سالن تماس بگیرید.</li>
+                        <li>از صحبت کردن بلند یا ایجاد صداهای ناهنجار خودداری کنید.</li>
+                    </ul>
+                </div>
+            </div>
 
-function sendMsg() {
-    let m = inp.value.trim();
-    if (!m) return;
-    addMsg(m, true);
-    inp.value = '';
-    setTimeout(() => addMsg(getReply(m), false), 400);
-}
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="icon-placeholder">
+                        <img src="img/5.jpg" alt="قانون ۵" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px; ">
+                    </div>
+                    <h3>۵. استفاده از تجهیزات</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <ul>
+                        <li>لطفاً تجهیزات را طبق دستورالعمل استفاده کنید.</li>
+                        <li>در صورت آسیب دیدن هرگونه تجهیزات، فوراً به مسئول سالن اطلاع دهید.</li>
+                        <li>استفاده نادرست از تجهیزات ممکن است منجر به آسیب دیدگی شود.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="go-up-btn" id="goUpBtn">↑</div>
+    <div class="footer">
+        <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است</p>
+    </div>
+    <div class="floating-support" id="supportBtn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
 
-if (supBtn) {
-    supBtn.onclick = () => chat.classList.toggle('active');
-}
-
-if (closeChat) {
-    closeChat.onclick = () => chat.classList.remove('active');
-}
-
-if (send) {
-    send.onclick = sendMsg;
-}
-
-if (inp) {
-    inp.onkeypress = (e) => {
-        if (e.key === 'Enter') sendMsg();
-    };
-}
-
-qBtns.forEach(btn => {
-    btn.onclick = () => {
-        let m = btn.getAttribute('data-msg');
-        addMsg(m, true);
-        setTimeout(() => addMsg(getReply(m), false), 400);
-    };
-});
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <span>پشتیبانی</span>
+        <button class="close-chat" id="closeChat" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+        <div class="message bot-message">سلام! چطور میتونم کمک کنم؟</div>
+    </div>
+    <div class="quick-replies">
+        <button class="quick-reply-btn" data-msg="رزرو سالن">رزرو سالن</button>
+        <button class="quick-reply-btn" data-msg="ساعات کاری">ساعات کاری</button>
+        <button class="quick-reply-btn" data-msg="قوانین">قوانین</button>
+        <button class="quick-reply-btn" data-msg="تماس">شماره تماس</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatInput" placeholder="پیام...">
+        <button class="chatbot-send" id="sendMessage">➤</button>
+    </div>
+</div>
+    <script src="js/background.js"></script>
+    <script src="js/rules.js"></script>
+</body>
+</html>
