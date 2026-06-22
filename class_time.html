@@ -49,6 +49,31 @@
     <div class="footer">
         <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است</p>
     </div>
+    <div class="floating-support" id="supportBtn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
+
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <span>پشتیبانی</span>
+        <button class="close-chat" id="closeChat" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+        <div class="message bot-message">سلام! چطور میتونم کمک کنم؟</div>
+    </div>
+    <div class="quick-replies">
+        <button class="quick-reply-btn" data-msg="رزرو سالن">رزرو سالن</button>
+        <button class="quick-reply-btn" data-msg="ساعات کاری">ساعات کاری</button>
+        <button class="quick-reply-btn" data-msg="قوانین">قوانین</button>
+        <button class="quick-reply-btn" data-msg="تماس">شماره تماس</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatInput" placeholder="پیام...">
+        <button class="chatbot-send" id="sendMessage">➤</button>
+    </div>
+</div>
     <script src="js/background.js"></script>
     <script src="js/class-time.js"></script>
 </body>
