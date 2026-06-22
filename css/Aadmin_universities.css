@@ -621,7 +621,7 @@ body {
     body {
         padding-right: 0;
     }
-	   .section-title {
+    .section-title {
         font-size: 1.1rem;
     }
     .admin-header {
@@ -693,29 +693,37 @@ body {
         flex-direction: column;
         align-items: stretch;
     }
+    .admin-table {
+        min-width: 700px;
+    }
     .admin-table td:last-child {
-        min-width: 160px;
-        max-width: 200px;
+        min-width: 180px;
+        max-width: 240px;
     }
     .admin-table th, .admin-table td {
         font-size: 12px;
         padding: 10px 4px;
+        white-space: nowrap;
     }
     .btn-details, .btn-edit {
         font-size: 10px;
-        padding: 4px 8px;
+        padding: 4px 10px;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     .btn-details span, .btn-edit span {
-        display: none;
+        display: inline;
+        font-size: 10px;
     }
     .btn-details svg, .btn-edit svg {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
     }
     .actions-cell {
         gap: 3px;
-        justify-content: flex-start;
+        justify-content: center;
         overflow-x: auto;
+        flex-wrap: nowrap;
     }
 }
 
@@ -724,19 +732,51 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+    .stat-number {
+        font-size: 1.1rem;
+    }
+    .stat-card {
+        padding: 12px 8px;
+    }
+    .stat-label {
+        font-size: 11px;
+    }
+    .admin-table {
+        min-width: 600px;
+    }
     .admin-table td:last-child {
-        min-width: 130px;
-        max-width: 170px;
+        min-width: 140px;
+        max-width: 190px;
+    }
+    .admin-table th, .admin-table td {
+        font-size: 10px;
+        padding: 8px 3px;
     }
     .btn-details, .btn-edit {
         font-size: 9px;
-        padding: 3px 6px;
+        padding: 3px 8px;
+    }
+    .btn-details span, .btn-edit span {
+        font-size: 9px;
     }
     .btn-details svg, .btn-edit svg {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
     }
     .admin-logo span {
         font-size: 0.85rem;
+    }
+    .actions-cell {
+        gap: 2px;
+    }
+    .section-card {
+        padding: 15px;
+    }
+    .edit-modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
     }
 }
