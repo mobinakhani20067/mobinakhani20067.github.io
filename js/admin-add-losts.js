@@ -1,4 +1,3 @@
-
 let lostItems = [
     { id: 1, name: "کیف ورزشی مشکی", location: "سالن ", date: "1405/03/15", status: "found" },
     { id: 2, name: "بطری آب", location: "سالن", date: "1405/03/13", status: "searching" },
@@ -7,7 +6,7 @@ let lostItems = [
     { id: 5, name: "کفش ورزشی", location: "رختکن", date: "1405/03/05", status: "searching"},
     { id: 6, name: "کیف پول", location: "محوطه دانشگاه", date: "1405/03/01", status: "found"}
 ];
-
+ 
 let claims = [
     { id: 1, lostItemId: 1, claimantName: "فاطمه احمدی", claimantPhone: "09123456789", description: "کیف منه و من توش کلید دارم", status: "pending", date: "1405/03/16" },
     { id: 2, lostItemId: 1, claimantName: "سارا کریمی", claimantPhone: "09198765432", description: "اگه برندش آدیداسه برای منه", status: "pending", date: "1405/03/17" },
@@ -86,8 +85,19 @@ function renderTable() {
             <td><span class="claims-count" onclick="viewClaims(${item.id})">${pendingCount} درخواست</span></td>
             <td>
                 <div class="action-buttons">
-                    <button class="action-btn edit-btn" onclick="editItem(${item.id})">✏️ ویرایش</button>
-                    <button class="action-btn delete-btn" onclick="deleteItem(${item.id})">🗑️ حذف</button>
+                    <button class="action-btn edit-btn" onclick="editItem(${item.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M17 3l4 4L7 21H3v-4L17 3z"/>
+                        </svg>
+                        ویرایش
+                    </button>
+                    <button class="action-btn delete-btn" onclick="deleteItem(${item.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M4 7h16M10 11v6M14 11v6M5 7l1 14h12l1-14"/>
+                            <line x1="9" y1="3" x2="15" y2="3"/>
+                        </svg>
+                        حذف
+                    </button>
                 </div>
             </td>
         `;
@@ -132,7 +142,13 @@ function changePage(page) {
 
 function openAddModal() {
     currentEditId = null;
-    document.getElementById('modalTitle').innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> افزودن وسیله جدید`;
+    document.getElementById('modalTitle').innerHTML = `
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        افزودن وسیله جدید
+    `;
     document.getElementById('itemName').value = '';
     document.getElementById('itemLocation').value = '';
     document.getElementById('itemDate').value = new Date().toLocaleDateString('fa-IR');
@@ -144,7 +160,12 @@ function editItem(id) {
     const item = lostItems.find(i => i.id === id);
     if (!item) return;
     currentEditId = id;
-    document.getElementById('modalTitle').innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5"><path d="M17 3l4 4L7 21H3v-4L17 3z"/></svg> ویرایش وسیله`;
+    document.getElementById('modalTitle').innerHTML = `
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c5a2e" stroke-width="1.5">
+            <path d="M17 3l4 4L7 21H3v-4L17 3z"/>
+        </svg>
+        ویرایش وسیله
+    `;
     document.getElementById('itemName').value = item.name;
     document.getElementById('itemLocation').value = item.location;
     document.getElementById('itemDate').value = item.date;
@@ -213,8 +234,8 @@ function viewClaims(itemId) {
                     ${claim.status === 'pending' ? 'در انتظار بررسی' : (claim.status === 'approved' ? 'تأیید شده' : 'رد شده')}
                 </span></div>
                 <div class="claim-actions">
-                    <button class="claim-approve" onclick="updateClaimStatus(${claim.id}, 'approved')">✓ تأیید</button>
-                    <button class="claim-reject" onclick="updateClaimStatus(${claim.id}, 'rejected')">✗ رد</button>
+                    <button class="claim-approve" onclick="updateClaimStatus(${claim.id}, 'approved')">تأیید</button>
+                    <button class="claim-reject" onclick="updateClaimStatus(${claim.id}, 'rejected')">رد</button>
                 </div>
             </div>
         `).join('');
