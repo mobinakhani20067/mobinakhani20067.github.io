@@ -6,9 +6,10 @@
     padding: 15px;
     border-radius: 12px;
     margin-top: 10px;
-    width: 99%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
+    background: transparent;
 }
 .filters input[type="search"],
 .filters select {
@@ -36,26 +37,31 @@
     margin-right: auto;
     -webkit-overflow-scrolling: touch;
 }
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
+}
 
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-tbody tr:hover {
-    background-color: #f0f7f0;
-    transition: 0.2s;
-}
 table {
     width: 100%;
     min-width: 700px;
     border-collapse: collapse;
 }
 th, td {
+    padding: 12px 10px;
+    text-align: center;
     border-bottom: 1px solid #e0e0e0;
-    padding: 14px 10px;
-    vertical-align: middle;
 }
 th {
     background: #ECF8E0;
@@ -66,26 +72,12 @@ th {
 td {
     color: #555;
     font-size: 13px;
-    text-align: right;
 }
 td a, td[onclick] {
     cursor: pointer;
     color: #2c5a2e;
     text-decoration: underline;
 }
-
-.status-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-}
-.status-in-progress { background: #fff3cd; color: #856404; }
-.status-resolved { background: #d4edda; color: #155724; }
-.status-rejected { background: #f8d7da; color: #721c24; }
-.status-pending { background: #cce5ff; color: #004085; }
-
 
 .pagination {
     margin-top: 25px;
@@ -120,9 +112,6 @@ td a, td[onclick] {
     color: white;
     border-color: #81A984;
 }
-.page-info {
-    display: none;
-}
 
 .no-data {
     text-align: center;
@@ -133,7 +122,137 @@ td a, td[onclick] {
     margin: 20px auto;
     width: 90%;
     display: none;
+    background: transparent;
 }
+
+.add-announcement {
+    background: transparent;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.add-announcement h3 {
+    color: #2c5a2e;
+    margin-bottom: 15px;
+    padding-right: 10px;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.form-row .field-group {
+    flex: 1;
+    min-width: 200px;
+}
+.field-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+.field-group input, .field-group select, .field-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: solid 2px #CBECA7;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: transparent;
+}
+.field-group input:focus, .field-group select:focus, .field-group textarea:focus {
+    outline: none;
+    border-color: #81A984;
+}
+.field-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.image-preview {
+    margin-top: 10px;
+    display: none;
+}
+.image-preview img {
+    max-width: 150px;
+    max-height: 100px;
+    border-radius: 8px;
+    border: 2px solid #CBECA7;
+}
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-submit:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+.btn-cancel {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-cancel:hover {
+    background-color: #d32f2f;
+    transform: scale(1.02);
+}
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+.priority-high { background: #f8d7da; color: #721c24; }
+.priority-normal { background: #d4edda; color: #155724; }
 
 .modal {
     display: none;
@@ -146,17 +265,19 @@ td a, td[onclick] {
     background-color: rgba(0,0,0,0.5);
     align-items: center;
     justify-content: center;
+
 }
 .modal-content {
     background-color: white;
     margin: auto;
-    padding: 25px;
+    padding: 30px;
     border: solid 2px #CBECA7;
     width: 90%;
-    max-width: 500px;
-    border-radius: 15px;
+    max-width: 550px;
+    border-radius: 16px;
     direction: rtl;
     animation: fadeIn 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 .modal-header {
     font-size: 20px;
@@ -164,6 +285,15 @@ td a, td[onclick] {
     font-weight: bold;
     color: #2c5a2e;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 2px solid #CBECA7;
+    padding-bottom: 15px;
+}
+.modal-header svg {
+    stroke: #2c5a2e;
 }
 .form-group {
     margin-bottom: 15px;
@@ -173,152 +303,218 @@ td a, td[onclick] {
     gap: 10px;
 }
 .form-group label {
-    width: 110px;
+    width: 120px;
     font-size: 14px;
     color: #333;
+    font-weight: bold;
 }
-.form-group input, .form-group select {
+.form-group input, .form-group select, .form-group textarea {
     flex: 1;
-    min-width: 150px;
-    padding: 8px 12px;
+    min-width: 180px;
+    padding: 10px 14px;
     border: solid 2px #CBECA7;
     border-radius: 8px;
     font-size: 14px;
     background: white;
+    transition: 0.3s;
+    font-family: inherit;
 }
-.form-group input:focus, .form-group select:focus {
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     outline: none;
     border-color: #81A984;
+    box-shadow: 0 0 5px rgba(129,169,132,0.3);
 }
 .form-group input[readonly] {
-    background: #f0f0f0;
+    background: #f5f5f5;
+    color: #555;
     cursor: not-allowed;
 }
+.form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+}
 .modal-footer {
-    text-align: left;
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     justify-content: flex-end;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
 }
 .btn-save {
     background-color: #4CAF50;
     color: white;
-    padding: 8px 20px;
+    padding: 10px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
-.btn-save:hover { background-color: #45a049; transform: scale(1.02); }
+.btn-save:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
 .btn-close {
     background-color: #f44336;
     color: white;
-    padding: 8px 20px;
+    padding: 10px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
-.btn-close:hover { background-color: #d32f2f; transform: scale(1.02); }
+.btn-close:hover {
+    background-color: #d32f2f;
+    transform: scale(1.02);
+}
+.btn-save svg, .btn-close svg {
+    stroke: white;
+    stroke-width: 2;
+}
 
-/* ========== ریسپانسیو موبایل ========== */
 @media (max-width: 768px) {
-    .table-responsive {
+    .form-row { 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    .add-announcement { 
+        width: 95%; 
+        padding: 15px; 
+    }
+    .table-responsive { 
+        width: 95%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        margin: 0 -5px;
+        margin: 0 auto;
         padding: 0 5px;
-        width: 100%;
     }
-    
     .table-responsive table {
-        min-width: 650px;
+        min-width: 600px;
         width: 100%;
     }
-    
-    th, td {
-        padding: 10px 6px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-    
-    th {
-        font-size: 12px;
-    }
-    
-    td {
-        font-size: 11px;
-    }
-    
-    .filters {
+    .filters { 
+        width: 95%;
         flex-direction: column;
         gap: 10px;
         padding: 12px;
-        width: 100%;
     }
-    
     .filters input[type="search"],
     .filters select {
         min-width: 100%;
         font-size: 13px;
         padding: 8px 12px;
     }
-    
-    .pagination button {
-        padding: 5px 10px;
+    th, td { 
+        padding: 8px 5px; 
+        font-size: 11px;
+        white-space: nowrap;
+    }
+    th {
         font-size: 11px;
     }
-    
-    .status-badge {
+    td {
         font-size: 10px;
-        padding: 3px 10px;
     }
-    
-    /* نمایش اسکرول بار در موبایل */
-    .table-responsive::-webkit-scrollbar {
-        height: 6px;
+    .pagination button {
+        padding: 4px 10px;
+        font-size: 11px;
     }
-    
-    .table-responsive::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
+    .priority-badge {
+        font-size: 9px;
+        padding: 3px 8px;
     }
-    
-    .table-responsive::-webkit-scrollbar-thumb {
-        background: #CBECA7;
-        border-radius: 10px;
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+        max-width: 100%;
     }
-    
-    .table-responsive::-webkit-scrollbar-thumb:hover {
-        background: #81A984;
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .form-group label {
+        width: 100%;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        min-width: 100%;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    .modal-footer {
+        flex-direction: column;
+    }
+    .btn-save, .btn-close {
+        width: 100%;
+        justify-content: center;
+    }
+    .modal-header {
+        font-size: 17px;
     }
 }
 
 @media (max-width: 550px) {
-    .modal-content {
-        padding: 18px;
-        width: 95%;
-    }
-    .modal-header { font-size: 18px; }
-    .form-group { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .form-group label { width: 100%; font-size: 13px; }
-    .form-group input, .form-group select { width: 100%; padding: 8px; font-size: 13px; }
-    .btn-save, .btn-close { padding: 6px 16px; font-size: 13px; }
-    
     .table-responsive table {
-        min-width: 550px;
+        min-width: 500px;
     }
-    
     th, td {
-        padding: 8px 4px;
-        font-size: 10px;
+        padding: 6px 4px;
+        font-size: 9px;
+    }
+    .btn-submit, .btn-cancel {
+        padding: 8px 16px;
+        font-size: 12px;
+        width: 100%;
+        justify-content: center;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .add-announcement {
+        padding: 12px;
+    }
+    .field-group label {
+        font-size: 12px;
+    }
+    .field-group input, .field-group select, .field-group textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .no-data {
+        font-size: 16px;
+        padding: 30px;
+    }
+    .modal-content {
+        padding: 15px;
+    }
+    .modal-header {
+        font-size: 16px;
+    }
+    .form-group label {
+        font-size: 13px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    .btn-save, .btn-close {
+        font-size: 13px;
+        padding: 8px 16px;
     }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
