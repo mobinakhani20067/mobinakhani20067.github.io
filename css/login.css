@@ -54,7 +54,7 @@ body {
 .button {
     border: none;
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
     background-color: transparent;
     border-radius: 0;
     padding: 10px 0;
@@ -82,7 +82,7 @@ body {
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.05);
     outline: none;
-    font-size: 17px;
+    font-size: 13px;
     color: white;
     transition: all 0.2s ease;
 	height: 50px;
@@ -102,7 +102,7 @@ body {
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 17px;
+    font-size: 13px;
     color: rgba(255, 255, 255, 0.6);
     pointer-events: none;
     transition: 0.2s ease-out;
@@ -115,7 +115,7 @@ body {
 .txt_login:not(:placeholder-shown) ~ .float-label {
     top: 0;
     transform: translateY(-50%);
-    font-size: 17px;
+    font-size: 13px;
     color: #ffd966;
     background: rgba(13, 46, 26, 0.8);
     border-radius: 8px;
@@ -223,7 +223,7 @@ input[type="checkbox"] {
     }
     
     .button {
-        font-size: 20px;
+        font-size: 17px;
         padding: 8px 0;
     }
     
@@ -239,24 +239,24 @@ input[type="checkbox"] {
     }
     
     .float-label {
-        font-size: 20px;
+        font-size: 15px;
         right: 10px;
     }
     
     .txt_login:focus ~ .float-label,
     .txt_login:not(:placeholder-shown) ~ .float-label {
-        font-size: 20px;
+        font-size: 15px;
     }
     
     .btn_submit {
         width: 88%;
         padding: 10px;
-        font-size: 14px;
+        font-size: 13px;
 		margin-top: 30px;
     }
     
     .forget, .rememberMe {
-        font-size: 17px;
+        font-size: 13px;
 		margin-bottom: 10px;
     }
     
