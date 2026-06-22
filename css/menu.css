@@ -24,7 +24,7 @@ html {
     background-attachment: fixed;
 }
 body {
-    direction: rtl;
+    direction: rtl; 
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -101,19 +101,19 @@ body {
 }
 
 .menu-toggle-collapse {
-background: transparent;
-border: none;
-font-size: 24px;
-cursor: pointer;
-color: #1f4228;
-padding: 5px 10px;
-border-radius: 8px;
-transition: 0.2s;
-}
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1f4228;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: 0.2s;
+    }
 
 .menu-toggle-collapse:hover {
-background: rgba(0,0,0,0.1);
-}
+    background: rgba(0,0,0,0.1);
+    }
 
 @media (max-width: 768px) {
 .menu {
@@ -141,8 +141,8 @@ background: rgba(0,0,0,0.1);
     top: 0;
     right: -100%;
     bottom: 0;
-    width: 97%;
-    max-width: 450px;
+    width: 95%;
+    max-width: 500px;
     background: linear-gradient(225deg, #a8c498 0%, #c8dbc0 40%, #d9e8d1 70%, #EBF1E5 100%);
     transition: right 0.3s ease;
     z-index: 1300;
@@ -156,7 +156,8 @@ background: rgba(0,0,0,0.1);
         right: 0;
         bottom: 0;
         width: 270px;
-        border-radius: 15px 0 0 15px; }
+        border-radius: 15px 0 0 15px; 
+    }
     .menu.collapsed {
         width: 80px;
     }
@@ -293,7 +294,11 @@ background: rgba(0,0,0,0.1);
     body:not(.menu-collapsed) .main { margin-right: 300px; }
 }
 @media (max-width: 768px) { .main { margin: 65px 12px 12px 12px; padding: 15px; } }
-
+@media (min-width: 400px){
+    .menu {
+    max-width: 280px;
+}
+}
 .icon-profile { background-image: url("https://unpkg.com/@mdi/svg@7.4.47/svg/account.svg"); }
 .icon-report { background-image: url("https://unpkg.com/@mdi/svg@7.4.47/svg/alert-circle.svg"); }
 .icon-reportHistory { background-image: url("https://unpkg.com/@mdi/svg@7.4.47/svg/history.svg"); }
