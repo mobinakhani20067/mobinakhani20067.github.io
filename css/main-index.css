@@ -274,7 +274,8 @@ body, .navbar-top, .page-header, .form, .footer {
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.2s;
+    transition: all 0.2s; 
+    font-size: 10px !important;
 }
 .page-btn.active {
     background: #2d6a3f;
@@ -291,6 +292,7 @@ body, .navbar-top, .page-header, .form, .footer {
     cursor: pointer;
     border: none;
     font-weight: bold;
+    font-size: 12px !important;
 }
 .nav-page:disabled {
     background: #a0b0a0;
