@@ -35,6 +35,7 @@
     border-radius: 12px;
     margin-left: auto;
     margin-right: auto;
+    -webkit-overflow-scrolling: touch;
 }
 table {
     width: 100%;
@@ -60,10 +61,12 @@ th {
     background: #ECF8E0;
     color: #2c5a2e;
     font-size: 14px;
+    text-align: center;
 }
 td {
     color: #555;
     font-size: 13px;
+    text-align: right;
 }
 td a, td[onclick] {
     cursor: pointer;
@@ -247,24 +250,6 @@ td a, td[onclick] {
     gap: 6px;
 }
 
-@media (max-width: 550px) {
-    .modal-content {
-        padding: 15px;
-        width: 95%;
-        max-height: 90vh;
-    }
-    .modal-header { font-size: 16px; margin-bottom: 12px; }
-    .form-group { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .form-group label { width: 100%; font-size: 12px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 6px; font-size: 12px; }
-    .btn-save, .btn-close, .btn-reply { padding: 5px 14px; font-size: 12px; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .subject-icon {
     display: inline-flex;
     align-items: center;
@@ -276,4 +261,109 @@ td a, td[onclick] {
 }
 .search-icon, .filter-icon {
     position: relative;
+}
+
+/* ========== ریسپانسیو موبایل ========== */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -5px;
+        padding: 0 5px;
+        width: 100%;
+    }
+    
+    .table-responsive table {
+        min-width: 650px;
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 10px 6px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    th {
+        font-size: 12px;
+    }
+    
+    td {
+        font-size: 11px;
+    }
+    
+    .filters {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+        width: 100%;
+    }
+    
+    .filters input[type="search"],
+    .filters select {
+        min-width: 100%;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    
+    .pagination button {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    
+    .status-badge {
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+    
+    /* نمایش اسکرول بار در موبایل */
+    .table-responsive::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #CBECA7;
+        border-radius: 10px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #81A984;
+    }
+}
+
+@media (max-width: 550px) {
+    .modal-content {
+        padding: 15px;
+        width: 95%;
+        max-height: 90vh;
+    }
+    .modal-header { font-size: 16px; margin-bottom: 12px; }
+    .form-group { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .form-group label { width: 100%; font-size: 12px; }
+    .form-group input, .form-group select, .form-group textarea { 
+        width: 100%; 
+        padding: 6px; 
+        font-size: 12px; 
+        min-width: 100%;
+    }
+    .btn-save, .btn-close, .btn-reply { padding: 5px 14px; font-size: 12px; }
+    
+    .table-responsive table {
+        min-width: 550px;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+        font-size: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
