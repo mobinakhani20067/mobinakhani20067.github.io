@@ -2,120 +2,155 @@
 @media (max-width: 768px) { .main { margin: 65px 12px 12px 12px; padding: 15px; } }
 
 .header-actions {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+.header-actions h1 {
+    font-size: 24px;
+    color: #1a472a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .add-btn {
-	background: #2c7a4a;
-	color: white;
-	border: none;
-	padding: 12px 24px;
-	border-radius: 30px;
-	font-size: 14px;
-	cursor: pointer;
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	transition: 0.2s;
+    background: #2c7a4a;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+    white-space: nowrap;
 }
 .add-btn:hover {
-	background: #1e5a3a;
-	transform: scale(1.02);
+    background: #1e5a3a;
+    transform: scale(1.02);
+}
+.add-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: white;
+    stroke-width: 2;
 }
 
 .filters {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-	margin-bottom: 25px;
-	padding: 15px;
-	border-radius: 12px;
-	background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: transparent;
 }
 .filters input, .filters select {
-	flex: 1;
-	min-width: 180px;
-	padding: 10px 15px;
-	border: solid 2px #CBECA7;
-	border-radius: 10px;
-	font-size: 14px;
-	background-color: transparent;
+    flex: 1;
+    min-width: 180px;
+    padding: 10px 15px;
+    border: solid 2px #CBECA7;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: transparent;
 }
 .filters input:focus, .filters select:focus { outline: none; border-color: #81A984; }
 
 .table-wrapper {
-	overflow-x: auto;
-	width: 100%;
-	border-radius: 12px;
-	background: white;
+    overflow-x: auto;
+    width: 100%;
+    border-radius: 12px;
+    background: white;
+    -webkit-overflow-scrolling: touch;
 }
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
+}
+
 .table-lost {
-	width: 100%;
-	min-width: 800px;
-	border-collapse: collapse;
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
 }
 .table-lost th, .table-lost td {
-	padding: 14px 10px;
-	text-align: right;
-	border-bottom: 1px solid #e0e0e0;
-	vertical-align: middle;
+    padding: 14px 10px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 .table-lost th {
-	background: #ECF8E0;
-	color: #2c5a2e;
-	font-size: 14px;
-	font-weight: bold;
-	text-align: center;
+    background: #ECF8E0;
+    color: #2c5a2e;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }
 .table-lost td {
-	color: #555;
-	font-size: 13px;
+    color: #555;
+    font-size: 13px;
 }
 .table-lost tbody tr:nth-child(even) { background-color: #f9f9f9; }
 .table-lost tbody tr:nth-child(odd) { background-color: #ffffff; }
 .table-lost tbody tr:hover { background-color: #f0f7f0; transition: 0.2s; }
 
 .status-badge {
-	padding: 5px 12px;
-	border-radius: 20px;
-	font-size: 11px;
-	font-weight: bold;
-	display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline-block;
 }
 .status-searching { background: #fff3cd; color: #856404; }
 .status-found { background: #d4edda; color: #155724; }
 
 .claims-count {
-	background: #2196F3;
-	color: white;
-	padding: 3px 10px;
-	border-radius: 20px;
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	cursor: pointer;
-	display: inline-block;
+    background: #2196F3;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 }
 .claims-count:hover { background: #0b7dda; }
 
 .action-buttons {
-	display: flex;
-	gap: 8px;
-	flex-wrap: nowrap;
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 .action-btn {
-	padding: 6px 12px;
-	border-radius: 20px;
-	font-size: 12px;
-	cursor: pointer;
-	border: none;
-	display: inline-flex;
-	align-items: center;
-	gap: 5px;
-	transition: 0.2s;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.2s;
+    white-space: nowrap;
 }
 .edit-btn { background: #CBECA7; color: #2c5a2e; }
 .edit-btn:hover { background: #81A984; color: white; }
@@ -123,165 +158,341 @@
 .delete-btn:hover { background: #f5c6cb; }
 .claims-btn { background: #d1ecf1; color: #0c5460; }
 .claims-btn:hover { background: #bee5eb; }
+.action-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
 
 .pagination {
-	margin-top: 25px;
-	text-align: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 8px;
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }
 .pagination button {
-	padding: 6px 14px;
-	cursor: pointer;
-	border: 1px solid #CBECA7;
-	background: white;
-	border-radius: 8px;
-	color: #2c5a2e;
-	font-size: 13px;
+    padding: 6px 14px;
+    cursor: pointer;
+    border: 1px solid #CBECA7;
+    background: white;
+    border-radius: 8px;
+    color: #2c5a2e;
+    font-size: 13px;
 }
 .pagination button.active { background: #81A984; color: white; }
 .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 2000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.5);
-	align-items: center;
-	justify-content: center;
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
 }
 .modal-content {
-	background: white;
-	margin: auto;
-	padding: 25px;
-	border: solid 2px #CBECA7;
-	width: 90%;
-	max-width: 550px;
-	max-height: 90vh;
-	overflow-y: auto;
-	border-radius: 15px;
-	animation: fadeIn 0.3s ease;
+    background: white;
+    margin: auto;
+    padding: 25px;
+    border: solid 2px #CBECA7;
+    width: 90%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    animation: fadeIn 0.3s ease;
+}
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
 }
 .modal-header {
-	font-size: 20px;
-	margin-bottom: 20px;
-	font-weight: bold;
-	color: #2c5a2e;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #2c5a2e;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 .form-group {
-	margin-bottom: 18px;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 10px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 .form-group label {
-	width: 100px;
-	font-size: 14px;
-	color: #333;
-	font-weight: bold;
+    width: 100px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
 }
 .form-group input, .form-group select, .form-group textarea {
-	flex: 1;
-	padding: 10px 12px;
-	border: solid 2px #CBECA7;
-	border-radius: 8px;
-	font-size: 14px;
-	font-family: inherit;
+    flex: 1;
+    padding: 10px 12px;
+    border: solid 2px #CBECA7;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
 }
 .form-group textarea { resize: vertical; min-height: 80px; }
 .modal-footer {
-	margin-top: 20px;
-	display: flex;
-	gap: 10px;
-	justify-content: flex-end;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 .btn-save { background: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer; }
+.btn-save:hover { background: #45a049; }
 .btn-close { background: #f44336; color: white; padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer; }
+.btn-close:hover { background: #d32f2f; }
 
 .claims-list {
-	max-height: 400px;
-	overflow-y: auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.claims-list::-webkit-scrollbar {
+    width: 6px;
+}
+.claims-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.claims-list::-webkit-scrollbar-thumb {
+    background: #CBECA7;
+    border-radius: 10px;
+}
+.claims-list::-webkit-scrollbar-thumb:hover {
+    background: #81A984;
 }
 .claim-item {
-	background: #f9f9f9;
-	padding: 15px;
-	border-radius: 12px;
-	margin-bottom: 12px;
-	border-right: 4px solid #2c7a4a;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-right: 4px solid #2c7a4a;
 }
 .claim-item h4 {
-	color: #2c5a2e;
-	margin-bottom: 8px;
+    color: #2c5a2e;
+    margin-bottom: 8px;
 }
 .claim-detail {
-	font-size: 13px;
-	color: #666;
-	margin-bottom: 5px;
-	display: flex;
-	gap: 15px;
-	flex-wrap: wrap;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 5px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 .claim-detail strong {
-	color: #333;
-	min-width: 80px;
+    color: #333;
+    min-width: 80px;
 }
 .claim-status {
-	display: inline-block;
-	padding: 3px 10px;
-	border-radius: 15px;
-	font-size: 11px;
-	margin-top: 8px;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    margin-top: 8px;
 }
 .claim-pending { background: #fff3cd; color: #856404; }
 .claim-approved { background: #d4edda; color: #155724; }
 .claim-rejected { background: #f8d7da; color: #721c24; }
 .claim-actions {
-	margin-top: 10px;
-	display: flex;
-	gap: 10px;
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
 }
 .claim-approve { background: #28a745; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; }
+.claim-approve:hover { background: #218838; }
 .claim-reject { background: #dc3545; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; }
-
-@media (max-width: 600px) {
-	.form-group { flex-direction: column; align-items: flex-start; }
-	.form-group label { width: 100%; }
-	.form-group input, .form-group select, .form-group textarea { width: 100%; }
-}
-
-@keyframes fadeIn {
-	from { opacity: 0; transform: translateY(-20px); }
-	to { opacity: 1; transform: translateY(0); }
-}
+.claim-reject:hover { background: #c82333; }
 
 .toast-msg {
-	position: fixed;
-	bottom: 30px;
-	right: 30px;
-	background: #2c7a4a;
-	color: white;
-	padding: 12px 24px;
-	border-radius: 30px;
-	font-size: 14px;
-	z-index: 3000;
-	opacity: 0;
-	transition: opacity 0.3s;
-	pointer-events: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #2c7a4a;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
 }
 .toast-msg.show { opacity: 1; }
 .toast-msg.error { background: #c0392b; }
 .no-data { text-align: center; padding: 40px; color: #999; display: none; }
 
+@media (max-width: 768px) {
+    .header-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .header-actions h1 {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 10px 20px;
+    }
+    .filters {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+    .filters input, .filters select {
+        min-width: 100%;
+        width: 100%;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -5px;
+        padding: 0 5px;
+        width: calc(100% + 10px);
+    }
+    .table-lost {
+        min-width: 700px;
+        width: 100%;
+    }
+    .table-lost th, .table-lost td {
+        padding: 10px 6px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+    .action-buttons {
+        flex-wrap: nowrap;
+        gap: 4px;
+        justify-content: center;
+    }
+    .action-btn {
+        font-size: 10px;
+        padding: 4px 8px;
+        white-space: nowrap;
+    }
+    .action-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    .pagination button {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    .status-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    .claims-count {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+}
 
+@media (max-width: 550px) {
+    .header-actions h1 {
+        font-size: 17px;
+    }
+    .add-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    .add-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    .filters input, .filters select {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .form-group label {
+        width: 100%;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+    }
+    .modal-content {
+        padding: 15px;
+        width: 95%;
+    }
+    .table-lost {
+        min-width: 500px;
+    }
+    .table-lost th, .table-lost td {
+        padding: 8px 4px;
+        font-size: 10px;
+    }
+    .action-btn {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+    .action-btn svg {
+        width: 10px;
+        height: 10px;
+    }
+    .status-badge {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+    .claims-count {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+    .toast-msg {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        font-size: 12px;
+        padding: 10px 18px;
+        text-align: center;
+    }
+    .claim-item {
+        padding: 12px;
+    }
+    .claim-detail {
+        font-size: 12px;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .claim-actions {
+        flex-wrap: wrap;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
