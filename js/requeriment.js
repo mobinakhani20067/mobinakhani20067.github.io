@@ -10,7 +10,7 @@ document.onclick = (e) => { if (profileDropdown && !profileBtn.contains(e.target
 const supBtn = document.getElementById('supportBtn');
 const chat = document.getElementById('chatbotContainer');
 const closeChat = document.getElementById('closeChat');
-const msgDiv = document.getElementById('chatMessages');
+const msgDiv = document.getElementById('chatMessages'); 
 const inp = document.getElementById('chatInput');
 const send = document.getElementById('sendMessage');
 const qBtns = document.querySelectorAll('.quick-reply-btn');
