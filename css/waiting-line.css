@@ -275,6 +275,6 @@ body, .navbar-top, .page-header, .form, .footer {
 
 @media (max-width: 480px) {
     .stats-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
