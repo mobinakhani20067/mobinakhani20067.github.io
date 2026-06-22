@@ -1,357 +1,189 @@
-@charset "utf-8";
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    width: 100%;
-}
-
-.faq-wrapper {
-    max-width: 1200px;
-    margin: 30px auto 50px auto;
-    padding: 0 20px;
-}
-
-.page-header {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 25px 30px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(255, 217, 102, 0.25);
-}
-
-.page-header h1 {
-    color: #ffd966;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.page-header h1 svg {
-    stroke: #ffd966;
-}
-
-.page-header p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.85rem;
-}
-
-.search-bar {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 15px 20px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(255, 217, 102, 0.2);
-}
-
-.search-box {
-    max-width: 400px;
-    position: relative;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 10px 18px;
-    border: 1px solid rgba(255, 217, 102, 0.3);
-    border-radius: 30px;
-    font-size: 13px;
-    padding-right: 40px;
-    outline: none;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-}
-
-.search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.search-box input:focus {
-    border-color: #ffd966;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.search-icon-pos {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
-    stroke: rgba(255, 255, 255, 0.5);
-}
-
-#faqContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 40px;
-}
-
-.faq-item {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 217, 102, 0.15);
-    transition: all 0.3s ease;
-    animation: slideUpFade 0.5s ease-out forwards;
-    opacity: 0;
-}
-
-@keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+const faqData = [
+    {
+        id: 1,
+        question: 'چگونه می‌توانم یک سالن ورزشی رزرو کنم؟',
+        answer: 'برای رزرو سالن ورزشی، ابتدا به بخش "رزرو سالن" در منو بروید. سپس تاریخ و ساعت مورد نظر را انتخاب کرده و سالن مناسب را انتخاب کنید. پس از تایید، رزرو شما ثبت خواهد شد.'
+    },
+    {
+        id: 2,
+        question: 'ساعت کاری مجموعه ورزشی دانشگاه چه ساعتی است؟',
+        answer: 'مجموعه ورزشی دانشگاه از ساعت ۷ صبح تا ۲۲ شب فعال است. روزهای تعطیل رسمی، مجموعه تعطیل می‌باشد.'
+    },
+    {
+        id: 3,
+        question: 'آیا برای استفاده از امکانات ورزشی نیاز به ثبت‌نام دارم؟',
+        answer: 'بله، تمام کاربران باید در سامانه ثبت‌نام کنند. ثبت‌نام رایگان است و از طریق بخش "ورود" در منو قابل انجام است.'
+    },
+    {
+        id: 4,
+        question: 'هزینه رزرو سالن چقدر است؟',
+        answer: 'استفاده از امکانات ورزشی دانشگاه برای دانشجویان رایگان است. برای کارمندان و اساتید نیز تخفیف‌های ویژه در نظر گرفته شده است.'
+    },
+    {
+        id: 5,
+        question: 'چگونه می‌توانم از کلاس‌های ورزشی مطلع شوم؟',
+        answer: 'برای اطلاع از کلاس‌های ورزشی، به بخش "ساعات کلاس‌ها" در منو مراجعه کنید. تمام کلاس‌ها با زمان و روزهای برگزاری در آن بخش نمایش داده می‌شوند.'
+    },
+    {
+        id: 6,
+        question: 'آیا می‌توانم رزرو خود را لغو کنم؟',
+        answer: 'بله، می‌توانید تا ۲۴ ساعت قبل از زمان رزرو، آن را لغو کنید. برای لغو رزرو به بخش "پنل کاربری" بروید و از گزینه "لغو رزرو" استفاده کنید.'
+    },
+    {
+        id: 7,
+        question: 'چگونه می‌توانم تیکت پشتیبانی ارسال کنم؟',
+        answer: 'برای ارسال تیکت پشتیبانی، از دکمه پشتیبانی شناور در گوشه صفحه استفاده کنید یا از طریق بخش "تماس با ما" اقدام کنید.'
+    },
+    {
+        id: 8,
+        question: 'آیا امکانات ورزشی برای دانشجویان غیر ایرانی نیز وجود دارد؟',
+        answer: 'بله، تمام دانشجویان دانشگاه صرف‌نظر از ملیت، می‌توانند از امکانات ورزشی استفاده کنند. برای استفاده، ابتدا باید در سامانه ثبت‌نام کنید.'
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+];
 
-.faq-item:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 217, 102, 0.35);
-}
+let filteredData = [...faqData];
 
-.faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    cursor: pointer;
-    background: transparent;
-    transition: 0.3s ease;
-}
-
-.faq-question:hover {
-    background: rgba(255, 217, 102, 0.05);
-}
-
-.question-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-}
-
-.question-icon {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-    stroke: #ffd966;
-}
-
-.toggle-icon {
-    width: 20px;
-    height: 20px;
-    stroke: #ffd966;
-    stroke-width: 2.5;
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
-}
-
-.faq-item.open .toggle-icon {
-    transform: rotate(180deg);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    background: rgba(255, 255, 255, 0.03);
-    border-top: 1px solid transparent;
-}
-
-.faq-item.open .faq-answer {
-    max-height: 500px;
-    border-top-color: rgba(255, 217, 102, 0.1);
-}
-
-.answer-content {
-    padding: 18px 20px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.answer-content ul {
-    padding-right: 20px;
-    margin: 10px 0;
-}
-
-.answer-content ul li {
-    margin-bottom: 6px;
-}
-
-.answer-content strong {
-    color: #ffd966;
-}
-
-.answer-content .highlight {
-    background: rgba(255, 217, 102, 0.15);
-    padding: 2px 8px;
-    border-radius: 6px;
-    color: #ffd966;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 217, 102, 0.1);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 15px;
-}
-
-.toast-msg {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #2d6a3f;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 13px;
-    z-index: 10001;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-}
-
-.toast-msg.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.toast-msg.error {
-    background: #c0392b;
-}
-
-@media (max-width: 768px) {
-    .faq-wrapper {
-        padding: 0 15px;
-        margin-top: 20px;
+function renderFaqs(data) {
+    const container = document.getElementById('faqContainer');
+    
+    if (!data || data.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">🔍</span>
+                سوالی با این جستجو پیدا نشد!
+            </div>
+        `;
+        return;
     }
     
-    .page-header {
-        padding: 20px;
-        border-radius: 18px;
-    }
+    let html = '';
+    data.forEach((item, index) => {
+        const delay = (index * 0.05).toFixed(2);
+        html += `
+            <div class="faq-item" data-id="${item.id}" style="animation-delay: ${delay}s;">
+                <div class="faq-question" onclick="toggleFaq(${item.id})">
+                    <span class="question-title">
+                        <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="#ffd966" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        ${item.question}
+                    </span>
+                    <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="#ffd966" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        ${item.answer}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
     
-    .page-header h1 {
-        font-size: 1.2rem;
-    }
-    
-    .search-bar {
-        padding: 12px 16px;
-        border-radius: 16px;
-    }
-    
-    .search-box {
-        max-width: 100%;
-    }
-    
-    #faqContainer {
-        gap: 10px;
-    }
-    
-    .faq-question {
-        padding: 14px 16px;
-    }
-    
-    .question-title {
-        font-size: 0.95rem;
-        gap: 10px;
-    }
-    
-    .question-icon {
-        width: 20px;
-        height: 20px;
-    }
-    
-    .toggle-icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .answer-content {
-        padding: 16px 16px;
-        font-size: 13px;
-        line-height: 1.8;
-    }
+    container.innerHTML = html;
 }
 
-@media (max-width: 480px) {
-    .page-header h1 {
-        font-size: 1rem;
+function toggleFaq(id) {
+    const item = document.querySelector(`.faq-item[data-id="${id}"]`);
+    if (!item) return;
+    item.classList.toggle('open');
+}
+
+function searchFaqs(query) {
+    const searchTerm = query.toLowerCase().trim();
+    if (!searchTerm) {
+        filteredData = [...faqData];
+    } else {
+        filteredData = faqData.filter(item => 
+            item.question.includes(searchTerm) || 
+            item.answer.includes(searchTerm)
+        );
     }
+    renderFaqs(filteredData);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderFaqs(faqData);
     
-    .page-header p {
-        font-size: 0.75rem;
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            searchFaqs(this.value);
+        });
     }
+});
+
+const supportBtn = document.getElementById('supportBtn');
+const chatbotContainer = document.getElementById('chatbotContainer');
+const closeChatBtn = document.getElementById('closeChat');
+const chatInput = document.getElementById('chatInput');
+const sendBtn = document.getElementById('sendMessage');
+const chatMessages = document.getElementById('chatMessages');
+
+if (supportBtn) {
+    supportBtn.addEventListener('click', function() {
+        chatbotContainer.classList.toggle('active');
+    });
+}
+
+if (closeChatBtn) {
+    closeChatBtn.addEventListener('click', function() {
+        chatbotContainer.classList.remove('active');
+    });
+}
+
+function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
     
-    #faqContainer {
-        gap: 8px;
-    }
+    chatMessages.innerHTML += `<div class="message user-message">${message}</div>`;
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    .faq-question {
-        padding: 12px 14px;
-    }
-    
-    .question-title {
-        font-size: 0.85rem;
-        gap: 8px;
-    }
-    
-    .question-icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .toggle-icon {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .answer-content {
-        padding: 12px 14px;
-        font-size: 12px;
-        line-height: 1.7;
-    }
-    
-    .search-bar {
-        padding: 10px 12px;
-    }
-    
-    .search-box input {
-        font-size: 12px;
-        padding: 8px 14px;
-        padding-right: 35px;
-    }
-    
-    .search-icon-pos {
-        width: 14px;
-        height: 14px;
-    }
-    
-    .toast-msg {
-        font-size: 12px;
-        padding: 10px 18px;
-        width: 90%;
-        text-align: center;
-    }
+    setTimeout(() => {
+        let reply = 'متوجه سوال شما نشدم. لطفاً دقیق‌تر بپرسید.';
+        if (message.includes('رزرو') || message.includes('سالن')) {
+            reply = 'برای رزرو سالن، از بخش "رزرو سالن" در منو استفاده کنید.';
+        } else if (message.includes('ساعت') || message.includes('کاری')) {
+            reply = 'ساعت کاری مجموعه: ۷ صبح تا ۲۲ شب';
+        } else if (message.includes('قانون') || message.includes('قوانین')) {
+            reply = 'قوانین مجموعه در بخش "قوانین" منو قابل مشاهده است.';
+        } else if (message.includes('تماس') || message.includes('شماره')) {
+            reply = 'شماره تماس: ۰۲۱-۹۱۲۳۴۵۶۷';
+        }
+        chatMessages.innerHTML += `<div class="message bot-message">${reply}</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 500);
+}
+
+if (sendBtn) {
+    sendBtn.addEventListener('click', sendMessage);
+}
+
+if (chatInput) {
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+}
+
+document.querySelectorAll('.quick-reply-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        chatInput.value = this.dataset.msg;
+        sendMessage();
+    });
+});
+
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburgerBtn && navMenu) {
+    hamburgerBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('show');
+    });
 }
