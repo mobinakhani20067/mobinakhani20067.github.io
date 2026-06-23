@@ -1,7 +1,3 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
 const modal = document.getElementById('trackingModal');
 const toast = document.getElementById('toastMsg');
 
