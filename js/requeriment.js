@@ -1,7 +1,3 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
 const profileBtn = document.getElementById('profileBtn');
 const profileDropdown = document.getElementById('profileDropdown');
 if (profileBtn) profileBtn.onclick = (e) => { e.stopPropagation(); profileDropdown.classList.toggle('show'); };
