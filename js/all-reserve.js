@@ -1,7 +1,3 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
 const goUp = document.getElementById('goUpBtn');
 window.onscroll = () => { window.scrollY > 300 ? goUp.classList.add('show') : goUp.classList.remove('show'); };
 goUp.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
