@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>نیازمندی‌های دانشگاه </title>
+    <title>نیازمندی‌های دانشگاه</title>
     <link href="css/main-menu.css" rel="stylesheet">
     <link href="css/requeriment.css" rel="stylesheet">
-    <link href="css/background.css" rel="stylesheet">
+    <link href="css/background.css" rel="stylesheet">  
 </head>
 <body>
+     <nav class="menu">
+        <div class="menu-container">
+            <div class="menu-left">
+                <img src="img/logo.jpg" class="logo" alt="لوگو">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
+            </div>
+            <ul id="navMenu">
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="floating-support" id="supportBtn">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -28,23 +50,6 @@
             <button class="chatbot-send" id="sendMessage">➤</button>
         </div>
     </div>
-    <nav class="menu">
-        <div class="menu-container">
-            <div class="menu-left">
-                <img src="img/logo.jpg" class="logo" alt="لوگو">
-                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
-            </div>
-            <ul id="navMenu">
-                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
-				<li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
-                <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
-                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
-                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
-                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
-                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <div class="needs-wrapper">
         <div class="page-header">
@@ -73,7 +78,6 @@
                 <button class="filter-btn" data-filter="completed">تکمیل شده</button>
             </div>
         </div>
-
         <div id="needsGrid" class="needs-grid"></div>
     </div>
     <div id="donationModal" class="modal-overlay" style="display: none;">
@@ -91,8 +95,11 @@
             <button class="cancel-btn" onclick="closeDonationModal()">انصراف</button>
         </div>
     </div>
+
     <div id="toastMsg" class="toast-msg"></div>
+
     <script src="js/background.js"></script>
+    <script src="js/main-menu.js"></script>
     <script src="js/requeriment.js"></script>
 </body>
-</html>
+</html> 
