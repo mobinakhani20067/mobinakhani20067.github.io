@@ -1,7 +1,3 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
 const scheduleData = {
     saturday: [true, false, true, false, true, false],    
     sunday: [false, true, false, true, false, true],       
