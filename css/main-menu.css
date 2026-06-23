@@ -682,7 +682,7 @@ a {
         left: 15px;
         width: calc(100vw - 70px);
         max-width: calc(100vw - 70px);
-        max-height: 450px;
+        max-height: 500px;
         border-radius: 24px;
     }
     
@@ -716,4 +716,5 @@ a {
         font-size: 10px;
         padding: 5px 8px;
     }
+    
 }
