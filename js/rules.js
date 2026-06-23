@@ -1,9 +1,4 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
-
 const ruleItems = document.querySelectorAll('.rule-item');
-
 ruleItems.forEach(item => {
     const header = item.querySelector('.rule-header');
     
