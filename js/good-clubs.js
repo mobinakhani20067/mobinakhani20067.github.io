@@ -264,19 +264,6 @@ if (searchInput) {
 }
 
 (function() {
-    const hamburger = document.getElementById('hamburgerBtn');
-    const navMenu = document.getElementById('navMenu');
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function(e) { e.stopPropagation(); navMenu.classList.toggle('active-mobile'); });
-        document.addEventListener('click', function(e) {
-            if (navMenu.classList.contains('active-mobile') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                navMenu.classList.remove('active-mobile');
-            }
-        });
-    }
-})();
-
-(function() {
     const profileBtn = document.getElementById('profileBtn');
     const profileDropdown = document.getElementById('profileDropdown');
     if (profileBtn && profileDropdown) {
