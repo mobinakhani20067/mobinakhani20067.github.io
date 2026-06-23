@@ -1,6 +1,3 @@
-const hamburger = document.getElementById('hamburgerBtn');
-const navMenu = document.getElementById('navMenu');
-if (hamburger) hamburger.onclick = () => navMenu.classList.toggle('active-mobile');
 
 function clickingOnLogin() {
     document.getElementById('reset').style.display = 'none';
