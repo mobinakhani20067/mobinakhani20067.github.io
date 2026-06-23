@@ -9,24 +9,27 @@
     <link href="css/background.css" rel="stylesheet">
 </head>
 <body>
-<nav class="menu">
+    <nav class="menu">
         <div class="menu-container">
             <div class="menu-left">
                 <img src="img/logo.jpg" class="logo" alt="لوگو">
-                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
             </div>
             <ul id="navMenu">
-                <li><a href="index.html" id="home" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
-				<li><a href="login.html" id="loginn" class="menu-item active"><span class="menu-icon icon-login"></span> ورود</a></li>
-                <li><a href="hallReservation.html" id="booking" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
-                <li><a href="class_time.html" id="schedule" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
-                <li><a href="notice.html" id="notice" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
-                <li><a href="rules.html" id="rules" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
-                <li><a href="ContactUs.html" id="contact" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
+                <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
+                <li><a href="login.html" class="menu-item active"><span class="menu-icon icon-login"></span> ورود</a></li>
+                <li><a href="hallReservation.html" class="menu-item "><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
+                <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
+                <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
             </ul>
         </div>
     </nav>
-
     <article class="content" id="login">
         <nav class="buttons">
             <ul>
@@ -105,6 +108,7 @@
     </article>
 
     <script src="js/background.js"></script>
+    <script src="js/main-menu.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>
