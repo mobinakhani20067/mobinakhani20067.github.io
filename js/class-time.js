@@ -25,37 +25,47 @@ const timeSlots = ['08:00 - 10:00', '10:00 - 12:00', '12:00 - 14:00', '14:00 - 1
 function getCurrentDayIndex() {
     const today = new Date();
     const day = today.getDay(); 
-    if (day === 0) return 6; 
+    if (day === 0) return 6;
+    if (day === 6) return 5; 
     return day - 1; 
 }
-
 
 function renderTable() {
     const thead = document.getElementById('tableHeader');
     const tbody = document.getElementById('tableBody');
     
     if (!thead || !tbody) return;
-    
-    thead.innerHTML = `
-        <tr>
-            <th>روز هفته</th>
-            ${timeSlots.map(time => `<th>${time}</th>`).join('')}
-        </tr>
-    `;
-    let tbodyHtml = '';
-    const currentDayIndex = getCurrentDayIndex();
-    
+        let headerHtml = `<tr><th>ساعات</th>`;
     for (let i = 0; i < persianDays.length; i++) {
         const dayName = persianDays[i];
         const dayKey = dayMapping[dayName];
-        const slots = scheduleData[dayKey];
-        
+        const isToday = (i === getCurrentDayIndex());
+        headerHtml += `<th class="${isToday ? 'cell-today' : ''}" style="font-weight: bold; color: #ffd966;">${dayName}</th>`;
+    }
+    headerHtml += `</tr>`;
+    thead.innerHTML = headerHtml;
+    
+    let tbodyHtml = '';
+    const currentDayIndex = getCurrentDayIndex();
+    
+    for (let j = 0; j < timeSlots.length; j++) {
+        const timeSlot = timeSlots[j];
         let rowHtml = `<tr>`;
-        rowHtml += `<td class="${i === currentDayIndex ? 'cell-today' : ''}" style="font-weight: bold; color: #ffd966;">${dayName}</td>`;
+        rowHtml += `<td style="font-weight: bold; color: #ffd966; background: rgba(255, 217, 102, 0.05);">${timeSlot}</td>`;
         
-        for (let j = 0; j < slots.length; j++) {
+        for (let i = 0; i < persianDays.length; i++) {
+            const dayName = persianDays[i];
+            const dayKey = dayMapping[dayName];
+            const slots = scheduleData[dayKey];
             const isBusy = slots[j];
-            rowHtml += `<td class="${isBusy ? 'cell-busy' : 'cell-free'}">
+            const isToday = (i === currentDayIndex);
+            
+            let cellClass = isBusy ? 'cell-busy' : 'cell-free';
+            if (isToday) {
+                cellClass += ' today-column';
+            }
+            
+            rowHtml += `<td class="${cellClass}">
                             <div class="cell-content">${isBusy ? 'مشغول' : 'آزاد'}</div>
                          </td>`;
         }
@@ -65,6 +75,7 @@ function renderTable() {
     
     tbody.innerHTML = tbodyHtml;
 }
+
 const goUp = document.getElementById('goUpBtn');
 if (goUp) {
     window.addEventListener('scroll', function() {
@@ -82,6 +93,7 @@ if (goUp) {
         });
     });
 }
+
 const supBtn = document.getElementById('supportBtn');
 const chat = document.getElementById('chatbotContainer');
 const closeChat = document.getElementById('closeChat');
@@ -145,4 +157,5 @@ qBtns.forEach(btn => {
         setTimeout(() => addMsg(getReply(m), false), 400);
     };
 });
+
 renderTable();
