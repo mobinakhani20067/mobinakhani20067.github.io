@@ -2,63 +2,77 @@
 
 @keyframes fadeContent {
 	from {
-	opacity: 0;
-	transform: translateY(10px);
+		opacity: 0;
+		transform: translateY(10px);
 	}
 	to {
-	opacity: 1;
-	transform: translateY(0);
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
 .main {
 	animation: fadeContent 0.4s ease-out;
+	padding: 10px;
+	max-width: 1200px;
+	margin: 0 auto;
 }
+
 .student-card {
 	border-radius: 15px;
 	padding: 20px;
 	margin-bottom: 25px;
-	width: 99%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-
+	box-sizing: border-box;
 }
+
 .student-card h3 {
 	color: #2c5a2e;
 	margin-bottom: 15px;
 	padding-right: 10px;
 	border-right: 4px solid #2c6e3c;
+	font-size: 1rem;
 }
+
 .student-info {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
 	justify-content: space-between;
 }
+
 .info-item {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
 	min-width: 150px;
+	flex: 1;
 }
+
 .info-item label {
 	font-size: 12px;
 	color: #999;
 	font-weight: 600;
 }
+
 .info-item .value {
 	font-size: 16px;
 	color: #333;
 	font-weight: 600;
 }
+
 .status-badge {
 	display: inline-block;
 	padding: 4px 12px;
 	border-radius: 20px;
 	font-size: 12px;
 	font-weight: 600;
+	white-space: nowrap;
 }
+
 .status-present { background: #d4edda; color: #155724; }
 .status-absent { background: #f8d7da; color: #721c24; }
 .status-late { background: #fff3cd; color: #856404; }
@@ -66,53 +80,84 @@
 .status-cancelled { background: #e0e0e0; color: #555; }
 
 .table-responsive {
-	overflow-x: auto;
-	width: 99%;
+	overflow-x: hidden;
+	width: 100%;
 	border-radius: 12px;
 	margin-left: auto;
 	margin-right: auto;
+	box-sizing: border-box;
 }
+
 table {
 	width: 100%;
-	min-width: 700px;
 	border-collapse: collapse;
 	background: white;
+	table-layout: fixed;
 }
+
 th, td {
-	padding: 12px 10px;
+	padding: 10px 8px;
 	text-align: center;
 	border-bottom: 1px solid #e0e0e0;
+	word-break: break-word;
 }
+
 th {
 	background: #ECF8E0;
 	color: #2c5a2e;
 	font-size: 14px;
 }
+
 td {
 	color: #555;
 	font-size: 13px;
 }
 
-.stats-grid {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-	width: 99%;
-	margin: 20px auto;
+th:nth-child(1), td:nth-child(1) {
+	width: 25%;
 }
+
+th:nth-child(2), td:nth-child(2) {
+	width: 35%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+	width: 40%;
+}
+
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	width: 100%;
+	margin: 20px auto;
+	box-sizing: border-box;
+}
+
 .stat-card {
-	flex: 1;
-	min-width: 120px;
-	padding: 15px;
+	padding: 15px 10px;
 	border-radius: 15px;
 	text-align: center;
 	background-color: #E7F6D7;
+	transition: transform 0.2s;
+	min-height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
+
+.stat-card:hover {
+	transform: scale(1.02);
+}
+
 .stat-number {
 	font-size: 28px;
 	font-weight: bold;
 	color: #165526;
+	line-height: 1.2;
 }
+
 .stat-label {
 	font-size: 12px;
 	color: #666;
@@ -127,7 +172,282 @@ td {
 	display: none;
 }
 
+@media (max-width: 900px) {
+	.main {
+		padding: 8px;
+	}
+	
+	.student-card {
+		padding: 15px;
+	}
+	
+	.student-card h3 {
+		font-size: 0.9rem;
+	}
+	
+	.info-item {
+		min-width: 120px;
+	}
+	
+	.info-item .value {
+		font-size: 14px;
+	}
+	
+	th, td {
+		padding: 8px 5px;
+		font-size: 12px;
+	}
+	
+	th {
+		font-size: 12px;
+	}
+	
+	td {
+		font-size: 11px;
+	}
+	
+	.stats-grid {
+		gap: 10px;
+	}
+	
+	.stat-card {
+		padding: 12px 8px;
+		min-height: 70px;
+	}
+	
+	.stat-number {
+		font-size: 24px;
+	}
+	
+	.stat-label {
+		font-size: 11px;
+	}
+}
 @media (max-width: 768px) {
-	.student-info { flex-direction: column; gap: 10px; }
-	.stats-grid { flex-direction: column; }
+	.main {
+		padding: 5px;
+	}
+	
+	.student-card {
+		padding: 12px;
+		margin-bottom: 15px;
+	}
+	
+	.student-card h3 {
+		font-size: 0.85rem;
+		margin-bottom: 10px;
+		padding-right: 8px;
+	}
+	
+	.student-info {
+		flex-direction: column;
+		gap: 8px;
+	}
+	
+	.info-item {
+		min-width: unset;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 5px 0;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	
+	.info-item:last-child {
+		border-bottom: none;
+	}
+	
+	.info-item label {
+		font-size: 11px;
+	}
+	
+	.info-item .value {
+		font-size: 13px;
+	}
+	
+	.table-responsive {
+		overflow-x: hidden;
+	}
+	
+	table {
+		min-width: unset;
+		table-layout: fixed;
+	}
+	
+	th, td {
+		padding: 6px 4px;
+		font-size: 10px;
+	}
+	
+	th {
+		font-size: 10px;
+	}
+	
+	td {
+		font-size: 10px;
+	}
+	
+	.status-badge {
+		font-size: 9px;
+		padding: 3px 8px;
+	}
+	
+	th:nth-child(1), td:nth-child(1) {
+		width: 22%;
+	}
+	
+	th:nth-child(2), td:nth-child(2) {
+		width: 33%;
+	}
+	
+	th:nth-child(3), td:nth-child(3) {
+		width: 45%;
+	}
+	
+	.stats-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 8px;
+		margin: 15px auto;
+	}
+	
+	.stat-card {
+		padding: 10px 5px;
+		min-height: 60px;
+		border-radius: 12px;
+	}
+	
+	.stat-number {
+		font-size: 20px;
+	}
+	
+	.stat-label {
+		font-size: 10px;
+		margin-top: 3px;
+	}
+	
+	.stat-card:last-child {
+		grid-column: span 2;
+	}
+}
+
+@media (max-width: 480px) {
+	.main {
+		padding: 3px;
+	}
+	
+	.student-card {
+		padding: 10px;
+		border-radius: 10px;
+	}
+	
+	.student-card h3 {
+		font-size: 0.75rem;
+		padding-right: 6px;
+		border-right-width: 3px;
+	}
+	
+	.student-card p {
+		font-size: 10px !important;
+	}
+	
+	.info-item {
+		padding: 4px 0;
+	}
+	
+	.info-item label {
+		font-size: 10px;
+	}
+	
+	.info-item .value {
+		font-size: 12px;
+	}
+	
+	th, td {
+		padding: 4px 2px;
+		font-size: 8px;
+	}
+	
+	th {
+		font-size: 8px;
+	}
+	
+	td {
+		font-size: 8px;
+	}
+	
+	.status-badge {
+		font-size: 7px;
+		padding: 2px 6px;
+		border-radius: 15px;
+	}
+	
+	.stats-grid {
+		gap: 5px;
+		margin: 10px auto;
+	}
+	
+	.stat-card {
+		padding: 8px 4px;
+		min-height: 50px;
+		border-radius: 10px;
+	}
+	
+	.stat-number {
+		font-size: 17px;
+	}
+	
+	.stat-label {
+		font-size: 9px;
+	}
+}
+
+@media (max-width: 380px) {
+	th, td {
+		padding: 3px 1px;
+		font-size: 7px;
+	}
+	
+	th {
+		font-size: 7px;
+	}
+	
+	td {
+		font-size: 7px;
+	}
+	
+	.status-badge {
+		font-size: 6px;
+		padding: 1px 4px;
+	}
+	
+	.stat-number {
+		font-size: 15px;
+	}
+	
+	.stat-label {
+		font-size: 8px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.main {
+		padding: 20px 40px;
+	}
+	
+	.student-card {
+		padding: 25px 30px;
+	}
+	
+	.stats-grid {
+		gap: 20px;
+	}
+	
+	.stat-card {
+		padding: 20px 15px;
+		min-height: 100px;
+	}
+	
+	.stat-number {
+		font-size: 32px;
+	}
 }
