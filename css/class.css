@@ -11,18 +11,11 @@
 	}
 }
 
-.main {
-	animation: fadeContent 0.4s ease-out;
-	padding: 10px;
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
 .student-card {
 	border-radius: 15px;
 	padding: 20px;
 	margin-bottom: 25px;
-	width: 100%;
+	width: 99%;
 	margin-left: auto;
 	margin-right: auto;
 	box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -81,22 +74,22 @@
 
 .table-responsive {
 	overflow-x: hidden;
-	width: 100%;
+	width: 99%;
 	border-radius: 12px;
 	margin-left: auto;
 	margin-right: auto;
-	box-sizing: border-box;
 }
 
 table {
 	width: 100%;
+	min-width: 100%;
 	border-collapse: collapse;
 	background: white;
 	table-layout: fixed;
 }
 
 th, td {
-	padding: 10px 8px;
+	padding: 12px 10px;
 	text-align: center;
 	border-bottom: 1px solid #e0e0e0;
 	word-break: break-word;
@@ -113,49 +106,27 @@ td {
 	font-size: 13px;
 }
 
-th:nth-child(1), td:nth-child(1) {
-	width: 25%;
-}
-
-th:nth-child(2), td:nth-child(2) {
-	width: 35%;
-}
-
-th:nth-child(3), td:nth-child(3) {
-	width: 40%;
-}
-
 .stats-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 12px;
-	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	width: 99%;
 	margin: 20px auto;
-	box-sizing: border-box;
 }
 
 .stat-card {
-	padding: 15px 10px;
+	flex: 1;
+	min-width: 120px;
+	padding: 15px;
 	border-radius: 15px;
 	text-align: center;
 	background-color: #E7F6D7;
-	transition: transform 0.2s;
-	min-height: 80px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.stat-card:hover {
-	transform: scale(1.02);
 }
 
 .stat-number {
 	font-size: 28px;
 	font-weight: bold;
 	color: #165526;
-	line-height: 1.2;
 }
 
 .stat-label {
@@ -172,78 +143,56 @@ th:nth-child(3), td:nth-child(3) {
 	display: none;
 }
 
-@media (max-width: 900px) {
-	.main {
-		padding: 8px;
+@media (min-width: 769px) {
+	.stats-grid {
+		flex-wrap: nowrap;
 	}
-	
+	.stat-card {
+		flex: 1;
+		min-width: 0;
+	}
+}
+
+@media (max-width: 900px) {
 	.student-card {
 		padding: 15px;
 	}
-	
 	.student-card h3 {
 		font-size: 0.9rem;
 	}
-	
 	.info-item {
 		min-width: 120px;
 	}
-	
 	.info-item .value {
 		font-size: 14px;
 	}
-	
 	th, td {
-		padding: 8px 5px;
+		padding: 10px 8px;
 		font-size: 12px;
 	}
-	
 	th {
 		font-size: 12px;
 	}
-	
 	td {
-		font-size: 11px;
-	}
-	
-	.stats-grid {
-		gap: 10px;
-	}
-	
-	.stat-card {
-		padding: 12px 8px;
-		min-height: 70px;
-	}
-	
-	.stat-number {
-		font-size: 24px;
-	}
-	
-	.stat-label {
-		font-size: 11px;
+		font-size: 12px;
 	}
 }
+
 @media (max-width: 768px) {
-	.main {
-		padding: 5px;
-	}
-	
 	.student-card {
-		padding: 12px;
+		padding: 15px;
 		margin-bottom: 15px;
+		width: 98%;
 	}
-	
 	.student-card h3 {
 		font-size: 0.85rem;
 		margin-bottom: 10px;
 		padding-right: 8px;
 	}
-	
 	.student-info {
 		flex-direction: column;
 		gap: 8px;
 	}
-	
 	.info-item {
 		min-width: unset;
 		flex-direction: row;
@@ -252,202 +201,144 @@ th:nth-child(3), td:nth-child(3) {
 		padding: 5px 0;
 		border-bottom: 1px solid #f0f0f0;
 	}
-	
 	.info-item:last-child {
 		border-bottom: none;
 	}
-	
 	.info-item label {
 		font-size: 11px;
 	}
-	
 	.info-item .value {
 		font-size: 13px;
 	}
-	
 	.table-responsive {
+		width: 98%;
 		overflow-x: hidden;
 	}
-	
 	table {
-		min-width: unset;
-		table-layout: fixed;
+		min-width: 100%;
 	}
-	
 	th, td {
-		padding: 6px 4px;
-		font-size: 10px;
+		padding: 8px 6px;
+		font-size: 11px;
 	}
-	
 	th {
-		font-size: 10px;
+		font-size: 11px;
 	}
-	
 	td {
-		font-size: 10px;
+		font-size: 11px;
 	}
-	
 	.status-badge {
-		font-size: 9px;
-		padding: 3px 8px;
+		font-size: 10px;
+		padding: 3px 10px;
 	}
-	
-	th:nth-child(1), td:nth-child(1) {
-		width: 22%;
-	}
-	
-	th:nth-child(2), td:nth-child(2) {
-		width: 33%;
-	}
-	
-	th:nth-child(3), td:nth-child(3) {
-		width: 45%;
-	}
-	
 	.stats-grid {
+		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 8px;
+		gap: 10px;
+		width: 98%;
 		margin: 15px auto;
 	}
-	
 	.stat-card {
-		padding: 10px 5px;
-		min-height: 60px;
+		flex: unset;
+		min-width: unset;
+		padding: 12px 8px;
 		border-radius: 12px;
 	}
-	
 	.stat-number {
-		font-size: 20px;
+		font-size: 22px;
 	}
-	
 	.stat-label {
-		font-size: 10px;
+		font-size: 11px;
 		margin-top: 3px;
-	}
-	
-	.stat-card:last-child {
-		grid-column: span 2;
 	}
 }
 
 @media (max-width: 480px) {
-	.main {
-		padding: 3px;
-	}
-	
 	.student-card {
 		padding: 10px;
 		border-radius: 10px;
+		width: 97%;
 	}
-	
 	.student-card h3 {
 		font-size: 0.75rem;
 		padding-right: 6px;
 		border-right-width: 3px;
 	}
-	
 	.student-card p {
 		font-size: 10px !important;
 	}
-	
 	.info-item {
 		padding: 4px 0;
 	}
-	
 	.info-item label {
 		font-size: 10px;
 	}
-	
 	.info-item .value {
 		font-size: 12px;
 	}
-	
+	.table-responsive {
+		width: 97%;
+		overflow-x: hidden;
+	}
+	table {
+		min-width: 100%;
+	}
 	th, td {
-		padding: 4px 2px;
-		font-size: 8px;
+		padding: 6px 4px;
+		font-size: 10px;
 	}
-	
 	th {
-		font-size: 8px;
+		font-size: 10px;
 	}
-	
 	td {
-		font-size: 8px;
+		font-size: 10px;
 	}
-	
 	.status-badge {
-		font-size: 7px;
-		padding: 2px 6px;
-		border-radius: 15px;
+		font-size: 9px;
+		padding: 2px 8px;
 	}
-	
 	.stats-grid {
-		gap: 5px;
+		gap: 6px;
+		width: 97%;
 		margin: 10px auto;
 	}
-	
 	.stat-card {
-		padding: 8px 4px;
-		min-height: 50px;
+		padding: 10px 5px;
 		border-radius: 10px;
 	}
-	
 	.stat-number {
-		font-size: 17px;
+		font-size: 18px;
 	}
-	
 	.stat-label {
-		font-size: 9px;
+		font-size: 10px;
 	}
 }
 
 @media (max-width: 380px) {
 	th, td {
-		padding: 3px 1px;
-		font-size: 7px;
+		padding: 4px 3px;
+		font-size: 9px;
 	}
-	
 	th {
-		font-size: 7px;
+		font-size: 9px;
 	}
-	
 	td {
-		font-size: 7px;
+		font-size: 9px;
 	}
-	
 	.status-badge {
-		font-size: 6px;
-		padding: 1px 4px;
-	}
-	
-	.stat-number {
-		font-size: 15px;
-	}
-	
-	.stat-label {
 		font-size: 8px;
+		padding: 2px 6px;
 	}
-}
-
-@media (min-width: 1200px) {
-	.main {
-		padding: 20px 40px;
-	}
-	
-	.student-card {
-		padding: 25px 30px;
-	}
-	
 	.stats-grid {
-		gap: 20px;
+		gap: 4px;
 	}
-	
 	.stat-card {
-		padding: 20px 15px;
-		min-height: 100px;
+		padding: 8px 4px;
 	}
-	
 	.stat-number {
-		font-size: 32px;
+		font-size: 16px;
+	}
+	.stat-label {
+		font-size: 9px;
 	}
 }
