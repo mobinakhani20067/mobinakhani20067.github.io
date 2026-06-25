@@ -1,10 +1,32 @@
 const weeks = Array.from({length: 16}, (_, i) => `هفته ${i+1}`);
-const startDate = new Date(1405, 7, 15);
+
+const persianMonths = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+
+let startYear = 1405;
+let startMonth = 8; 
+let startDay = 15;
+
+function jalaliToGregorian(jy, jm, jd) {
+    let daysInMonth = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29];
+    let totalDays = 0;
+    for (let i = 0; i < jm - 1; i++) {
+        totalDays += daysInMonth[i];
+    }
+    totalDays += jd - 1;
+    let baseDate = new Date(2026, 10, 6);
+    let result = new Date(baseDate);
+    result.setDate(result.getDate() + totalDays);
+    return result;
+}
+
 const tuesdays = [];
 for(let i = 0; i < 16; i++) {
-	let date = new Date(startDate);
-	date.setDate(startDate.getDate() + (i * 7));
-	tuesdays.push(`${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`);
+    let date = new Date(2026, 10, 6);
+    date.setDate(date.getDate() + (i * 7));
+    let year = date.getFullYear();
+    let month = String(date.getMonth() + 1).padStart(2, '0');
+    let day = String(date.getDate()).padStart(2, '0');
+    tuesdays.push(`${year}/${month}/${day}`);
 }
 
 let attendanceStatus = [
