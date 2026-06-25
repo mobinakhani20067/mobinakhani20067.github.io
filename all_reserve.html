@@ -9,18 +9,22 @@
     <link href="css/background.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="menu">
+     <nav class="menu">
         <div class="menu-container">
             <div class="menu-left">
                 <img src="img/logo.jpg" class="logo" alt="لوگو">
-                <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
             </div>
             <ul id="navMenu">
                 <li><a href="index.html" class="menu-item"><span class="menu-icon icon-home"></span> خانه</a></li>
                 <li><a href="login.html" class="menu-item"><span class="menu-icon icon-login"></span> ورود</a></li>
                 <li><a href="hallReservation.html" class="menu-item"><span class="menu-icon icon-booking"></span> رزرو سالن</a></li>
                 <li><a href="class_time.html" class="menu-item"><span class="menu-icon icon-schedule"></span> ساعات کلاس ها</a></li>
-                <li><a href="Notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
+                <li><a href="notice.html" class="menu-item"><span class="menu-icon icon-uni"></span> اطلاعیه های دانشگاه</a></li>
                 <li><a href="rules.html" class="menu-item"><span class="menu-icon icon-rules"></span> قوانین</a></li>
                 <li><a href="ContactUs.html" class="menu-item"><span class="menu-icon icon-contact"></span> تماس با ما</a></li>
             </ul>
@@ -55,10 +59,35 @@
     <div class="footer">
         <p>© ۱۴۰۵ تمامی حقوق برای دانشگاه ملی مهارت دختران قم محفوظ است.</p>
     </div>
+    <div class="floating-support" id="supportBtn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
 
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <span>پشتیبانی</span>
+        <button class="close-chat" id="closeChat" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+        <div class="message bot-message">سلام! چطور میتونم کمک کنم؟</div>
+    </div>
+    <div class="quick-replies">
+        <button class="quick-reply-btn" data-msg="رزرو سالن">رزرو سالن</button>
+        <button class="quick-reply-btn" data-msg="ساعات کاری">ساعات کاری</button>
+        <button class="quick-reply-btn" data-msg="قوانین">قوانین</button>
+        <button class="quick-reply-btn" data-msg="تماس">شماره تماس</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatInput" placeholder="پیام...">
+        <button class="chatbot-send" id="sendMessage">➤</button>
+    </div>
+</div>
     <div class="go-up-btn" id="goUpBtn">↑</div>
 
     <script src="js/background.js"></script>
     <script src="js/all-reserve.js"></script>
+    <script src="js/main-menu.js"></script>
 </body>
 </html>
